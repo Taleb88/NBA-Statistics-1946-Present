@@ -26,6 +26,12 @@ team_totals_df = pd.read_csv('csv/Team Totals.csv')
 print(player_award_shares_df)
 print(player_per_game_df)
 
+
+# groupby
+player_award_shares_df.groupby(['award', 'player'])
+print(player_award_shares_df.head())
+
+
 #merging 
 player_award_shares_and_player_per_game_merged_df = pd.merge(player_award_shares_df,
                                                           player_per_game_df, 
@@ -67,13 +73,49 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
 
-# award winners highlighted
+
+# nba mvp and top 5 highest scoring averages
+def top_5_nba_mvp_ppg(df):
+    try:
+        return df[(df['award'] == 'nba mvp') & 
+                  (df['winner'] == 'True') & 
+                  (df['season_x'] == df['season_y'])]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
+
+top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg(player_award_shares_and_player_per_game_merged_df)
+
+top_5_nba_mvp_ppg_df.to_excel('top_5_nba_mvp_ppg_df.xlsx', index=False)
+
+# sort values by pts_per_game
+top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.sort_values(['pts_per_game'], ascending=False).head(5)
+
+top_5_nba_mvp_ppg_df.to_excel('top_5_nba_mvp_ppg_df.xlsx', index=False)
+# drop unnecessary columns from top_5_nba_mvp_ppg_df
+top_5_nba_mvp_ppg_df = \
+    top_5_nba_mvp_ppg_df.drop(top_5_nba_mvp_ppg_df.iloc[:,5:45], axis=1)
+
+print(top_5_nba_mvp_ppg_df)
+# rename certain columns in top_5_nba_mvp_ppg_df
+top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'season_x': 'season',
+                                                            'player_x': 'player',
+                                                            'age_x': 'age',
+                                                            'tm_x':'team'})
+print(top_5_nba_mvp_ppg_df)
+
+
+# creating graphs
+
+
+# conditional formatting
 def award_winners_highlighted(x):
     try:
         if x == 'True':
             return 'background-color: green'
-    except:
-        print('cannot highlight selected cell(s)')
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
 
 player_award_shares_and_player_per_game_merged_styled_df = (
     player_award_shares_and_player_per_game_merged_df.
