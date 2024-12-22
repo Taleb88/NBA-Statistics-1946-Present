@@ -1,5 +1,5 @@
 import pandas as pd
-
+# read csv
 advanced_df = pd.read_csv('csv/advanced.csv')
 all_star_selections_df = pd.read_csv('csv/All-Star Selections.csv')
 end_of_season_teams_voting_df = pd.read_csv('csv/End of Season Teams (Voting).csv')
@@ -22,21 +22,178 @@ team_stats_per_game_df = pd.read_csv('csv/Team Stats Per Game.csv')
 team_summaries_df = pd.read_csv('csv/Team Summaries.csv')
 team_totals_df = pd.read_csv('csv/Team Totals.csv')
 
+# creating copies of csvs into xlsx
+advanced_df.to_excel('advanced.xlsx', index=False)
+all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
+end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
+end_of_season_teams_df.to_excel('End of Season Teams.xlsx', index=False)
+opponent_stats_per_100_poss_df.to_excel('Opponent Stats Per 100 Poss.xlsx', index=False)
+opponent_stats_per_game_df.to_excel('Opponent Stats Per Game.xlsx', index=False)
+opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+
 #print(player_award_shares_df)
 #print(player_per_game_df)
+
+# convert season values to str
+advanced_df['season'] = advanced_df['season'].astype(str)
+all_star_selections_df['season'] = all_star_selections_df['season'].astype(str)
+end_of_season_teams_voting_df['season'] = end_of_season_teams_voting_df['season'].astype(str)
+end_of_season_teams_df['season'] = end_of_season_teams_df['season'].astype(str)
+opponent_stats_per_100_poss_df['season'] = opponent_stats_per_100_poss_df['season'].astype(str)
+opponent_stats_per_game_df['season'] = opponent_stats_per_game_df['season'].astype(str)
+opponent_totals_df['season'] = opponent_totals_df['season'].astype(str)
+per_36_minutes_df['season'] = per_36_minutes_df['season'].astype(str)
+per_100_poss_df['season'] = per_100_poss_df['season'].astype(str)
+player_award_shares_df['season'] = player_award_shares_df['season'].astype(str)
+player_career_info_df['first_seas'] = player_career_info_df['first_seas'].astype(str) # first_seas
+player_career_info_df['last_seas'] = player_career_info_df['last_seas'].astype(str) # last_seas
+player_per_game_df['season'] = player_per_game_df['season'].astype(str)
+player_play_by_play_df['season'] = player_play_by_play_df['season'].astype(str)
+player_season_info_df['season'] = player_season_info_df['season'].astype(str)
+player_shooting_df['season'] = player_shooting_df['season'].astype(str)
+player_totals_df['season'] = player_totals_df['season'].astype(str)
+team_abbrev_df['season'] = team_abbrev_df['season'].astype(str)
+team_stats_per_100_poss_df['season'] = team_stats_per_100_poss_df['season'].astype(str)
+team_stats_per_game_df['season'] = team_stats_per_game_df['season'].astype(str)
+team_summaries_df['season'] = team_summaries_df['season'].astype(str)
+team_totals_df['season'] = team_totals_df['season'].astype(str)
+
+# savings updated season value conversions to all files
+advanced_df.to_excel('advanced.xlsx', index=False)
+all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
+end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
+end_of_season_teams_df.to_excel('End of Season Teams.xlsx', index=False)
+opponent_stats_per_100_poss_df.to_excel('Opponent Stats Per 100 Poss.xlsx', index=False)
+opponent_stats_per_game_df.to_excel('Opponent Stats Per Game.xlsx', index=False)
+opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+
+# define function that corrects season value 
+#   ex: 1956 -> 1955-56
+def season_values(df):
+    return df.replace(to_replace={'season': {'1947': '1946-47', 
+                                             '1948': '1947-48',
+                                             '1949': '1948-49',
+                                             '1950': '1949-50',
+                                             '1951': '1950-51',
+                                             '1952': '1951-52',
+                                             '1953': '1952-53',
+                                             '1954': '1953-54',
+                                             '1955': '1954-55',
+                                             '1956': '1955-56',
+                                             '1957': '1956-57',
+                                             '1958': '1957-58',
+                                             '1959': '1958-59',
+                                             '1960': '1959-60',
+                                             '1961': '1960-61',
+                                             '1962': '1960-62',
+                                             '1963': '1962-63',
+                                             '1964': '1963-64',
+                                             '1965': '1964-65',
+                                             '1966': '1965-66',
+                                             '1967': '1966-67',
+                                             '1968': '1967-68',
+                                             '1969': '1968-69',
+                                             '1970': '1969-70',
+                                             '1971': '1970-71',
+                                             '1972': '1971-72',
+                                             '1973': '1972-73',
+                                             '1974': '1973-74',
+                                             '1975': '1974-75',
+                                             '1976': '1975-76',
+                                             '1977': '1976-77',
+                                             '1978': '1977-78',
+                                             '1979': '1978-79',
+                                             '1980': '1979-80',
+                                             '1981': '1980-81',
+                                             '1982': '1981-82',
+                                             '1983': '1982-83',
+                                             '1984': '1983-84',
+                                             '1985': '1984-85',
+                                             '1986': '1985-86',
+                                             '1987': '1986-87',
+                                             '1988': '1987-88',
+                                             '1989': '1988-89',
+                                             '1990': '1989-90',
+                                             '1991': '1990-91',
+                                             '1992': '1991-92',
+                                             '1993': '1992-93',
+                                             '1994': '1993-94',
+                                             '1995': '1994-95',
+                                             '1996': '1995-06',
+                                             '1997': '1996-97',
+                                             '1998': '1997-97',
+                                             '1999': '1998-99',
+                                             '2000': '1999-00',
+                                             '2001': '2000-01',
+                                             '2002': '2001-02',
+                                             '2003': '2002-03',
+                                             '2004': '2003-04',
+                                             '2005': '2004-05',
+                                             '2006': '2005-06',
+                                             '2007': '2006-07',
+                                             '2008': '2007-08',
+                                             '2009': '2008-09',
+                                             '2010': '2009-10',
+                                             '2011': '2010-11',
+                                             '2012': '2011-12',
+                                             '2013': '2012-13',
+                                             '2014': '2013-14',
+                                             '2015': '2014-15',
+                                             '2016': '2015-16',
+                                             '2017': '2016-17',
+                                             '2018': '2017-18',
+                                             '2019': '2018-19',
+                                             '2020': '2019-20',
+                                             '2021': '2020-21',
+                                             '2022': '2021-22',
+                                             '2023': '2022-23',
+                                             '2024': '2023-24'
+                                             }}) 
+
+player_award_shares_df = season_values(player_award_shares_df)
+player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
 
 
 # groupby
 player_award_shares_df.groupby(['award', 'player'])
 print(player_award_shares_df.head())
 
+
 #merging 
 player_award_shares_and_player_per_game_merged_df = pd.merge(player_award_shares_df,
                                                           player_per_game_df, 
                                                           on=['player_id'])
-
 #print(player_award_shares_and_player_per_game_merged_df)
-
 player_award_shares_and_player_per_game_merged_df.\
     to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
 
