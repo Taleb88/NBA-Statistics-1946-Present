@@ -67,7 +67,7 @@ print(player_instance.info())
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].astype(str)
 
-# changing 'nan' values to 'True' in Bobby Jones' case 1983 sixth man of the year
+# changing 'nan' values to 'True' in Bobby Jones' case - 1983 sixth man of the year
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
 
@@ -96,17 +96,18 @@ top_5_nba_mvp_ppg_df.to_excel('top_5_nba_mvp_ppg_df.xlsx', index=False)
 top_10_nba_mvp_ppg_df.to_excel('top_10_nba_mvp_ppg_df.xlsx', index=False)
 # drop unnecessary columns from top_5_nba_mvp_ppg_df
 top_5_nba_mvp_ppg_df = \
-    top_5_nba_mvp_ppg_df.drop(top_5_nba_mvp_ppg_df.iloc[:,10:410], axis=1)
+    top_5_nba_mvp_ppg_df.drop(top_5_nba_mvp_ppg_df.iloc[:,6:45], axis=1)
 # drop unnecessary columns from top_10_nba_mvp_ppg_df
 top_10_nba_mvp_ppg_df = \
-    top_10_nba_mvp_ppg_df.drop(top_10_nba_mvp_ppg_df.iloc[:,10:410], axis=1)
+    top_10_nba_mvp_ppg_df.drop(top_10_nba_mvp_ppg_df.iloc[:,6:45], axis=1)
 
 #print(top_10_nba_mvp_ppg_df)
-# rename certain columns in top_10_nba_mvp_ppg_df
+# rename certain columns in top_5_nba_mvp_ppg_df
 top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'season_x': 'season',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
+# rename certain columns in top_10_nba_mvp_ppg_df
 top_10_nba_mvp_ppg_df = top_10_nba_mvp_ppg_df.rename(columns={'season_x': 'season',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
