@@ -132,9 +132,11 @@ x = top_5_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
       top_5_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' Points Per Game' +\
       '\n'
 y = top_5_nba_mvp_ppg_df['pts_per_game']
+color = 'orange'
+plt.bar(x, y, color=color)
+plt.title('NBA MVP Winners Points Per Game Average - Top 5')
 plt.xlabel('PLAYERS')
 plt.ylabel('POINTS PER GAME')
-plt.bar(x, y)
 plt.show()
 # top 10 nba mvp ppg
 x = top_10_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
@@ -142,9 +144,10 @@ x = top_10_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
       top_10_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' PPG' +\
       '\n'
 y = top_10_nba_mvp_ppg_df['pts_per_game']
+plt.bar(x, y, color=color)
+plt.title('NBA MVP Winners Points Per Game Average - Top 10')
 plt.xlabel('PLAYERS')
 plt.ylabel('POINTS PER GAME')
-plt.bar(x, y)
 plt.show()
 
 
