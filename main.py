@@ -126,13 +126,24 @@ top_10_nba_mvp_ppg_df.to_excel('top_10_nba_mvp_ppg_df.xlsx', index=False)
 
 # creating graphs
 import matplotlib.pyplot as plt
-
+# top 5 nba mvp ppg
 x = top_5_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
       top_5_nba_mvp_ppg_df['season'].astype(str) + '\n' +\
-      top_5_nba_mvp_ppg_df['pts_per_game'].astype(str)
+      top_5_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' Points Per Game' +\
+      '\n'
 y = top_5_nba_mvp_ppg_df['pts_per_game']
-plt.xlabel('Players')
-plt.ylabel('Points Per Game')
+plt.xlabel('PLAYERS')
+plt.ylabel('POINTS PER GAME')
+plt.bar(x, y)
+plt.show()
+# top 10 nba mvp ppg
+x = top_10_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
+      top_10_nba_mvp_ppg_df['season'].astype(str) + '\n' +\
+      top_10_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' PPG' +\
+      '\n'
+y = top_10_nba_mvp_ppg_df['pts_per_game']
+plt.xlabel('PLAYERS')
+plt.ylabel('POINTS PER GAME')
 plt.bar(x, y)
 plt.show()
 
