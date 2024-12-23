@@ -250,7 +250,7 @@ def season_values(df):
                                              '1995': '1994-95',
                                              '1996': '1995-06',
                                              '1997': '1996-97',
-                                             '1998': '1997-97',
+                                             '1998': '1997-98',
                                              '1999': '1998-99',
                                              '2000': '1999-00',
                                              '2001': '2000-01',
@@ -324,6 +324,41 @@ team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+
+# CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
+player_per_game_df['double_double_avg'] = [''] * len(player_per_game_df)
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+# checking to see what positions trb_per_game, ast_per_game, stl_per_game, blk_per_game, and pts_per_game are located at
+# result -> [28 29 30 31 34]  (ADD 1 TO EACH ELEMENT INDEX) -> [29 30 31 32 35]
+print(player_per_game_df.columns.get_indexer(['trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game', 'pts_per_game']))
+# CURRENLY TESTING
+player_per_game_df['double_double_avg'] = ['Yes' if x[29] >= 10.0 and x[30] >= 10.0 else "No" for x in player_per_game_df.itertuples()] 
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+'''
+data = []
+for x in player_per_game_df.itertuples():
+    try:
+        if x[28] >= 10.0 and x[29] >= 10.0:
+            data.append('Yes')
+        elif x[28] >= 10.0 and x[30] >= 10.0:
+            data.append('Yes')
+        elif x[28] >= 10.0 and x[31] >= 10.0:
+            data.append('Yes')
+        elif x[28] >= 10.0 and x[34] >= 10.0:
+            data.append('Yes')
+        else:
+            data.append('No')
+            raise ValueError
+    except:
+        data.append('error - unable to show result')
+
+player_per_game_df['double_double_avg'] = data
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+'''
 
 
 # groupby
@@ -424,11 +459,11 @@ top_10_nba_mvp_ppg_df.to_excel('top_10_nba_mvp_ppg_df.xlsx', index=False)
 import matplotlib.pyplot as plt
 # top 5 nba mvp ppg
 x = top_5_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
-      top_5_nba_mvp_ppg_df['year'].astype(str) + '\n' +\
+      top_5_nba_mvp_ppg_df['year'].astype(str) + ' Season \n' +\
       top_5_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' Points Per Game' +\
       '\n'
 y = top_5_nba_mvp_ppg_df['pts_per_game']
-color = 'orange'
+color = 'blue'
 plt.bar(x, y, color=color)
 plt.title('NBA MVP Winners Points Per Game Average - Top 5')
 plt.xlabel('PLAYERS')
@@ -436,7 +471,7 @@ plt.ylabel('POINTS PER GAME')
 plt.show()
 # top 10 nba mvp ppg
 x = top_10_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
-      top_10_nba_mvp_ppg_df['year'].astype(str) + '\n' +\
+      top_10_nba_mvp_ppg_df['year'].astype(str) + ' Season \n' +\
       top_10_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' PPG' +\
       '\n'
 y = top_10_nba_mvp_ppg_df['pts_per_game']
