@@ -280,10 +280,50 @@ def season_values(df):
                                              '2025': '2024-25'
                                              }}) 
 
+advanced_df = season_values(advanced_df)
+all_star_selections_df = season_values(all_star_selections_df)
+end_of_season_teams_voting_df = season_values(end_of_season_teams_voting_df)
+end_of_season_teams_df = season_values(end_of_season_teams_df)
+opponent_stats_per_100_poss_df = season_values(opponent_stats_per_100_poss_df)
+opponent_stats_per_game_df = season_values(opponent_stats_per_game_df)
+opponent_totals_df = season_values(opponent_totals_df)
+per_36_minutes_df = season_values(per_36_minutes_df)
+per_100_poss_df = season_values(per_100_poss_df)
 player_award_shares_df = season_values(player_award_shares_df)
+#player_career_info_df = season_values(player_career_info_df)
+player_per_game_df = season_values(player_per_game_df)
+player_play_by_play_df = season_values(player_play_by_play_df)
+player_season_info_df = season_values(player_season_info_df)
+player_shooting_df = season_values(player_shooting_df)
+player_totals_df = season_values(player_totals_df)
+team_abbrev_df = season_values(team_abbrev_df)
+team_stats_per_100_poss_df = season_values(team_stats_per_100_poss_df)
+team_stats_per_game_df = season_values(team_stats_per_game_df)
+team_summaries_df = season_values(team_summaries_df)
+team_totals_df = season_values(team_totals_df)
+
+# saving changes to all files
+advanced_df.to_excel('advanced.xlsx', index=False)
+all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
+end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
+end_of_season_teams_df.to_excel('End of Season Teams.xlsx', index=False)
+opponent_stats_per_100_poss_df.to_excel('Opponent Stats Per 100 Poss.xlsx', index=False)
+opponent_stats_per_game_df.to_excel('Opponent Stats Per Game.xlsx', index=False)
+opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
 player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
-
-
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 
 # groupby
