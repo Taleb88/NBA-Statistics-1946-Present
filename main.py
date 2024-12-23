@@ -328,6 +328,7 @@ team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 # CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
 player_per_game_df['double_double_avg'] = [''] * len(player_per_game_df)
+player_per_game_df['triple_double_avg'] = [''] * len(player_per_game_df)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # checking to see what positions trb_per_game, ast_per_game, stl_per_game, blk_per_game, and pts_per_game are located at
@@ -355,6 +356,22 @@ player_per_game_df['double_double_avg'] = ['Yes'
                                            x[35] >= 10.0 and x[30] >= 10.0 or
                                            x[35] >= 10.0 and x[31] >= 10.0 or
                                            x[35] >= 10.0 and x[32] >= 10.0                                                                                                                                                                                                                                                                
+                                           else "No" 
+                                           for x in player_per_game_df.itertuples()] 
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+player_per_game_df['triple_double_avg'] = ['Yes' 
+                                           if x[29] >= 10.0 and x[30] >= 10.0 and x[31] >= 10.0 or 
+                                           x[29] >= 10.0 and x[30] >= 10.0 and x[32] >= 10.0 or 
+                                           x[29] >= 10.0 and x[30] >= 10.0 and x[35] >= 10.0 or
+                                           x[29] >= 10.0 and x[31] >= 10.0 and x[32] >= 10.0 or
+                                           x[29] >= 10.0 and x[31] >= 10.0 and x[35] >= 10.0 or
+                                           x[29] >= 10.0 and x[32] >= 10.0 and x[35] >= 10.0 or
+                                           x[30] >= 10.0 and x[31] >= 10.0 and x[32] >= 10.0 or
+                                           x[30] >= 10.0 and x[31] >= 10.0 and x[35] >= 10.0 or
+                                           x[30] >= 10.0 and x[32] >= 10.0 and x[35] >= 10.0 or 
+                                           x[31] >= 10.0 and x[32] >= 10.0 and x[35] >= 10.0
                                            else "No" 
                                            for x in player_per_game_df.itertuples()] 
 
