@@ -333,32 +333,32 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # checking to see what positions trb_per_game, ast_per_game, stl_per_game, blk_per_game, and pts_per_game are located at
 # result -> [28 29 30 31 34]  (ADD 1 TO EACH ELEMENT INDEX) -> [29 30 31 32 35]
 print(player_per_game_df.columns.get_indexer(['trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game', 'pts_per_game']))
-# CURRENLY TESTING
-player_per_game_df['double_double_avg'] = ['Yes' if x[29] >= 10.0 and x[30] >= 10.0 else "No" for x in player_per_game_df.itertuples()] 
+# determine if a player have averged a double-double in a season via list comprehension, placing 'Yes' or 'No' values in double_double_avg column
+player_per_game_df['double_double_avg'] = ['Yes' 
+                                           if x[29] >= 10.0 and x[30] >= 10.0 or 
+                                           x[29] >= 10.0 and x[31] >= 10.0 or
+                                           x[29] >= 10.0 and x[32] >= 10.0 or
+                                           x[29] >= 10.0 and x[35] >= 10.0 or
+                                           x[30] >= 10.0 and x[29] >= 10.0 or
+                                           x[30] >= 10.0 and x[31] >= 10.0 or
+                                           x[30] >= 10.0 and x[32] >= 10.0 or
+                                           x[30] >= 10.0 and x[35] >= 10.0 or
+                                           x[31] >= 10.0 and x[29] >= 10.0 or
+                                           x[31] >= 10.0 and x[30] >= 10.0 or
+                                           x[31] >= 10.0 and x[32] >= 10.0 or
+                                           x[31] >= 10.0 and x[35] >= 10.0 or
+                                           x[32] >= 10.0 and x[29] >= 10.0 or
+                                           x[32] >= 10.0 and x[30] >= 10.0 or
+                                           x[32] >= 10.0 and x[31] >= 10.0 or
+                                           x[32] >= 10.0 and x[35] >= 10.0 or
+                                           x[35] >= 10.0 and x[29] >= 10.0 or
+                                           x[35] >= 10.0 and x[30] >= 10.0 or
+                                           x[35] >= 10.0 and x[31] >= 10.0 or
+                                           x[35] >= 10.0 and x[32] >= 10.0                                                                                                                                                                                                                                                                
+                                           else "No" 
+                                           for x in player_per_game_df.itertuples()] 
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-'''
-data = []
-for x in player_per_game_df.itertuples():
-    try:
-        if x[28] >= 10.0 and x[29] >= 10.0:
-            data.append('Yes')
-        elif x[28] >= 10.0 and x[30] >= 10.0:
-            data.append('Yes')
-        elif x[28] >= 10.0 and x[31] >= 10.0:
-            data.append('Yes')
-        elif x[28] >= 10.0 and x[34] >= 10.0:
-            data.append('Yes')
-        else:
-            data.append('No')
-            raise ValueError
-    except:
-        data.append('error - unable to show result')
-
-player_per_game_df['double_double_avg'] = data
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-'''
 
 
 # groupby
