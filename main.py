@@ -73,7 +73,7 @@ team_stats_per_game_df['season'] = team_stats_per_game_df['season'].astype(str)
 team_summaries_df['season'] = team_summaries_df['season'].astype(str)
 team_totals_df['season'] = team_totals_df['season'].astype(str)
 
-# savings updated season value conversions to all files
+# saving updated season value conversions to all files
 advanced_df.to_excel('advanced.xlsx', index=False)
 all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
 end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
@@ -85,6 +85,105 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
 player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+# changing name of season column to year
+def year(df):
+    try:
+        return df.rename(columns={'season': 'year'})
+    except:
+        print('cannot change name of column')
+
+advanced_df = year(advanced_df)
+all_star_selections_df = year(all_star_selections_df)
+end_of_season_teams_voting_df = year(end_of_season_teams_voting_df)
+end_of_season_teams_df = year(end_of_season_teams_df)
+opponent_stats_per_100_poss_df = year(opponent_stats_per_100_poss_df)
+opponent_stats_per_game_df = year(opponent_stats_per_game_df)
+opponent_totals_df = year(opponent_totals_df)
+per_36_minutes_df = year(per_36_minutes_df)
+per_100_poss_df = year(per_100_poss_df)
+player_award_shares_df = year(player_award_shares_df)
+#player_career_info_df = year(player_career_info_df)
+player_per_game_df = year(player_per_game_df)
+player_play_by_play_df = year(player_play_by_play_df)
+player_season_info_df = year(player_season_info_df)
+player_shooting_df = year(player_shooting_df)
+player_totals_df = year(player_totals_df)
+team_abbrev_df = year(team_abbrev_df)
+team_stats_per_100_poss_df = year(team_stats_per_100_poss_df)
+team_stats_per_game_df = year(team_stats_per_game_df)
+team_summaries_df = year(team_summaries_df)
+team_totals_df = year(team_totals_df)
+
+# saving changes to all files
+advanced_df.to_excel('advanced.xlsx', index=False)
+all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
+end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
+end_of_season_teams_df.to_excel('End of Season Teams.xlsx', index=False)
+opponent_stats_per_100_poss_df.to_excel('Opponent Stats Per 100 Poss.xlsx', index=False)
+opponent_stats_per_game_df.to_excel('Opponent Stats Per Game.xlsx', index=False)
+opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+# adding season column to all dataframes, will be the last column
+advanced_df['season'] = advanced_df['year']
+all_star_selections_df['season'] = all_star_selections_df['year']
+end_of_season_teams_voting_df['season'] = end_of_season_teams_voting_df['year']
+end_of_season_teams_df['season'] = end_of_season_teams_df['year']
+opponent_stats_per_100_poss_df['season'] = opponent_stats_per_100_poss_df['year']
+opponent_stats_per_game_df['season'] = opponent_stats_per_game_df['year']
+opponent_totals_df['season'] = opponent_totals_df['year']
+per_36_minutes_df['season'] = per_36_minutes_df['year']
+per_100_poss_df['season'] = per_100_poss_df['year']
+player_award_shares_df['season'] = player_award_shares_df['year']
+#player_career_info_df['season'] = player_career_info_df['year']
+player_per_game_df['season'] = player_per_game_df['year']
+player_play_by_play_df['season'] = player_play_by_play_df['year']
+player_season_info_df['season'] = player_season_info_df['year']
+player_shooting_df['season'] = player_shooting_df['year']
+player_totals_df['season'] = player_totals_df['year']
+team_abbrev_df['season'] = team_abbrev_df['year']
+team_stats_per_100_poss_df['season'] = team_stats_per_100_poss_df['year']
+team_stats_per_game_df['season'] = team_stats_per_game_df['year']
+team_summaries_df['season'] = team_summaries_df['year']
+team_totals_df['season'] = team_totals_df['year']
+
+
+# saving changes to all files
+advanced_df.to_excel('advanced.xlsx', index=False)
+all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
+end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
+end_of_season_teams_df.to_excel('End of Season Teams.xlsx', index=False)
+opponent_stats_per_100_poss_df.to_excel('Opponent Stats Per 100 Poss.xlsx', index=False)
+opponent_stats_per_game_df.to_excel('Opponent Stats Per Game.xlsx', index=False)
+opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
@@ -177,11 +276,14 @@ def season_values(df):
                                              '2021': '2020-21',
                                              '2022': '2021-22',
                                              '2023': '2022-23',
-                                             '2024': '2023-24'
+                                             '2024': '2023-24',
+                                             '2025': '2024-25'
                                              }}) 
 
 player_award_shares_df = season_values(player_award_shares_df)
 player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
+
+
 
 
 # groupby
@@ -201,24 +303,23 @@ player_award_shares_and_player_per_game_merged_df.\
 # defining a player class that corresponds to the 
 #   player_award_shares_and_player_per_game_merged dataframe
 class Player:
-    def __init__(self, name, season, award, pts_per_game):
+    def __init__(self, name, year, award, pts_per_game):
         self.name = name
-        self.season = season
+        self.year = year
         self.award = award
         self.pts_per_game = pts_per_game
 
     def info(self):
-        return f"{self.name} won the {self.season} {self.award} while averaging {self.pts_per_game} points per game."
+        return f"{self.name} won the {self.year} {self.award} while averaging {self.pts_per_game} points per game."
     
 value = player_award_shares_and_player_per_game_merged_df.iloc[5]
 
 player_instance = Player(name=value['player_x'], 
-                         season=value['season_x'], 
+                         year=value['year_x'], 
                          award=value['award'],
                          pts_per_game=value['pts_per_game'])
 
 print(player_instance.info())
-
 
 # converting values to string format
 player_award_shares_and_player_per_game_merged_df['winner'] = \
@@ -228,13 +329,12 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
 
-
 # nba mvp and top 10 highest scoring averages
 def nba_mvp_ppg(df):
     try:
         return df[(df['award'] == 'nba mvp') & 
                   (df['winner'] == 'True') & 
-                  (df['season_x'] == df['season_y'])]
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -264,15 +364,14 @@ top_5_nba_mvp_ppg_df = \
 top_10_nba_mvp_ppg_df = \
     top_10_nba_mvp_ppg_df.drop(['first'], axis=1)
 
-
 #print(top_10_nba_mvp_ppg_df)
 # rename certain columns in top_5_nba_mvp_ppg_df
-top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'season_x': 'season',
+top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
 # rename certain columns in top_10_nba_mvp_ppg_df
-top_10_nba_mvp_ppg_df = top_10_nba_mvp_ppg_df.rename(columns={'season_x': 'season',
+top_10_nba_mvp_ppg_df = top_10_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
@@ -285,7 +384,7 @@ top_10_nba_mvp_ppg_df.to_excel('top_10_nba_mvp_ppg_df.xlsx', index=False)
 import matplotlib.pyplot as plt
 # top 5 nba mvp ppg
 x = top_5_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
-      top_5_nba_mvp_ppg_df['season'].astype(str) + '\n' +\
+      top_5_nba_mvp_ppg_df['year'].astype(str) + '\n' +\
       top_5_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' Points Per Game' +\
       '\n'
 y = top_5_nba_mvp_ppg_df['pts_per_game']
@@ -297,7 +396,7 @@ plt.ylabel('POINTS PER GAME')
 plt.show()
 # top 10 nba mvp ppg
 x = top_10_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
-      top_10_nba_mvp_ppg_df['season'].astype(str) + '\n' +\
+      top_10_nba_mvp_ppg_df['year'].astype(str) + '\n' +\
       top_10_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' PPG' +\
       '\n'
 y = top_10_nba_mvp_ppg_df['pts_per_game']
