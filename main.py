@@ -441,7 +441,9 @@ print(player_award_shares_and_player_per_game_merged_df['award'].unique())
 # clutch poy
 def clutch_poy_winners(df):
     try:
-        return df[(df['award'] == 'clutch_poy') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'clutch_poy') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y']) ]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -452,7 +454,9 @@ clutch_poy_winners_df.to_excel('clutch_poy_winners.xlsx', index=False)
 # dpoy
 def dpoy_winners(df):
     try:
-        return df[(df['award'] == 'dpoy') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'dpoy') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -463,7 +467,9 @@ dpoy_winners_df.to_excel('dpoy_winners.xlsx', index=False)
 # mip (most improved player)
 def mip_winners(df):
     try:
-        return df[(df['award'] == 'mip') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'mip') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -474,7 +480,9 @@ mip_winners_df.to_excel('mip_winners.xlsx', index=False)
 # nba mvp
 def nba_mvp_winners(df):
     try:
-        return df[(df['award'] == 'nba mvp') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'nba mvp') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -485,7 +493,9 @@ nba_mvp_winners_df.to_excel('nba_mvp_winners.xlsx', index=False)
 # nba roy (rookie of the year)
 def nba_roy_winners(df):
     try:
-        return df[(df['award'] == 'nba roy') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'nba roy') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -496,7 +506,9 @@ nba_roy_winners_df.to_excel('nba_roy_winners.xlsx', index=False)
 # smoy (6th man of the year)
 def smoy_winners(df):
     try:
-        return df[(df['award'] == 'smoy') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'smoy') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -507,7 +519,9 @@ smoy_winners_df.to_excel('smoy_winners.xlsx', index=False)
 # aba mvp
 def aba_mvp_winners(df):
     try:
-        return df[(df['award'] == 'aba mvp') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'aba mvp') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -518,7 +532,9 @@ aba_mvp_winners_df.to_excel('aba_mvp_winners.xlsx', index=False)
 # aba roy (rookie of the year)
 def aba_roy_winners(df):
     try:
-        return df[(df['award'] == 'aba roy') & (df['winner'] == 'True')]
+        return df[(df['award'] == 'aba roy') & 
+                  (df['winner'] == 'True') & 
+                  (df['year_x'] == df['year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
