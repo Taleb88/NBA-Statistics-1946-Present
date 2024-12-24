@@ -332,7 +332,6 @@ team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 # CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
 player_per_game_df['double_double_avg'] = [''] * len(player_per_game_df)
-player_per_game_df['triple_double_avg'] = [''] * len(player_per_game_df)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # checking to see what positions trb_per_game, ast_per_game, stl_per_game, blk_per_game, and pts_per_game are located at
@@ -365,6 +364,8 @@ player_per_game_df['double_double_avg'] = ['Yes'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
+player_per_game_df['triple_double_avg'] = [''] * len(player_per_game_df)
+# determine if a player have averged a triple-double in a season via list comprehension, placing 'Yes' or 'No' values in triple_double_avg column
 player_per_game_df['triple_double_avg'] = ['Yes' 
                                            if x[29] >= 10.0 and x[30] >= 10.0 and x[31] >= 10.0 or 
                                            x[29] >= 10.0 and x[30] >= 10.0 and x[32] >= 10.0 or 
@@ -380,7 +381,6 @@ player_per_game_df['triple_double_avg'] = ['Yes'
                                            for x in player_per_game_df.itertuples()] 
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
 
 # groupby
 player_award_shares_df.groupby(['award', 'player'])
@@ -428,6 +428,27 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 # changing 'nan' values to 'True' in Bobby Jones' case - 1983 sixth man of the year
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
+
+
+# ================== #
+# filtering #
+# ================== #
+
+# finding unique values under 'award' column
+# result -> ['clutch_poy' 'dpoy' 'mip' 'nba mvp' 'nba roy' 'smoy' 'aba mvp' 'aba roy']
+print(player_award_shares_and_player_per_game_merged_df['award'].unique())
+# award winners
+def clutch_poy_winners(df):
+    try:
+        return df[(df['award'] == 'clutch_poy') & (df['winner'] == 'True')]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
+
+clutch_poy_winners = clutch_poy_winners(player_award_shares_and_player_per_game_merged_df)
+
+clutch_poy_winners.to_excel('clutch_poy_winners.xlsx', index=False)
+
 
 # nba mvp and top 10 highest scoring averages
 def nba_mvp_ppg(df):
