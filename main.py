@@ -544,6 +544,15 @@ aba_roy_winners_df = aba_roy_winners(player_award_shares_and_player_per_game_mer
 aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
 
 
+# =========== #
+# pivot tables - IN PROGRESS
+# =========== #
+nba_mvp_winners_pivot_table_df = \
+    pd.pivot_table(nba_mvp_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+print(nba_mvp_winners_pivot_table_df)
+
 
 # nba mvp and top 10 highest scoring averages
 def nba_mvp_ppg(df):
