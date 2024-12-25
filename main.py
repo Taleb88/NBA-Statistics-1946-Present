@@ -644,6 +644,25 @@ plt.ylabel('POINTS PER GAME')
 plt.show()
 
 
+# how many times a player has won an award
+x = clutch_poy_pivot_table_df['player_x']
+y = clutch_poy_pivot_table_df['award']
+plt.bar(x, y, color=color)
+plt.title('History of Clutch Player of the Year Award Winners')
+plt.xlabel('PLAYERS')
+plt.ylabel('COUNT')
+plt.show()
+
+x = dpoy_pivot_table_df['player_x']
+y = dpoy_pivot_table_df['award']
+plt.bar(x, y, color=color)
+plt.title('History of Defensive Player of the Year Award Winners')
+plt.xlabel('PLAYERS')
+plt.ylabel('COUNT')
+plt.show()
+
+
+
 # conditional formatting
 def award_winners_highlighted(x):
     try:
