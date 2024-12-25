@@ -547,11 +547,23 @@ aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
 # =========== #
 # pivot tables - IN PROGRESS
 # =========== #
-nba_mvp_winners_pivot_table_df = \
-    pd.pivot_table(nba_mvp_winners_df, index=['player_x'],
+
+# clutch poy
+clutch_poy_pivot_table_df = \
+    pd.pivot_table(clutch_poy_winners_df, index=['player_x'],
                    values=['award'], aggfunc='count')
 
-print(nba_mvp_winners_pivot_table_df)
+clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx', index=False)
+
+print(clutch_poy_pivot_table_df)
+# dpoy
+dpoy_pivot_table_df = \
+    pd.pivot_table(dpoy_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
+
+print(dpoy_pivot_table_df)
 
 
 # nba mvp and top 10 highest scoring averages
