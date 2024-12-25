@@ -553,7 +553,7 @@ clutch_poy_pivot_table_df = \
     pd.pivot_table(clutch_poy_winners_df, index=['player_x'],
                    values=['award'], aggfunc='count')
 
-clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx', index=False)
+clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx')
 
 print(clutch_poy_pivot_table_df)
 # dpoy
@@ -561,7 +561,7 @@ dpoy_pivot_table_df = \
     pd.pivot_table(dpoy_winners_df, index=['player_x'],
                    values=['award'], aggfunc='count')
 
-dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
+dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx')
 
 print(dpoy_pivot_table_df)
 
