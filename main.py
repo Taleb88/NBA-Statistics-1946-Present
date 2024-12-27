@@ -404,7 +404,7 @@ player_shooting_and_player_totals_merged_df = pd.merge(player_shooting_df,
                                                        on=['player_id'])
 #print(player_shooting_and_player_totals_merged_df)
 player_shooting_and_player_totals_merged_df.\
-    to_excel('player_shooting_and_player_totals_merged_df.xlsx', index=False)
+    to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
 
 
 # defining a player class that corresponds to the 
@@ -439,6 +439,33 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 # changing 'nan' values to 'True' in Bobby Jones' case - 1983 sixth man of the year
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
+
+
+# ================== #
+# adding fgs and fts made combined/fgs and fts attempted combined/tsp - true shooting percentage 
+#   columns
+# ================== #
+player_shooting_and_player_totals_merged_df['x2p + x3p + ft'] = \
+    player_shooting_and_player_totals_merged_df.apply(lambda row: row['x2p'] + row['x3p'] + row['ft'],axis=1)
+
+player_shooting_and_player_totals_merged_df.\
+    to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+
+player_shooting_and_player_totals_merged_df['x2pa + x3pa + fta'] = \
+    player_shooting_and_player_totals_merged_df.apply(lambda row: row['x2pa'] + row['x3pa'] + row['fta'], axis=1)
+
+player_shooting_and_player_totals_merged_df.\
+    to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+
+player_award_shares_and_player_per_game_merged_df['x3p_percent'] = player_award_shares_and_player_per_game_merged_df['x3p_percent'].fillna(0)
+
+player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+
+player_shooting_and_player_totals_merged_df['true_shooting_percentage'] = \
+    player_shooting_and_player_totals_merged_df.apply(lambda row: (row['x2p_percent'] + row['x3p_percent'] + row['ft_percent']) / 3, 
+                                                      axis=1)
+
+player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
 
 
 # ================== #
