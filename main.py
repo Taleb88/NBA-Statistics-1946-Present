@@ -675,7 +675,6 @@ plt.barh(x, y, color=color)
 plt.title('# of DPOY Wins Per Player')
 plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
-plt.tick_params(axis='x', labelrotation=5)
 plt.show()
 
 # conditional formatting
