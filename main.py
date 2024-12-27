@@ -386,16 +386,25 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_award_shares_df.groupby(['award', 'player'])
 print(player_award_shares_df.head())
 
+
 # ============= #
 # merging certain dataframes 
 # ============= #
+
+# merging player award shares and player per game dataframes
 player_award_shares_and_player_per_game_merged_df = pd.merge(player_award_shares_df,
                                                           player_per_game_df, 
                                                           on=['player_id'])
 #print(player_award_shares_and_player_per_game_merged_df)
 player_award_shares_and_player_per_game_merged_df.\
     to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
-
+# merging player shooting and player totals dataframes
+player_shooting_and_player_totals_merged_df = pd.merge(player_shooting_df, 
+                                                       player_totals_df,
+                                                       on=['player_id'])
+#print(player_shooting_and_player_totals_merged_df)
+player_shooting_and_player_totals_merged_df.\
+    to_excel('player_shooting_and_player_totals_merged_df.xlsx', index=False)
 
 
 # defining a player class that corresponds to the 
@@ -547,7 +556,7 @@ aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
 
 
 # =========== #
-# pivot tables - IN PROGRESS
+# pivot tables 
 # =========== #
 
 # clutch poy
@@ -574,6 +583,15 @@ print(dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 dpoy_pivot_table_df = \
     pd.read_excel('dpoy_pivot_table.xlsx')
+
+dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
+# updating Dikembe Mutombo's dpoy award count from 6 to 4
+dpoy_pivot_table_df['award'] = \
+    dpoy_pivot_table_df['award'].where(
+        ~dpoy_pivot_table_df['player_x'].\
+            isin(['Dikembe Mutombo']), \
+                4
+    )
 
 dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
 
@@ -677,7 +695,10 @@ plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
 plt.show()
 
+
+# =============== #
 # conditional formatting
+# =============== #
 def award_winners_highlighted(x):
     try:
         if x == 'True':
