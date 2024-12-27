@@ -555,6 +555,11 @@ clutch_poy_pivot_table_df = \
 
 clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx')
 
+clutch_poy_pivot_table_df = \
+    pd.read_excel('clutch_poy_pivot_table.xlsx')
+
+clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx')
+
 print(clutch_poy_pivot_table_df)
 # dpoy
 dpoy_pivot_table_df = \
@@ -563,7 +568,12 @@ dpoy_pivot_table_df = \
 
 dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx')
 
-print(dpoy_pivot_table_df)
+print(dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
+
+dpoy_pivot_table_df = \
+    pd.read_excel('dpoy_pivot_table.xlsx')
+
+dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx')
 
 
 # nba mvp and top 10 highest scoring averages
@@ -642,26 +652,22 @@ plt.title('NBA MVP Winners Points Per Game Average - Top 10')
 plt.xlabel('PLAYERS')
 plt.ylabel('POINTS PER GAME')
 plt.show()
-
-
-# how many times a player has won an award
-x = clutch_poy_pivot_table_df['player_x']
+# clutch poy pivot table
+x = clutch_poy_pivot_table_df['player_x'].astype(str)
 y = clutch_poy_pivot_table_df['award']
 plt.bar(x, y, color=color)
-plt.title('History of Clutch Player of the Year Award Winners')
+plt.title('# of Clutch POY Wins Per Player')
 plt.xlabel('PLAYERS')
-plt.ylabel('COUNT')
+plt.ylabel('# of Times Won')
 plt.show()
-
-x = dpoy_pivot_table_df['player_x']
+# dpoy pivot table
+x = dpoy_pivot_table_df['player_x'].astype(str)
 y = dpoy_pivot_table_df['award']
 plt.bar(x, y, color=color)
-plt.title('History of Defensive Player of the Year Award Winners')
+plt.title('# of DPOY Wins Per Player')
 plt.xlabel('PLAYERS')
-plt.ylabel('COUNT')
+plt.ylabel('# of Times Won')
 plt.show()
-
-
 
 # conditional formatting
 def award_winners_highlighted(x):
