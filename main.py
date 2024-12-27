@@ -386,14 +386,16 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_award_shares_df.groupby(['award', 'player'])
 print(player_award_shares_df.head())
 
-
-#merging 
+# ============= #
+# merging certain dataframes 
+# ============= #
 player_award_shares_and_player_per_game_merged_df = pd.merge(player_award_shares_df,
                                                           player_per_game_df, 
                                                           on=['player_id'])
 #print(player_award_shares_and_player_per_game_merged_df)
 player_award_shares_and_player_per_game_merged_df.\
     to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
+
 
 
 # defining a player class that corresponds to the 
@@ -558,7 +560,7 @@ clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx')
 clutch_poy_pivot_table_df = \
     pd.read_excel('clutch_poy_pivot_table.xlsx')
 
-clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx')
+clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx', index=False)
 
 print(clutch_poy_pivot_table_df)
 # dpoy
@@ -573,7 +575,7 @@ print(dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
 dpoy_pivot_table_df = \
     pd.read_excel('dpoy_pivot_table.xlsx')
 
-dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx')
+dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
 
 
 # nba mvp and top 10 highest scoring averages
@@ -622,6 +624,12 @@ top_10_nba_mvp_ppg_df = top_10_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
+# rename a column in clutch_poy_pivot_table_df
+clutch_poy_pivot_table_df = clutch_poy_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+# rename a column in clutch_poy_pivot_table_df
+dpoy_pivot_table_df = dpoy_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
 #print(top_10_nba_mvp_ppg_df)
 top_5_nba_mvp_ppg_df.to_excel('top_5_nba_mvp_ppg_df.xlsx', index=False)
 top_10_nba_mvp_ppg_df.to_excel('top_10_nba_mvp_ppg_df.xlsx', index=False)
@@ -653,7 +661,7 @@ plt.xlabel('PLAYERS')
 plt.ylabel('POINTS PER GAME')
 plt.show()
 # clutch poy pivot table
-x = clutch_poy_pivot_table_df['player_x'].astype(str)
+x = clutch_poy_pivot_table_df['player'].astype(str) + '\n'
 y = clutch_poy_pivot_table_df['award']
 plt.bar(x, y, color=color)
 plt.title('# of Clutch POY Wins Per Player')
@@ -661,12 +669,13 @@ plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
 plt.show()
 # dpoy pivot table
-x = dpoy_pivot_table_df['player_x'].astype(str)
+x = dpoy_pivot_table_df['player'].astype(str)
 y = dpoy_pivot_table_df['award']
-plt.bar(x, y, color=color)
+plt.barh(x, y, color=color)
 plt.title('# of DPOY Wins Per Player')
 plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
+plt.tick_params(axis='x', labelrotation=5)
 plt.show()
 
 # conditional formatting
