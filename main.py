@@ -641,6 +641,72 @@ dpoy_pivot_table_df['award'] = \
     )
 
 dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
+# mip
+mip_pivot_table_df = \
+    pd.pivot_table(mip_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+mip_pivot_table_df.to_excel('mip_pivot_table.xlsx')
+
+mip_pivot_table_df = \
+    pd.read_excel('mip_pivot_table.xlsx')
+
+mip_pivot_table_df.to_excel('mip_pivot_table.xlsx', index=False)
+# nba mvp
+nba_mvp_pivot_table_df = \
+    pd.pivot_table(nba_mvp_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+nba_mvp_pivot_table_df.to_excel('nba_mvp_pivot_table.xlsx')
+
+nba_mvp_pivot_table_df = \
+    pd.read_excel('nba_mvp_pivot_table.xlsx')
+
+nba_mvp_pivot_table_df.to_excel('nba_mvp_pivot_table.xlsx', index=False)
+# nba roy
+nba_roy_pivot_table_df = \
+    pd.pivot_table(nba_roy_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+nba_roy_pivot_table_df.to_excel('nba_roy_pivot_table.xlsx')
+
+nba_roy_pivot_table_df = \
+    pd.read_excel('nba_roy_pivot_table.xlsx')
+
+nba_roy_pivot_table_df.to_excel('nba_roy_pivot_table.xlsx', index=False)
+# smoy
+smoy_pivot_table_df = \
+    pd.pivot_table(smoy_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+smoy_pivot_table_df.to_excel('smoy_pivot_table.xlsx')
+
+smoy_pivot_table_df = \
+    pd.read_excel('smoy_pivot_table.xlsx')
+
+smoy_pivot_table_df.to_excel('smoy_pivot_table.xlsx', index=False)
+# aba mvp
+aba_mvp_pivot_table_df = \
+    pd.pivot_table(aba_mvp_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+aba_mvp_pivot_table_df.to_excel('aba_mvp_pivot_table.xlsx')
+
+aba_mvp_pivot_table_df = \
+    pd.read_excel('aba_mvp_pivot_table.xlsx')
+
+aba_mvp_pivot_table_df.to_excel('aba_mvp_pivot_table.xlsx', index=False)
+# aba roy
+aba_roy_pivot_table_df = \
+    pd.pivot_table(aba_roy_winners_df, index=['player_x'],
+                   values=['award'], aggfunc='count')
+
+aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx')
+
+aba_roy_pivot_table_df = \
+    pd.read_excel('aba_roy_pivot_table.xlsx')
+
+aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
 
 # nba mvp and top 10 highest scoring averages
