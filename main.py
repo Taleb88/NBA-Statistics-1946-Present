@@ -445,25 +445,45 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 # adding fgs and fts made combined/fgs and fts attempted combined/tsp - true shooting percentage 
 #   columns
 # ================== #
+
+# attempts made in all 3 categories
 player_shooting_and_player_totals_merged_df['x2p + x3p + ft'] = \
     player_shooting_and_player_totals_merged_df.apply(lambda row: row['x2p'] + row['x3p'] + row['ft'],axis=1)
 
 player_shooting_and_player_totals_merged_df.\
     to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+# converting all values to floats
+player_shooting_and_player_totals_merged_df['x2p + x3p + ft'] = \
+    player_shooting_and_player_totals_merged_df['x2p + x3p + ft'].astype(float)
 
+player_shooting_and_player_totals_merged_df.\
+    to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+# total attempts in all 3 categories
 player_shooting_and_player_totals_merged_df['x2pa + x3pa + fta'] = \
     player_shooting_and_player_totals_merged_df.apply(lambda row: row['x2pa'] + row['x3pa'] + row['fta'], axis=1)
 
 player_shooting_and_player_totals_merged_df.\
     to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+# converting all values to floats
+player_shooting_and_player_totals_merged_df['x2pa + x3pa + fta'] = \
+    player_shooting_and_player_totals_merged_df['x2pa + x3pa + fta'].astype(float)
 
-player_award_shares_and_player_per_game_merged_df['x3p_percent'] = player_award_shares_and_player_per_game_merged_df['x3p_percent'].fillna(0)
+player_shooting_and_player_totals_merged_df.\
+    to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+# fill missing values under x3p_percent column with 0
+player_award_shares_and_player_per_game_merged_df['x3p_percent'] = \
+    player_award_shares_and_player_per_game_merged_df['x3p_percent'].fillna(0)
 
 player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
-
+# created true_shooting_percentage column containing a quotient of makes/attempts
 player_shooting_and_player_totals_merged_df['true_shooting_percentage'] = \
-    player_shooting_and_player_totals_merged_df.apply(lambda row: (row['x2p_percent'] + row['x3p_percent'] + row['ft_percent']) / 3, 
-                                                      axis=1)
+    player_shooting_and_player_totals_merged_df['x2p + x3p + ft'].astype(float)/\
+        player_shooting_and_player_totals_merged_df['x2pa + x3pa + fta'].astype(float)
+
+player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
+# only 3 digits past the decimal should remain in the values under true_shooting_percentage column
+player_shooting_and_player_totals_merged_df['true_shooting_percentage'] = \
+    player_shooting_and_player_totals_merged_df['true_shooting_percentage'].apply(lambda row: round(row, 3))
 
 player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
 
