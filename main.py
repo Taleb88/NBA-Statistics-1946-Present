@@ -626,7 +626,7 @@ dpoy_pivot_table_df = \
 
 dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx')
 
-print(dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
+#print(dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 dpoy_pivot_table_df = \
     pd.read_excel('dpoy_pivot_table.xlsx')
@@ -639,6 +639,8 @@ dpoy_pivot_table_df['award'] = \
             isin(['Dikembe Mutombo']), \
                 4
     )
+
+print(dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
 # mip
@@ -750,23 +752,71 @@ top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
+
+top_5_nba_mvp_ppg_df.to_excel('top_5_nba_mvp_ppg_df.xlsx', index=False)
+
 # rename certain columns in top_10_nba_mvp_ppg_df
 top_10_nba_mvp_ppg_df = top_10_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
-# rename a column in clutch_poy_pivot_table_df
-clutch_poy_pivot_table_df = clutch_poy_pivot_table_df.\
-    rename(columns={'player_x': 'player'})
-# rename a column in clutch_poy_pivot_table_df
-dpoy_pivot_table_df = dpoy_pivot_table_df.\
-    rename(columns={'player_x': 'player'})
+
 #print(top_10_nba_mvp_ppg_df)
-top_5_nba_mvp_ppg_df.to_excel('top_5_nba_mvp_ppg_df.xlsx', index=False)
 top_10_nba_mvp_ppg_df.to_excel('top_10_nba_mvp_ppg_df.xlsx', index=False)
 
 
-# creating graphs
+# rename a column in clutch_poy_pivot_table_df
+clutch_poy_pivot_table_df = clutch_poy_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx', index=False)
+
+# rename a column in dpoy_pivot_table_df
+dpoy_pivot_table_df = dpoy_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
+
+# rename a column in mip_pivot_table_df
+mip_pivot_table_df = mip_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+mip_pivot_table_df.to_excel('mip_pivot_table.xlsx', index=False)
+
+# rename a column in nba_mvp_pivot_table_df
+nba_mvp_pivot_table_df = nba_mvp_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+nba_mvp_pivot_table_df.to_excel('nba_mvp_pivot_table.xlsx', index=False)
+
+# rename a column in nba_roy_pivot_table_df
+nba_roy_pivot_table_df = nba_roy_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+nba_roy_pivot_table_df.to_excel('nba_roy_pivot_table.xlsx', index=False)
+
+# rename a column in smoy_pivot_table_df
+smoy_pivot_table_df = smoy_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+smoy_pivot_table_df.to_excel('smoy_pivot_table.xlsx', index=False)
+
+# rename a column in aba_mvp_pivot_table_df
+aba_mvp_pivot_table_df = aba_mvp_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+aba_mvp_pivot_table_df.to_excel('aba_mvp_pivot_table.xlsx', index=False)
+
+# rename a column in aba_roy_pivot_table_df
+aba_roy_pivot_table_df = aba_roy_pivot_table_df.\
+    rename(columns={'player_x': 'player'})
+
+aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
+
+
+# ================== #
+# creating graphs via matplotlib
+# ================== #
 import matplotlib.pyplot as plt
 # top 5 nba mvp ppg
 x = top_5_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
@@ -791,22 +841,48 @@ plt.title('NBA MVP Winners Points Per Game Average - Top 10')
 plt.xlabel('PLAYERS')
 plt.ylabel('POINTS PER GAME')
 plt.show()
-# clutch poy pivot table
+# clutch poy
 x = clutch_poy_pivot_table_df['player'].astype(str) + '\n'
 y = clutch_poy_pivot_table_df['award']
 plt.bar(x, y, color=color)
-plt.title('# of Clutch POY Wins Per Player')
+plt.title('# of Clutch POY Awards Per Player')
 plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
 plt.show()
-# dpoy pivot table
+# dpoy 
 x = dpoy_pivot_table_df['player'].astype(str)
 y = dpoy_pivot_table_df['award']
 plt.barh(x, y, color=color)
-plt.title('# of DPOY Wins Per Player')
+plt.title('# of DPOY Awards Per Player')
 plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
 plt.show()
+# mip 
+x = mip_pivot_table_df['player'].astype(str)
+y = mip_pivot_table_df['award']
+plt.barh(x, y, color=color)
+plt.title('# of MIP Awards Per Player')
+plt.xlabel('PLAYERS')
+plt.ylabel('# of Times Won')
+plt.show()
+# nba mvp
+x = nba_mvp_pivot_table_df['player'].astype(str)
+y = nba_mvp_pivot_table_df['award']
+plt.barh(x, y, color=color)
+plt.title('# of NBA MVP Awards Per Player')
+plt.xlabel('PLAYERS')
+plt.ylabel('# of Times Won')
+plt.show()
+# *NO ROY (NBA) CHART DUE TO QUANTITY ISSUE* #
+# aba mvp
+x = aba_mvp_pivot_table_df['player'].astype(str)
+y = aba_mvp_pivot_table_df['award']
+plt.bar(x, y, color=color)
+plt.title('# of ABA MVP Awards Per Player')
+plt.xlabel('PLAYERS')
+plt.ylabel('# of Times Won')
+plt.show()
+# *NOT NECESSARY TO CREATE ABA_ROY CHART* #
 
 
 # =============== #
