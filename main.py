@@ -1,4 +1,5 @@
 import pandas as pd
+
 # read csv
 advanced_df = pd.read_csv('csv/advanced.csv')
 all_star_selections_df = pd.read_csv('csv/All-Star Selections.csv')
@@ -603,7 +604,7 @@ aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
 
 
 # =========== #
-# pivot tables 
+# pivot tables - individual awards
 # =========== #
 
 # clutch poy
@@ -827,7 +828,7 @@ aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
 
 # ================= #
-# creating more dfs - IN PROGRESS
+# creating more dfs 
 # ================= #
 
 # bill russell dataframe - per game averages
@@ -866,9 +867,9 @@ bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.to_excel(
 # get column names with corresponding index
 col = list(bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.columns)
 index = 0
+print('bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df:')
 
 for x in col:
-    print('bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df:')
     print(index, x)
     index += 1
 # highlight max values in certain columns in the merged dataframe
@@ -886,7 +887,55 @@ bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df = \
 
 bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df.\
     to_excel('bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx', index=False)
-    
+
+# michael jordan dataframe - per game averages
+def michael_jordan(df):
+    try:
+        return df[df['player'] == 'Michael Jordan']
+    except:
+        print('cannot filter dataframe')
+
+michael_jordan_per_game_avgs_df = michael_jordan(player_per_game_df)
+
+michael_jordan_per_game_avgs_df.to_excel('michael_jordan_per_game_averages.xlsx', index=False)
+
+# lebron james dataframe - per game averages
+def lebron_james(df):
+    try:
+        return df[df['player'] == 'LeBron James']
+    except:
+        print('cannot filter dataframe')
+
+lebron_james_per_game_avgs_df = lebron_james(player_per_game_df)
+
+lebron_james_per_game_avgs_df.to_excel('lebron_james_per_game_averages.xlsx', index=False)
+# michael jordan and lebron james - per game averages
+def michael_jordan_and_lebron_james(df):
+    try:
+        return df[(df['player'] == 'LeBron James') | (df['player'] == 'Michael Jordan')]
+    except:
+        print('cannot filter dataframe')
+
+michael_jordan_and_lebron_james_per_game_avgs_df = michael_jordan_and_lebron_james(player_per_game_df)
+
+michael_jordan_and_lebron_james_per_game_avgs_df.to_excel('michael_jordan_and_lebron_james_per_game_averages.xlsx', index=False)
+# michael jordan and lebron james - pivot table
+michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df = pd.pivot_table(
+    michael_jordan_and_lebron_james_per_game_avgs_df,index=['player'],
+    values=['pts_per_game'], 
+    aggfunc='mean')
+
+print(michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df)
+
+michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
+    to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx')
+
+michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df = \
+    pd.read_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx')
+
+michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
+    to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx')
+
 
 # ================== #
 # creating graphs via matplotlib
@@ -961,6 +1010,7 @@ plt.show()
 
 # =============== #
 # conditional formatting
+#   player_award_shares_and_player_per_game_merged_styled_df
 # =============== #
 def award_winners_highlighted(x):
     try:
