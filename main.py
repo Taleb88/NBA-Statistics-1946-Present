@@ -868,7 +868,8 @@ col = list(bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.columns)
 index = 0
 
 for x in col:
-    print('bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df:\n', index, x)
+    print('bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df:')
+    print(index, x)
     index += 1
 # highlight max values in certain columns in the merged dataframe
 bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df = \
