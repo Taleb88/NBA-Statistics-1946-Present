@@ -710,6 +710,18 @@ aba_roy_pivot_table_df = \
 
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
+# updating Swen Nater's aba_roy award count from 3 to 1 since he was traded midseason
+aba_roy_pivot_table_df['award'] = \
+    aba_roy_pivot_table_df['award'].where(
+        ~aba_roy_pivot_table_df['player_x'].\
+            isin(['Swen Nater']), \
+                1
+    )
+
+print(aba_roy_pivot_table_df.sort_values(by=['award'], ascending=False))
+
+aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
+
 
 # nba mvp and top 10 highest scoring averages
 def nba_mvp_ppg(df):
@@ -813,6 +825,67 @@ aba_roy_pivot_table_df = aba_roy_pivot_table_df.\
 
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
+
+# ================= #
+# creating more dfs - IN PROGRESS
+# ================= #
+
+# bill russell dataframe - per game averages
+def bill_russell(df):
+    try:
+        return df[df['player'] == 'Bill Russell']
+    except:
+        print('cannot filter dataframe')
+
+bill_russell_per_game_avgs_df = bill_russell(player_per_game_df)
+
+bill_russell_per_game_avgs_df.to_excel('bill_russell_per_game_averages.xlsx', index=False)
+
+# wilt chamberlain dataframe - per game averages
+def wilt_chamberlain(df):
+    try:
+        return df[df['player'] == 'Wilt Chamberlain']
+    except:
+        print('cannot filter dataframe')
+
+wilt_chamberlain_per_game_avgs_df = wilt_chamberlain(player_per_game_df)
+
+wilt_chamberlain_per_game_avgs_df.to_excel(
+    'wilt_chamberlain_per_game_averages.xlsx', index=False)
+
+# merging bill russell and wilt chamberlain per game avgs dataframes 
+#   (when they played in the same years only)
+bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df = pd.merge(bill_russell_per_game_avgs_df, 
+                                                       wilt_chamberlain_per_game_avgs_df,
+                                                       on=['year'])
+
+bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.to_excel(
+    'bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx',
+    index=False)
+
+# get column names with corresponding index
+col = list(bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.columns)
+index = 0
+
+for x in col:
+    print('bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df:\n', index, x)
+    index += 1
+# highlight max values in certain columns in the merged dataframe
+bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df = \
+    bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.style.\
+        highlight_max(subset=[
+            'trb_per_game_x', 
+            'ast_per_game_x', 
+            'pts_per_game_x',
+            'trb_per_game_y', 
+            'ast_per_game_y', 
+            'pts_per_game_y'], 
+            color='yellow', 
+            axis=0)
+
+bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df.\
+    to_excel('bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx', index=False)
+    
 
 # ================== #
 # creating graphs via matplotlib
