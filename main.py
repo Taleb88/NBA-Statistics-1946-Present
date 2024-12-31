@@ -495,7 +495,7 @@ player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player
 
 # finding unique values under 'award' column
 # result -> ['clutch_poy' 'dpoy' 'mip' 'nba mvp' 'nba roy' 'smoy' 'aba mvp' 'aba roy']
-print(player_award_shares_and_player_per_game_merged_df['award'].unique())
+#print(player_award_shares_and_player_per_game_merged_df['award'].unique())
 # award winners
 # clutch poy
 def clutch_poy_winners(df):
@@ -922,7 +922,11 @@ michael_jordan_and_lebron_james_per_game_avgs_df.to_excel('michael_jordan_and_le
 # michael jordan and lebron james - pivot table
 michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df = pd.pivot_table(
     michael_jordan_and_lebron_james_per_game_avgs_df,index=['player'],
-    values=['pts_per_game'], 
+    values=['pts_per_game',
+    'trb_per_game',
+    'ast_per_game',
+    'stl_per_game',
+    'blk_per_game'], 
     aggfunc='mean')
 
 print(michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df)
@@ -934,7 +938,15 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df = \
     pd.read_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx')
 
 michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
-    to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx')
+    to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx', index=False)
+
+cols = ['pts_per_game','trb_per_game','ast_per_game','stl_per_game','blk_per_game']
+
+michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df[cols] = \
+    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df[cols].round(2)
+
+michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
+    to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx', index=False)
 
 
 # ================== #
@@ -1006,6 +1018,20 @@ plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
 plt.show()
 # *NOT NECESSARY TO CREATE ABA_ROY CHART* #
+# bill russell and wilt chamberlain (playing in same seasons only) - IN PROGRESS
+
+# michael jordan and lebron james - IN PROGRESS
+x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
+y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['pts_per_game'] + '\n' +\
+    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['trb_per_game'] + '\n' +\
+    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['ast_per_game'] + '\n' +\
+    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['stl_per_game'] + '\n' +\
+    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['blk_per_game']
+plt.bar(x, y, color=color)
+plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.xlabel('PLAYERS')
+plt.ylabel('Career PPG Averages')
+plt.show()
 
 
 # =============== #
