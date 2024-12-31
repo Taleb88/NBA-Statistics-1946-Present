@@ -872,21 +872,6 @@ print('bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df:')
 for x in col:
     print(index, x)
     index += 1
-# highlight max values in certain columns in the merged dataframe
-bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df = \
-    bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.style.\
-        highlight_max(subset=[
-            'trb_per_game_x', 
-            'ast_per_game_x', 
-            'pts_per_game_x',
-            'trb_per_game_y', 
-            'ast_per_game_y', 
-            'pts_per_game_y'], 
-            color='yellow', 
-            axis=0)
-
-bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df.\
-    to_excel('bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx', index=False)
 
 # michael jordan dataframe - per game averages
 def michael_jordan(df):
@@ -1018,15 +1003,50 @@ plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
 plt.show()
 # *NOT NECESSARY TO CREATE ABA_ROY CHART* #
-# bill russell and wilt chamberlain (playing in same seasons only) - IN PROGRESS
-
-# michael jordan and lebron james - IN PROGRESS
+# bill russell chart
+x = bill_russell_per_game_avgs_df['player'].astype(str) + '\n' + \
+    bill_russell_per_game_avgs_df['season']
+y = bill_russell_per_game_avgs_df['trb_per_game']
+plt.bar(x, y, color=color)
+plt.title('Bill Russell Points Per Game By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('# of Times Won')
+plt.show()
+# michael jordan and lebron james
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
-y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['pts_per_game'] + '\n' +\
-    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['trb_per_game'] + '\n' +\
-    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['ast_per_game'] + '\n' +\
-    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['stl_per_game'] + '\n' +\
-    michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['blk_per_game']
+y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['pts_per_game']
+plt.bar(x, y, color=color)
+plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.xlabel('PLAYERS')
+plt.ylabel('Career PPG Averages')
+plt.show()
+
+x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
+y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['trb_per_game']
+plt.bar(x, y, color=color)
+plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.xlabel('PLAYERS')
+plt.ylabel('Career PPG Averages')
+plt.show()
+
+x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
+y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['ast_per_game']
+plt.bar(x, y, color=color)
+plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.xlabel('PLAYERS')
+plt.ylabel('Career PPG Averages')
+plt.show()
+
+x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
+y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['stl_per_game']
+plt.bar(x, y, color=color)
+plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.xlabel('PLAYERS')
+plt.ylabel('Career PPG Averages')
+plt.show()
+
+x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
+y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['blk_per_game']
 plt.bar(x, y, color=color)
 plt.title('Michael Jordan and Lebron James - PPG Career Avg')
 plt.xlabel('PLAYERS')
@@ -1035,8 +1055,7 @@ plt.show()
 
 
 # =============== #
-# conditional formatting
-#   player_award_shares_and_player_per_game_merged_styled_df
+# conditional formatting 
 # =============== #
 def award_winners_highlighted(x):
     try:
@@ -1053,5 +1072,21 @@ player_award_shares_and_player_per_game_merged_styled_df = (
 )
 
 player_award_shares_and_player_per_game_merged_styled_df.to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
+
+# highlight max values in certain columns in the merged dataframe
+bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df = \
+    bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.style.\
+        highlight_max(subset=[
+            'trb_per_game_x', 
+            'ast_per_game_x', 
+            'pts_per_game_x',
+            'trb_per_game_y', 
+            'ast_per_game_y', 
+            'pts_per_game_y'], 
+            color='yellow', 
+            axis=0)
+
+bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df.\
+    to_excel('bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx', index=False)
 
 # ============ #
