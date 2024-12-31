@@ -1003,14 +1003,25 @@ plt.xlabel('PLAYERS')
 plt.ylabel('# of Times Won')
 plt.show()
 # *NOT NECESSARY TO CREATE ABA_ROY CHART* #
-# bill russell chart
+# bill russell chart - rebounds per game
 x = bill_russell_per_game_avgs_df['player'].astype(str) + '\n' + \
-    bill_russell_per_game_avgs_df['season']
+    bill_russell_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    bill_russell_per_game_avgs_df['trb_per_game'].astype(str) + ' RPG'
 y = bill_russell_per_game_avgs_df['trb_per_game']
 plt.bar(x, y, color=color)
-plt.title('Bill Russell Points Per Game By Year')
+plt.title('Bill Russell RPG By Year')
 plt.xlabel('PLAYERS')
-plt.ylabel('# of Times Won')
+plt.ylabel('RPG')
+plt.show()
+# wilt chamberlain chart - rebounds per game
+x = wilt_chamberlain_per_game_avgs_df['player'].astype(str) + '\n' + \
+    wilt_chamberlain_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    wilt_chamberlain_per_game_avgs_df['trb_per_game'].astype(str) + ' RPG'
+y = wilt_chamberlain_per_game_avgs_df['trb_per_game']
+plt.bar(x, y, color=color)
+plt.title('Wilt Chamberlain RPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('RPG')
 plt.show()
 # michael jordan and lebron james
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
@@ -1024,33 +1035,33 @@ plt.show()
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
 y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['trb_per_game']
 plt.bar(x, y, color=color)
-plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.title('Michael Jordan and Lebron James - RPG Career Avg')
 plt.xlabel('PLAYERS')
-plt.ylabel('Career PPG Averages')
+plt.ylabel('Career RPG Averages')
 plt.show()
 
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
 y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['ast_per_game']
 plt.bar(x, y, color=color)
-plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.title('Michael Jordan and Lebron James - AST Career Avg')
 plt.xlabel('PLAYERS')
-plt.ylabel('Career PPG Averages')
+plt.ylabel('Career AST Averages')
 plt.show()
 
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
 y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['stl_per_game']
 plt.bar(x, y, color=color)
-plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.title('Michael Jordan and Lebron James - SPG Career Avg')
 plt.xlabel('PLAYERS')
-plt.ylabel('Career PPG Averages')
+plt.ylabel('Career SPG Averages')
 plt.show()
 
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
 y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['blk_per_game']
 plt.bar(x, y, color=color)
-plt.title('Michael Jordan and Lebron James - PPG Career Avg')
+plt.title('Michael Jordan and Lebron James - BPG Career Avg')
 plt.xlabel('PLAYERS')
-plt.ylabel('Career PPG Averages')
+plt.ylabel('Career BPG Averages')
 plt.show()
 
 
