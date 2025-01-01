@@ -1013,6 +1013,26 @@ plt.title('Bill Russell RPG By Year')
 plt.xlabel('PLAYERS')
 plt.ylabel('RPG')
 plt.show()
+# bill russell chart - ast per game
+x = bill_russell_per_game_avgs_df['player'].astype(str) + '\n' + \
+    bill_russell_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    bill_russell_per_game_avgs_df['ast_per_game'].astype(str) + ' APG'
+y = bill_russell_per_game_avgs_df['ast_per_game']
+plt.bar(x, y, color=color)
+plt.title('Bill Russell APG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('APG')
+plt.show()
+# bill russell chart - pts per game
+x = bill_russell_per_game_avgs_df['player'].astype(str) + '\n' + \
+    bill_russell_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    bill_russell_per_game_avgs_df['pts_per_game'].astype(str) + ' PPG'
+y = bill_russell_per_game_avgs_df['pts_per_game']
+plt.bar(x, y, color=color)
+plt.title('Bill Russell PPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('PPG')
+plt.show()
 # wilt chamberlain chart - rebounds per game
 x = wilt_chamberlain_per_game_avgs_df['player'].astype(str) + '\n' + \
     wilt_chamberlain_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
@@ -1023,6 +1043,27 @@ plt.title('Wilt Chamberlain RPG By Year')
 plt.xlabel('PLAYERS')
 plt.ylabel('RPG')
 plt.show()
+# wilt chamberlain chart - ast per game
+x = wilt_chamberlain_per_game_avgs_df['player'].astype(str) + '\n' + \
+    wilt_chamberlain_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    wilt_chamberlain_per_game_avgs_df['ast_per_game'].astype(str) + ' AST'
+y = wilt_chamberlain_per_game_avgs_df['ast_per_game']
+plt.bar(x, y, color=color)
+plt.title('Wilt Chamberlain APG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('APG')
+plt.show()
+# wilt chamberlain chart - points per game
+x = wilt_chamberlain_per_game_avgs_df['player'].astype(str) + '\n' + \
+    wilt_chamberlain_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    wilt_chamberlain_per_game_avgs_df['pts_per_game'].astype(str) + ' PPG'
+y = wilt_chamberlain_per_game_avgs_df['pts_per_game']
+plt.bar(x, y, color=color)
+plt.title('Wilt Chamberlain PPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('PPG')
+plt.show()
+
 # michael jordan and lebron james
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
 y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['pts_per_game']
