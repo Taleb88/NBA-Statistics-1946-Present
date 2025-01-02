@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 # read csv
 advanced_df = pd.read_csv('csv/advanced.csv')
@@ -383,6 +384,22 @@ player_per_game_df['triple_double_avg'] = ['Yes'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
+
+# populating the stl_per_game and blk_per_game columns with the following ->
+#   N/A - Stat tracked as of the 1973-74 NBA Season
+player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & \
+    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'stl_per_game'] = \
+    'N/A - Stat tracked as of the 1973-74 NBA Season'
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & \
+    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'blk_per_game'] = \
+    'N/A - Stat tracked as of the 1973-74 NBA Season'
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+
 # groupby
 player_award_shares_df.groupby(['award', 'player'])
 print(player_award_shares_df.head())
@@ -432,6 +449,11 @@ player_instance = Player(name=value['player_x'],
                          pts_per_game=value['pts_per_game'])
 
 print(player_instance.info())
+
+# ===================== #
+# interacting with user - IN PROGRESS
+# ===================== #
+
 
 # converting values to string format
 player_award_shares_and_player_per_game_merged_df['winner'] = \
