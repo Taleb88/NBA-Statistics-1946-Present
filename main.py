@@ -331,8 +331,11 @@ team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
-# Patrick Ewing born 1984 should be Patrick Ewing Jr. - IN PROGRESS
 
+# Patrick Ewing born 1984 should be Patrick Ewing Jr. - IN PROGRESS
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
 # CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
@@ -389,7 +392,8 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
 # populating the stl_per_game and blk_per_game columns with the following ->
-#   N/A - Stat tracked as of the 1973-74 NBA Season
+#   N/A - Stat tracked as of the 1973-74 NBA Season;
+#   N/A - Stat tracked as of the 1973-74 ABA Season
 player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & \
     ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'stl_per_game'] = \
     'N/A - Stat tracked as of the 1973-74 NBA Season'
@@ -399,6 +403,16 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & \
     ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'blk_per_game'] = \
     'N/A - Stat tracked as of the 1973-74 NBA Season'
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
+                       'blk_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
+                       'stl_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
@@ -1130,6 +1144,20 @@ plt.show()
 # =============== #
 # conditional formatting 
 # =============== #
+def player_per_game(x):
+    try:
+        if x == 'N/A ':
+            return 'background-color: red'
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
+        
+player_per_game_df = player_per_game_df.style.applymap(player_per_game, 
+                                                       subset=['stl_per_game',
+                                                               'blk_per_game'])
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
 def award_winners_highlighted(x):
     try:
         if x == 'True':
