@@ -115,7 +115,6 @@ opponent_totals_df = year(opponent_totals_df)
 per_36_minutes_df = year(per_36_minutes_df)
 per_100_poss_df = year(per_100_poss_df)
 player_award_shares_df = year(player_award_shares_df)
-#player_career_info_df = year(player_career_info_df)
 player_per_game_df = year(player_per_game_df)
 player_play_by_play_df = year(player_play_by_play_df)
 player_season_info_df = year(player_season_info_df)
@@ -138,7 +137,6 @@ opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
 player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
-#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
@@ -161,7 +159,6 @@ opponent_totals_df['season'] = opponent_totals_df['year']
 per_36_minutes_df['season'] = per_36_minutes_df['year']
 per_100_poss_df['season'] = per_100_poss_df['year']
 player_award_shares_df['season'] = player_award_shares_df['year']
-#player_career_info_df['season'] = player_career_info_df['year']
 player_per_game_df['season'] = player_per_game_df['year']
 player_play_by_play_df['season'] = player_play_by_play_df['year']
 player_season_info_df['season'] = player_season_info_df['year']
@@ -185,7 +182,6 @@ opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
 player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
-#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
@@ -284,7 +280,7 @@ def season_values(df):
                                                 }}) 
     except Exception as e:
         print(f'caught {type(e)}: e \n'
-            f'cannot list results')
+            f'cannot update values')
 
 advanced_df = season_values(advanced_df)
 all_star_selections_df = season_values(all_star_selections_df)
@@ -296,7 +292,6 @@ opponent_totals_df = season_values(opponent_totals_df)
 per_36_minutes_df = season_values(per_36_minutes_df)
 per_100_poss_df = season_values(per_100_poss_df)
 player_award_shares_df = season_values(player_award_shares_df)
-#player_career_info_df = season_values(player_career_info_df)
 player_per_game_df = season_values(player_per_game_df)
 player_play_by_play_df = season_values(player_play_by_play_df)
 player_season_info_df = season_values(player_season_info_df)
@@ -319,7 +314,6 @@ opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
 player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
-#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
@@ -330,6 +324,201 @@ team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+# first_seas column in player_career_info_df
+def first_season_values(df):
+    try:
+        return df.replace(to_replace={'first_seas': {'1947': '1946-47', 
+                                                '1948': '1947-48',
+                                                '1949': '1948-49',
+                                                '1950': '1949-50',
+                                                '1951': '1950-51',
+                                                '1952': '1951-52',
+                                                '1953': '1952-53',
+                                                '1954': '1953-54',
+                                                '1955': '1954-55',
+                                                '1956': '1955-56',
+                                                '1957': '1956-57',
+                                                '1958': '1957-58',
+                                                '1959': '1958-59',
+                                                '1960': '1959-60',
+                                                '1961': '1960-61',
+                                                '1962': '1960-62',
+                                                '1963': '1962-63',
+                                                '1964': '1963-64',
+                                                '1965': '1964-65',
+                                                '1966': '1965-66',
+                                                '1967': '1966-67',
+                                                '1968': '1967-68',
+                                                '1969': '1968-69',
+                                                '1970': '1969-70',
+                                                '1971': '1970-71',
+                                                '1972': '1971-72',
+                                                '1973': '1972-73',
+                                                '1974': '1973-74',
+                                                '1975': '1974-75',
+                                                '1976': '1975-76',
+                                                '1977': '1976-77',
+                                                '1978': '1977-78',
+                                                '1979': '1978-79',
+                                                '1980': '1979-80',
+                                                '1981': '1980-81',
+                                                '1982': '1981-82',
+                                                '1983': '1982-83',
+                                                '1984': '1983-84',
+                                                '1985': '1984-85',
+                                                '1986': '1985-86',
+                                                '1987': '1986-87',
+                                                '1988': '1987-88',
+                                                '1989': '1988-89',
+                                                '1990': '1989-90',
+                                                '1991': '1990-91',
+                                                '1992': '1991-92',
+                                                '1993': '1992-93',
+                                                '1994': '1993-94',
+                                                '1995': '1994-95',
+                                                '1996': '1995-06',
+                                                '1997': '1996-97',
+                                                '1998': '1997-98',
+                                                '1999': '1998-99',
+                                                '2000': '1999-00',
+                                                '2001': '2000-01',
+                                                '2002': '2001-02',
+                                                '2003': '2002-03',
+                                                '2004': '2003-04',
+                                                '2005': '2004-05',
+                                                '2006': '2005-06',
+                                                '2007': '2006-07',
+                                                '2008': '2007-08',
+                                                '2009': '2008-09',
+                                                '2010': '2009-10',
+                                                '2011': '2010-11',
+                                                '2012': '2011-12',
+                                                '2013': '2012-13',
+                                                '2014': '2013-14',
+                                                '2015': '2014-15',
+                                                '2016': '2015-16',
+                                                '2017': '2016-17',
+                                                '2018': '2017-18',
+                                                '2019': '2018-19',
+                                                '2020': '2019-20',
+                                                '2021': '2020-21',
+                                                '2022': '2021-22',
+                                                '2023': '2022-23',
+                                                '2024': '2023-24',
+                                                '2025': '2024-25'
+                                                }}) 
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+            f'cannot update values')
+
+player_career_info_df = first_season_values(player_career_info_df)
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+# last seas column in player_career_info_df
+def last_season_values(df):
+    try:
+        return df.replace(to_replace={'last_seas': {'1947': '1946-47', 
+                                                '1948': '1947-48',
+                                                '1949': '1948-49',
+                                                '1950': '1949-50',
+                                                '1951': '1950-51',
+                                                '1952': '1951-52',
+                                                '1953': '1952-53',
+                                                '1954': '1953-54',
+                                                '1955': '1954-55',
+                                                '1956': '1955-56',
+                                                '1957': '1956-57',
+                                                '1958': '1957-58',
+                                                '1959': '1958-59',
+                                                '1960': '1959-60',
+                                                '1961': '1960-61',
+                                                '1962': '1960-62',
+                                                '1963': '1962-63',
+                                                '1964': '1963-64',
+                                                '1965': '1964-65',
+                                                '1966': '1965-66',
+                                                '1967': '1966-67',
+                                                '1968': '1967-68',
+                                                '1969': '1968-69',
+                                                '1970': '1969-70',
+                                                '1971': '1970-71',
+                                                '1972': '1971-72',
+                                                '1973': '1972-73',
+                                                '1974': '1973-74',
+                                                '1975': '1974-75',
+                                                '1976': '1975-76',
+                                                '1977': '1976-77',
+                                                '1978': '1977-78',
+                                                '1979': '1978-79',
+                                                '1980': '1979-80',
+                                                '1981': '1980-81',
+                                                '1982': '1981-82',
+                                                '1983': '1982-83',
+                                                '1984': '1983-84',
+                                                '1985': '1984-85',
+                                                '1986': '1985-86',
+                                                '1987': '1986-87',
+                                                '1988': '1987-88',
+                                                '1989': '1988-89',
+                                                '1990': '1989-90',
+                                                '1991': '1990-91',
+                                                '1992': '1991-92',
+                                                '1993': '1992-93',
+                                                '1994': '1993-94',
+                                                '1995': '1994-95',
+                                                '1996': '1995-06',
+                                                '1997': '1996-97',
+                                                '1998': '1997-98',
+                                                '1999': '1998-99',
+                                                '2000': '1999-00',
+                                                '2001': '2000-01',
+                                                '2002': '2001-02',
+                                                '2003': '2002-03',
+                                                '2004': '2003-04',
+                                                '2005': '2004-05',
+                                                '2006': '2005-06',
+                                                '2007': '2006-07',
+                                                '2008': '2007-08',
+                                                '2009': '2008-09',
+                                                '2010': '2009-10',
+                                                '2011': '2010-11',
+                                                '2012': '2011-12',
+                                                '2013': '2012-13',
+                                                '2014': '2013-14',
+                                                '2015': '2014-15',
+                                                '2016': '2015-16',
+                                                '2017': '2016-17',
+                                                '2018': '2017-18',
+                                                '2019': '2018-19',
+                                                '2020': '2019-20',
+                                                '2021': '2020-21',
+                                                '2022': '2021-22',
+                                                '2023': '2022-23',
+                                                '2024': '2023-24',
+                                                '2025': '2024-25'
+                                                }}) 
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+            f'cannot update values')
+
+player_career_info_df = last_season_values(player_career_info_df)
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+
+# changing names of first_seas and second_seas columns in player_career_info_df respectively
+def season_column_names(df):
+    try:
+        return df.rename(columns={'first_seas': 'first_season',
+                                  'last_seas': 'last_season'})
+    except:
+        print('cannot change name of column')
+
+player_career_info_df = season_column_names(player_career_info_df)
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
 # Patrick Ewing born 1984 should be Patrick Ewing Jr.
