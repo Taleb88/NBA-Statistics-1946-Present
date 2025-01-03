@@ -332,7 +332,7 @@ team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 
-# Patrick Ewing born 1984 should be Patrick Ewing Jr. - IN PROGRESS
+# Patrick Ewing born 1984 should be Patrick Ewing Jr.
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
@@ -1144,24 +1144,10 @@ plt.show()
 # =============== #
 # conditional formatting 
 # =============== #
-def player_per_game(x):
-    try:
-        if x == 'N/A ':
-            return 'background-color: red'
-    except Exception as e:
-        print(f'caught {type(e)}: e \n'
-              f'cannot list results')
-        
-player_per_game_df = player_per_game_df.style.applymap(player_per_game, 
-                                                       subset=['stl_per_game',
-                                                               'blk_per_game'])
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
 def award_winners_highlighted(x):
     try:
         if x == 'True':
-            return 'background-color: green'
+            return 'background-color: green'     
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -1189,5 +1175,18 @@ bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df = \
 
 bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df.\
     to_excel('bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx', index=False)
+
+def player_per_game_highlighted(x):
+    try:
+        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or x == 'N/A - Stat tracked as of the 1973-74 ABA Season':
+            return 'background-color: red'
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
+        
+player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlighted, 
+                                                       subset=['stl_per_game', 'blk_per_game'])
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 # ============ #

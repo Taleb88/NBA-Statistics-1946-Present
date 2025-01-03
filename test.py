@@ -1,19 +1,29 @@
 # TESTING VARIOUS QUERIES
 import pandas as pd
 
-# read csv
 player_per_game_df = pd.read_excel('Player Per Game.xlsx')
-
+player_career_info_df = pd.read_excel('Player Career Info.xlsx')
+#player per game
 cols = list(player_per_game_df.columns)
 index = 0
 
 for col_names in cols:
     print(index, col_names)
     index += 1
+    
+# player career info
+cols = list(player_career_info_df.columns)
+index = 0
+
+for col_names in cols:
+    print(index, col_names)
+    index += 1
+    
 
 # ===================== #
 # interacting with user 
 # ===================== #
+# look up player in player_per_game_df
 player_values = list(player_per_game_df['player'].values)
 
 player = input("enter player's name: ")
@@ -28,7 +38,7 @@ else:
     print('Does not exist')
 
 
-'''
+''' # look up player and year they played in look up player in player_per_game_df
 player_values = list(player_per_game_df['player'].values)
 year_values = list(player_per_game_df['year'].values)
 
@@ -44,3 +54,4 @@ if (player in player_values) and (year in year_values):
                                 (player_per_game_df['year'] == year)]}")
 else:
     print('Does not exist')'''
+
