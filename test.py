@@ -1,4 +1,4 @@
-# TESTING QUERIES
+# TESTING VARIOUS QUERIES
 import pandas as pd
 
 # read csv
@@ -12,7 +12,7 @@ for col_names in cols:
     index += 1
 
 # ===================== #
-# interacting with user = COMPLETE
+# interacting with user 
 # ===================== #
 player_values = list(player_per_game_df['player'].values)
 year_values = list(player_per_game_df['year'].values)
