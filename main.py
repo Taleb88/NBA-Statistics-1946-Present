@@ -521,7 +521,7 @@ player_career_info_df = season_column_names(player_career_info_df)
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
-# Patrick Ewing born 1984 should be Patrick Ewing Jr.
+# Patrick Ewing born 1984 should be Patrick Ewing Jr. - IN PROGRESS
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
