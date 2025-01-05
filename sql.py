@@ -4,7 +4,7 @@ import csv
 import sqlite3
 
 player_career_info_df = pd.read_excel('Player Career Info.xlsx')
-player_career_info_df.to_csv('player_career_info_01_04_2024.csv', index=False)
+player_career_info_df.to_csv('player_career_info_01_05_2024.csv', index=False)
 
 try:
     # import csv 
