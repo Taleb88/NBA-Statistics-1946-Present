@@ -520,6 +520,7 @@ player_career_info_df = season_column_names(player_career_info_df)
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
+
 # ==================== #
 # data cleanup - IN PROGRESS
 # ==================== #
@@ -530,7 +531,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3967, 'playe
 per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
@@ -540,7 +541,17 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3205, 'playe
 per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
 player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest.'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+# Metta World Peace -> Metta Sandiford-Artest
+advanced_df.loc[advanced_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest.'
 player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
 player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
