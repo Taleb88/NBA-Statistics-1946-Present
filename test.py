@@ -20,6 +20,18 @@ print('\nPlayer Career Info:')
 for col_names in cols:
     print(index, col_names)
     index += 1
+    
+
+# groupby
+player_award_shares_df = pd.read_excel('Player Award Shares.xlsx')
+player_award_shares_df.groupby(['award', 'player'])
+print(player_award_shares_df.head())
+
+print('')
+
+team_summaries_df = pd.read_excel('Team Summaries.xlsx')
+team_summaries_df.groupby(['team', 'year', 'playoffs'])
+print(team_summaries_df.head())
 
 
 # ===================== #

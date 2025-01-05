@@ -685,14 +685,6 @@ player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
-# groupby
-player_award_shares_df.groupby(['award', 'player'])
-print(player_award_shares_df.head())
-
-team_summaries_df.groupby(['team', 'year', 'playoffs'])
-print(team_summaries_df)
-
-
 # ============= #
 # merging certain dataframes 
 # ============= #
