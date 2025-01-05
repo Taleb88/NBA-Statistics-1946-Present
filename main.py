@@ -536,25 +536,65 @@ player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3967
 player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 # Metta World Peace -> Metta Sandiford-Artest
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-# Metta World Peace -> Metta Sandiford-Artest
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest.'
+advanced_df.loc[advanced_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+# Marcus Morris -> Marcus Morris Sr. (different player_id values in datasets)
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr..'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4042, 'player'] = 'Marcus Morris Sr.'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4043, 'player'] = 'Marcus Morris Sr.'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
+# Enes Freedom -> Enes Kanter Freedom (id = 4006)
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+# Will Barton -> Will Barton III (id = 4140)
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+# Robert Williams -> Robert Williams III (id = 4667)
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4667, 'player'] = 'Robert Williams III III'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
+
 
 advanced_df.to_excel('advanced.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
@@ -637,7 +677,6 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
                        'blk_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
-
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
@@ -649,6 +688,9 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # groupby
 player_award_shares_df.groupby(['award', 'player'])
 print(player_award_shares_df.head())
+
+team_summaries_df.groupby(['team', 'year', 'playoffs'])
+print(team_summaries_df)
 
 
 # ============= #
