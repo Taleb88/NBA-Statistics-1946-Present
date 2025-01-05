@@ -21,18 +21,67 @@ for col_names in cols:
     print(index, col_names)
     index += 1
 
+
 print('')
 
 # groupby
 player_award_shares_df = pd.read_excel('Player Award Shares.xlsx')
-grouped = player_award_shares_df.groupby(['award', 'player'])
-print(grouped.first())
+
+grouped = player_award_shares_df.groupby(['player', 'award']).agg(
+    first_place_votes_avg = ('first', 'mean')
+)
+print(grouped)
+
+grouped.to_excel('test.xlsx')
+
+print('')
+
+grouped = player_award_shares_df.groupby('player')['pts_won'].mean()
+print(grouped)
 
 print('')
 
 team_summaries_df = pd.read_excel('Team Summaries.xlsx')
-grouped = team_summaries_df.groupby(['team', 'year', 'playoffs'])
-print(grouped.first())
+grouped = team_summaries_df.groupby('team').agg(
+    player_age_average=('age', 'mean'),
+    reg_season_win_average=('w', 'mean'),
+    reg_season_loss_average=('l', 'mean')
+)
+print(grouped.head(50))
+
+print('')
+
+grouped = team_summaries_df.groupby('team').filter(lambda row: row['w'].mean() < 20.0)
+print(grouped.head(15).sort_values(by='team', ascending=True))
+
+
+# defining a player class that corresponds to the 
+#   player_award_shares_and_player_per_game_merged dataframe
+player_award_shares_and_player_per_game_merged_df = \
+    pd.read_excel('player_award_shares_and_player_per_game_merged.xlsx')
+
+class Player:
+    def __init__(self, name, year, award, pts_per_game):
+        self.name = name
+        self.year = year
+        self.award = award
+        self.pts_per_game = pts_per_game
+
+    def info(self):
+        try:
+            return f"{self.name} won the {self.year} {self.award} while averaging {self.pts_per_game} points per game."
+        except Exception as e:
+            print(f'caught {type(e)}: e \n'
+                f'cannot list results')
+    
+value = player_award_shares_and_player_per_game_merged_df.iloc[5]
+
+player_instance = Player(name=value['player_x'], 
+                         year=value['year_x'], 
+                         award=value['award'],
+                         pts_per_game=value['pts_per_game'])
+
+print(player_instance.info())
 
 
 # ===================== #

@@ -705,32 +705,6 @@ player_shooting_and_player_totals_merged_df.\
     to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
 
 
-# defining a player class that corresponds to the 
-#   player_award_shares_and_player_per_game_merged dataframe
-class Player:
-    def __init__(self, name, year, award, pts_per_game):
-        self.name = name
-        self.year = year
-        self.award = award
-        self.pts_per_game = pts_per_game
-
-    def info(self):
-        try:
-            return f"{self.name} won the {self.year} {self.award} while averaging {self.pts_per_game} points per game."
-        except Exception as e:
-            print(f'caught {type(e)}: e \n'
-                f'cannot list results')
-    
-value = player_award_shares_and_player_per_game_merged_df.iloc[5]
-
-player_instance = Player(name=value['player_x'], 
-                         year=value['year_x'], 
-                         award=value['award'],
-                         pts_per_game=value['pts_per_game'])
-
-print(player_instance.info())
-
-
 # converting values to string format
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].astype(str)
