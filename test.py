@@ -3,6 +3,10 @@ import pandas as pd
 
 player_per_game_df = pd.read_excel('Player Per Game.xlsx')
 player_career_info_df = pd.read_excel('Player Career Info.xlsx')
+player_season_info_df = pd.read_excel('Player Season Info.xlsx')
+player_shooting_df = pd.read_excel('Player Shooting.xlsx')
+player_totals_df = pd.read_excel('Player Totals.xlsx')
+
 #player per game
 cols = list(player_per_game_df.columns)
 index = 0
@@ -59,21 +63,33 @@ grouped = team_summaries_df.groupby('team').filter(lambda row: row['w'].mean() <
 print(grouped.head(50).sort_values(by='team', ascending=True))
 
 
+players = list(player_per_game_df.values)
+index = 0
+
+# checking to see if players have an age of '0' in multiple datasets
+def player(df):
+    return df[df['age'] == 0]
+
+print(player(player_per_game_df))
+print(player(player_season_info_df))
+print(player(player_totals_df))
+
+'''
 # defining a player class that corresponds to the 
 #   player_award_shares_and_player_per_game_merged dataframe
 player_award_shares_and_player_per_game_merged_df = \
     pd.read_excel('player_award_shares_and_player_per_game_merged.xlsx')
 
 class Player:
-    def __init__(self, name, year, award, pts_per_game):
+    def __init__(self, name, season_ending_year, award, pts_per_game):
         self.name = name
-        self.year = year
+        self.season_ending_year = season_ending_year
         self.award = award
         self.pts_per_game = pts_per_game
 
     def info(self):
         try:
-            return f"{self.name} won the {self.year} {self.award} while averaging {self.pts_per_game} points per game."
+            return f"{self.name} won the {self.season_ending_year} {self.award} while averaging {self.pts_per_game} points per game."
         except Exception as e:
             print(f'caught {type(e)}: e \n'
                 f'cannot list results')
@@ -81,7 +97,7 @@ class Player:
 value = player_award_shares_and_player_per_game_merged_df.iloc[5]
 
 player_instance = Player(name=value['player_x'], 
-                         year=value['year_x'], 
+                         season_ending_year=value['season_ending_year_x'], 
                          award=value['award'],
                          pts_per_game=value['pts_per_game'])
 
@@ -144,3 +160,5 @@ while True:
         continue
 
 # =========================== #
+
+'''

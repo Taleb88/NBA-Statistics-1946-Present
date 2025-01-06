@@ -689,9 +689,10 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # =================================== #
 #                       IN PROGRESS
 # 1. create a column called calendar year -> datatype = int
-#       ['calendar_year'] = ['season_ending_year'].astype(int)
-# 2. fillna(0) method used to fill empty cells with '0' values in birth_year and age columns  
-# 3. ['birth_year'] = calendar year - age
+#       ['calendar_year'] = ['season_ending_year'].astype(int) (SUCCESS)
+# 2. fillna(0) method used to fill empty cells with '0' values in birth_year and age columns (SUCCESS)
+# 3. ['birth_year'] = calendar year - age (SUCCESS)
+# 4. modify ['birth_year'] values that are initially '0' and then ['age'] = ['birth_year']
 # =================================== #
 player_per_game_df['calendar_year'] = player_per_game_df['season_ending_year'].astype(int)
 player_play_by_play_df['calendar_year'] = player_play_by_play_df['season_ending_year'].astype(int)
