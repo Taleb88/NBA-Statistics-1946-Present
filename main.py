@@ -585,17 +585,16 @@ player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4140
 player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
 # Robert Williams -> Robert Williams III (id = 4667)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4667, 'player'] = 'Robert Williams III III'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III III'
-
-
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4667, 'player'] = 'Robert Williams III'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+# save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
@@ -683,6 +682,10 @@ player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player
                        'stl_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+
+# birth_year updates - IN PROGRESS
+
 
 
 # ============= #

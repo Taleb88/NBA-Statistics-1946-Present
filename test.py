@@ -21,10 +21,14 @@ for col_names in cols:
     print(index, col_names)
     index += 1
 
-
 print('')
 
-# groupby
+
+# =================#
+# groupby 
+# =================#
+
+# player_award_shares_df
 player_award_shares_df = pd.read_excel('Player Award Shares.xlsx')
 
 grouped = player_award_shares_df.groupby(['player', 'award']).agg(
@@ -40,7 +44,7 @@ grouped = player_award_shares_df.groupby('player')['pts_won'].mean()
 print(grouped)
 
 print('')
-
+# team_summaries_df
 team_summaries_df = pd.read_excel('Team Summaries.xlsx')
 grouped = team_summaries_df.groupby('team').agg(
     player_age_average=('age', 'mean'),
@@ -52,7 +56,7 @@ print(grouped.head(50))
 print('')
 
 grouped = team_summaries_df.groupby('team').filter(lambda row: row['w'].mean() < 20.0)
-print(grouped.head(15).sort_values(by='team', ascending=True))
+print(grouped.head(50).sort_values(by='team', ascending=True))
 
 
 # defining a player class that corresponds to the 
