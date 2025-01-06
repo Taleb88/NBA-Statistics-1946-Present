@@ -694,6 +694,8 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # 3. ['birth_year'] = calendar year - age (SUCCESS)
 # 4. modify ['birth_year'] values that are initially '0' and then ['age'] = ['birth_year']
 # =================================== #
+
+# 1
 player_per_game_df['calendar_year'] = player_per_game_df['season_ending_year'].astype(int)
 player_play_by_play_df['calendar_year'] = player_play_by_play_df['season_ending_year'].astype(int)
 player_season_info_df['calendar_year'] = player_season_info_df['season_ending_year'].astype(int)
@@ -705,7 +707,7 @@ player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-
+# 2
 player_per_game_df['birth_year'] = player_per_game_df['birth_year'].fillna(0)
 player_play_by_play_df['birth_year'] = player_play_by_play_df['birth_year'].fillna(0)
 player_season_info_df['birth_year'] = player_season_info_df['birth_year'].fillna(0)
@@ -729,7 +731,7 @@ player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-
+# 3
 player_per_game_df['birth_year'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
 player_play_by_play_df['birth_year'] = player_play_by_play_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
 player_season_info_df['birth_year'] = player_season_info_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
@@ -741,6 +743,7 @@ player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# 4
 
 
 # ============= #

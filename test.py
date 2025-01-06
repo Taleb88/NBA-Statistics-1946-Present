@@ -70,11 +70,17 @@ index = 0
 def player(df):
     return df[df['age'] == 0]
 
-print(player(player_per_game_df))
-print(player(player_season_info_df))
-print(player(player_totals_df))
+print(player(player_per_game_df)\
+      .drop(player_per_game_df.iloc[:, 5:], axis=1)
+      )
+print(player(player_season_info_df)\
+      .drop(player_season_info_df.iloc[:, 5:], axis=1)
+      )
+print(player(player_totals_df)\
+      .drop(player_totals_df.iloc[:, 5:], axis=1)
+      )
 
-'''
+
 # defining a player class that corresponds to the 
 #   player_award_shares_and_player_per_game_merged dataframe
 player_award_shares_and_player_per_game_merged_df = \
@@ -160,5 +166,3 @@ while True:
         continue
 
 # =========================== #
-
-'''
