@@ -98,33 +98,35 @@ team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
-# changing name of season column to year
-def year(df):
+# changing name of season column to season_ending_year
+def season_ending_year(df):
     try:
-        return df.rename(columns={'season': 'year'})
+        return df.rename(columns={'season': 'season_ending_year'})
     except:
         print('cannot change name of column')
 
-advanced_df = year(advanced_df)
-all_star_selections_df = year(all_star_selections_df)
-end_of_season_teams_voting_df = year(end_of_season_teams_voting_df)
-end_of_season_teams_df = year(end_of_season_teams_df)
-opponent_stats_per_100_poss_df = year(opponent_stats_per_100_poss_df)
-opponent_stats_per_game_df = year(opponent_stats_per_game_df)
-opponent_totals_df = year(opponent_totals_df)
-per_36_minutes_df = year(per_36_minutes_df)
-per_100_poss_df = year(per_100_poss_df)
-player_award_shares_df = year(player_award_shares_df)
-player_per_game_df = year(player_per_game_df)
-player_play_by_play_df = year(player_play_by_play_df)
-player_season_info_df = year(player_season_info_df)
-player_shooting_df = year(player_shooting_df)
-player_totals_df = year(player_totals_df)
-team_abbrev_df = year(team_abbrev_df)
-team_stats_per_100_poss_df = year(team_stats_per_100_poss_df)
-team_stats_per_game_df = year(team_stats_per_game_df)
-team_summaries_df = year(team_summaries_df)
-team_totals_df = year(team_totals_df)
+advanced_df = season_ending_year(advanced_df)
+all_star_selections_df = season_ending_year(all_star_selections_df)
+end_of_season_teams_voting_df = season_ending_year(end_of_season_teams_voting_df)
+end_of_season_teams_df = season_ending_year(end_of_season_teams_df)
+opponent_stats_per_100_poss_df = season_ending_year(opponent_stats_per_100_poss_df)
+opponent_stats_per_game_df = season_ending_year(opponent_stats_per_game_df)
+opponent_totals_df = season_ending_year(opponent_totals_df)
+per_36_minutes_df = season_ending_year(per_36_minutes_df)
+per_100_poss_df = season_ending_year(per_100_poss_df)
+player_award_shares_df = season_ending_year(player_award_shares_df)
+player_per_game_df = season_ending_year(player_per_game_df)
+player_play_by_play_df = season_ending_year(player_play_by_play_df)
+player_season_info_df = season_ending_year(player_season_info_df)
+player_shooting_df = season_ending_year(player_shooting_df)
+player_totals_df = season_ending_year(player_totals_df)
+team_abbrev_df = season_ending_year(team_abbrev_df)
+team_stats_per_100_poss_df = season_ending_year(team_stats_per_100_poss_df)
+team_stats_per_game_df = season_ending_year(team_stats_per_game_df)
+team_summaries_df = season_ending_year(team_summaries_df)
+team_totals_df = season_ending_year(team_totals_df)
+
+
 
 # saving changes to all files
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -149,26 +151,26 @@ team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 # adding season column to all dataframes, will be the last column
-advanced_df['season'] = advanced_df['year']
-all_star_selections_df['season'] = all_star_selections_df['year']
-end_of_season_teams_voting_df['season'] = end_of_season_teams_voting_df['year']
-end_of_season_teams_df['season'] = end_of_season_teams_df['year']
-opponent_stats_per_100_poss_df['season'] = opponent_stats_per_100_poss_df['year']
-opponent_stats_per_game_df['season'] = opponent_stats_per_game_df['year']
-opponent_totals_df['season'] = opponent_totals_df['year']
-per_36_minutes_df['season'] = per_36_minutes_df['year']
-per_100_poss_df['season'] = per_100_poss_df['year']
-player_award_shares_df['season'] = player_award_shares_df['year']
-player_per_game_df['season'] = player_per_game_df['year']
-player_play_by_play_df['season'] = player_play_by_play_df['year']
-player_season_info_df['season'] = player_season_info_df['year']
-player_shooting_df['season'] = player_shooting_df['year']
-player_totals_df['season'] = player_totals_df['year']
-team_abbrev_df['season'] = team_abbrev_df['year']
-team_stats_per_100_poss_df['season'] = team_stats_per_100_poss_df['year']
-team_stats_per_game_df['season'] = team_stats_per_game_df['year']
-team_summaries_df['season'] = team_summaries_df['year']
-team_totals_df['season'] = team_totals_df['year']
+advanced_df['season'] = advanced_df['season_ending_year']
+all_star_selections_df['season'] = all_star_selections_df['season_ending_year']
+end_of_season_teams_voting_df['season'] = end_of_season_teams_voting_df['season_ending_year']
+end_of_season_teams_df['season'] = end_of_season_teams_df['season_ending_year']
+opponent_stats_per_100_poss_df['season'] = opponent_stats_per_100_poss_df['season_ending_year']
+opponent_stats_per_game_df['season'] = opponent_stats_per_game_df['season_ending_year']
+opponent_totals_df['season'] = opponent_totals_df['season_ending_year']
+per_36_minutes_df['season'] = per_36_minutes_df['season_ending_year']
+per_100_poss_df['season'] = per_100_poss_df['season_ending_year']
+player_award_shares_df['season'] = player_award_shares_df['season_ending_year']
+player_per_game_df['season'] = player_per_game_df['season_ending_year']
+player_play_by_play_df['season'] = player_play_by_play_df['season_ending_year']
+player_season_info_df['season'] = player_season_info_df['season_ending_year']
+player_shooting_df['season'] = player_shooting_df['season_ending_year']
+player_totals_df['season'] = player_totals_df['season_ending_year']
+team_abbrev_df['season'] = team_abbrev_df['season_ending_year']
+team_stats_per_100_poss_df['season'] = team_stats_per_100_poss_df['season_ending_year']
+team_stats_per_game_df['season'] = team_stats_per_game_df['season_ending_year']
+team_summaries_df['season'] = team_summaries_df['season_ending_year']
+team_totals_df['season'] = team_totals_df['season_ending_year']
 
 
 # saving changes to all files
@@ -612,7 +614,7 @@ player_per_game_df['double_double_avg'] = [''] * len(player_per_game_df)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # checking to see what positions trb_per_game, ast_per_game, stl_per_game, blk_per_game, and pts_per_game are located at
 # result -> [28 29 30 31 34]  (ADD 1 TO EACH ELEMENT INDEX) -> [29 30 31 32 35]
-print(player_per_game_df.columns.get_indexer(['trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game', 'pts_per_game']))
+#print(player_per_game_df.columns.get_indexer(['trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game', 'pts_per_game']))
 # determine if a player have averged a double-double in a season via list comprehension, placing 'Yes' or 'No' values in double_double_avg column
 player_per_game_df['double_double_avg'] = ['Yes' 
                                            if x[29] >= 10.0 and x[30] >= 10.0 or 
@@ -662,30 +664,82 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # populating the stl_per_game and blk_per_game columns with the following ->
 #   N/A - Stat tracked as of the 1973-74 NBA Season;
 #   N/A - Stat tracked as of the 1973-74 ABA Season
-player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & \
+player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & \
     ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'stl_per_game'] = \
     'N/A - Stat tracked as of the 1973-74 NBA Season'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
-player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & \
+player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & \
     ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'blk_per_game'] = \
     'N/A - Stat tracked as of the 1973-74 NBA Season'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
-player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
+player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
                        'blk_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
-player_per_game_df.loc[(player_per_game_df['year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
+player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
                        'stl_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
-# birth_year updates - IN PROGRESS
+# =================================== #
+#                       IN PROGRESS
+# 1. create a column called calendar year -> datatype = int
+#       ['calendar_year'] = ['season_ending_year'].astype(int)
+# 2. fillna(0) method used to fill empty cells with '0' values in birth_year and age columns  
+# 3. ['birth_year'] = calendar year - age
+# =================================== #
+player_per_game_df['calendar_year'] = player_per_game_df['season_ending_year'].astype(int)
+player_play_by_play_df['calendar_year'] = player_play_by_play_df['season_ending_year'].astype(int)
+player_season_info_df['calendar_year'] = player_season_info_df['season_ending_year'].astype(int)
+player_shooting_df['calendar_year'] = player_shooting_df['season_ending_year'].astype(int)
+player_totals_df['calendar_year'] = player_totals_df['season_ending_year'].astype(int)
 
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+player_per_game_df['birth_year'] = player_per_game_df['birth_year'].fillna(0)
+player_play_by_play_df['birth_year'] = player_play_by_play_df['birth_year'].fillna(0)
+player_season_info_df['birth_year'] = player_season_info_df['birth_year'].fillna(0)
+player_shooting_df['birth_year'] = player_shooting_df['birth_year'].fillna(0)
+player_totals_df['birth_year'] = player_totals_df['birth_year'].fillna(0)
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+player_per_game_df['age'] = player_per_game_df['age'].fillna(0)
+player_play_by_play_df['age'] = player_play_by_play_df['age'].fillna(0)
+player_season_info_df['age'] = player_season_info_df['age'].fillna(0)
+player_shooting_df['age'] = player_shooting_df['age'].fillna(0)
+player_totals_df['age'] = player_totals_df['age'].fillna(0)
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+player_per_game_df['birth_year'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
+player_play_by_play_df['birth_year'] = player_play_by_play_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
+player_season_info_df['birth_year'] = player_season_info_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
+player_shooting_df['birth_year'] = player_shooting_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
+player_totals_df['birth_year'] = player_totals_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 
 # ============= #
@@ -777,7 +831,7 @@ def clutch_poy_winners(df):
     try:
         return df[(df['award'] == 'clutch_poy') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y']) ]
+                  (df['season_ending_year_x'] == df['season_ending_year_y']) ]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -790,7 +844,7 @@ def dpoy_winners(df):
     try:
         return df[(df['award'] == 'dpoy') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -803,7 +857,7 @@ def mip_winners(df):
     try:
         return df[(df['award'] == 'mip') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -816,7 +870,7 @@ def nba_mvp_winners(df):
     try:
         return df[(df['award'] == 'nba mvp') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -829,7 +883,7 @@ def nba_roy_winners(df):
     try:
         return df[(df['award'] == 'nba roy') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -842,7 +896,7 @@ def smoy_winners(df):
     try:
         return df[(df['award'] == 'smoy') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -855,7 +909,7 @@ def aba_mvp_winners(df):
     try:
         return df[(df['award'] == 'aba mvp') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -868,10 +922,11 @@ def aba_roy_winners(df):
     try:
         return df[(df['award'] == 'aba roy') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
+
 
 aba_roy_winners_df = aba_roy_winners(player_award_shares_and_player_per_game_merged_df)
 
@@ -1004,7 +1059,7 @@ def nba_mvp_ppg(df):
     try:
         return df[(df['award'] == 'nba mvp') & 
                   (df['winner'] == 'True') & 
-                  (df['year_x'] == df['year_y'])]
+                  (df['season_ending_year_x'] == df['season_ending_year_y'])]
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
@@ -1036,7 +1091,7 @@ top_10_nba_mvp_ppg_df = \
 
 #print(top_10_nba_mvp_ppg_df)
 # rename certain columns in top_5_nba_mvp_ppg_df
-top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
+top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'season_ending_year_x': 'season_ending_year',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
@@ -1044,7 +1099,7 @@ top_5_nba_mvp_ppg_df = top_5_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
 top_5_nba_mvp_ppg_df.to_excel('top_5_nba_mvp_ppg_df.xlsx', index=False)
 
 # rename certain columns in top_10_nba_mvp_ppg_df
-top_10_nba_mvp_ppg_df = top_10_nba_mvp_ppg_df.rename(columns={'year_x': 'year',
+top_10_nba_mvp_ppg_df = top_10_nba_mvp_ppg_df.rename(columns={'season_ending_year_x': 'season_ending_year',
                                                             'player_x': 'player',
                                                             'age_x': 'age',
                                                             'tm_x':'team'})
@@ -1133,7 +1188,7 @@ wilt_chamberlain_per_game_avgs_df.to_excel(
 #   (when they played in the same years only)
 bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df = pd.merge(bill_russell_per_game_avgs_df, 
                                                        wilt_chamberlain_per_game_avgs_df,
-                                                       on=['year'])
+                                                       on=['season_ending_year'])
 
 bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.to_excel(
     'bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx',
@@ -1215,7 +1270,7 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
 import matplotlib.pyplot as plt
 # top 5 nba mvp ppg
 x = top_5_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
-      top_5_nba_mvp_ppg_df['year'].astype(str) + ' Season \n' +\
+      top_5_nba_mvp_ppg_df['season_ending_year'].astype(str) + ' Season \n' +\
       top_5_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' Points Per Game' +\
       '\n'
 y = top_5_nba_mvp_ppg_df['pts_per_game']
@@ -1227,7 +1282,7 @@ plt.ylabel('POINTS PER GAME')
 plt.show()
 # top 10 nba mvp ppg
 x = top_10_nba_mvp_ppg_df['player'].astype(str) + '\n' +\
-      top_10_nba_mvp_ppg_df['year'].astype(str) + ' Season \n' +\
+      top_10_nba_mvp_ppg_df['season_ending_year'].astype(str) + ' Season \n' +\
       top_10_nba_mvp_ppg_df['pts_per_game'].astype(str) + ' PPG' +\
       '\n'
 y = top_10_nba_mvp_ppg_df['pts_per_game']
