@@ -27,7 +27,8 @@ for col_names in cols:
 
 print('')
 
-
+'''
+# TESTING PORTION = SUCCESS
 # Pete Smith
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
 player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
@@ -36,9 +37,9 @@ player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1470,'birth_ye
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-
-
 '''
+
+
 # =================#
 # groupby 
 # =================#
@@ -177,4 +178,3 @@ while True:
         continue
 
 # =========================== #
-'''
