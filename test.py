@@ -78,9 +78,10 @@ print(grouped.head(50).sort_values(by='team', ascending=True))
 players = list(player_per_game_df.values)
 index = 0
 
+'''
 # checking to see if players have an age of '0' in multiple datasets
 #   1_7_2025 - update, Index should now be an empty array [] given that all cells
-#                   now been populated accordingly
+#                   now been populated accordingly - COMPLETE
 def player(df):
     return df[df['age'] == 0]
 
@@ -92,8 +93,22 @@ print(player(player_season_info_df)\
       )
 print(player(player_totals_df)\
       .drop(player_totals_df.iloc[:, 4:], axis=1)
-      )
+      )'''
 
+# creating new dataframe with unique player ids
+unique_columns_df = pd.DataFrame()
+player_id = player_per_game_df.iloc[:,2]
+unique_columns_df['player_id'] = player_id.copy()
+player = player_per_game_df.iloc[:,3]
+unique_columns_df['player'] = player.copy()
+player = player_per_game_df.iloc[:,4]
+unique_columns_df['birth_year'] = player.copy()
+
+unique_columns_df.to_excel('test.xlsx', index=False)
+
+unique_columns_df = unique_columns_df.drop_duplicates()
+
+unique_columns_df.to_excel('test.xlsx', index=False)
 
 # defining a player class that corresponds to the 
 #   player_award_shares_and_player_per_game_merged dataframe
