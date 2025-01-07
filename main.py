@@ -692,10 +692,10 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #       ['calendar_year'] = ['season_ending_year'].astype(int) 
 # 2. fillna(0) method used to fill empty cells with '0' values in birth_year and age columns
 # 3. convert [birth_year] values to int datatype (player_per_game_df, player_season_info_df, player_totals_df) 
+# 4. ['birth_year'] = calendar year - age and then subtract 1 from ['birth_year'] column for accuracy purposes
 # 5. modify ['birth_year'] values that are initially '0' (player_per_game_df, player_season_info_df, player_totals_df) 
 # 6. ['age'] = ['calendar_year'] - ['birth_year'] (player_per_game_df, player_season_info_df, player_totals_df)
-# 4. ['birth_year'] = calendar year - age 
-# . player_career_info_df['birth_year'] - merge - LATER ON
+# 7. player_career_info_df['birth_year'] - merge - LATER ON
 # =================================== #
 
 # 1
@@ -728,21 +728,24 @@ player_play_by_play_df['age'] = player_play_by_play_df['age'].fillna(0)
 player_season_info_df['age'] = player_season_info_df['age'].fillna(0)
 player_shooting_df['age'] = player_shooting_df['age'].fillna(0)
 player_totals_df['age'] = player_totals_df['age'].fillna(0)
-
+# saving updates
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 # 3
-player_per_game_df['birth_year'] = player_per_game_df['birth_year'].astype(int) 
+player_per_game_df['birth_year'] = player_per_game_df['birth_year'].astype(int)
+player_play_by_play_df['birth_year'] = player_play_by_play_df['birth_year'].astype(int)  
 player_season_info_df['birth_year'] = player_season_info_df['birth_year'].astype(int) 
+player_shooting_df['birth_year'] = player_shooting_df['birth_year'].astype(int) 
 player_totals_df['birth_year'] = player_totals_df['birth_year'].astype(int) 
 # saving updates
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-
 # 4
 player_per_game_df['birth_year'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
 player_play_by_play_df['birth_year'] = player_play_by_play_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
@@ -755,7 +758,18 @@ player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-
+# subtracting 1 from birth_year value for accuracy 
+player_per_game_df['birth_year'] = player_per_game_df['birth_year'] - 1
+player_play_by_play_df['birth_year'] = player_play_by_play_df['birth_year'] - 1 
+player_season_info_df['birth_year'] = player_season_info_df['birth_year'] - 1
+player_shooting_df['birth_year'] = player_shooting_df['birth_year'] - 1
+player_totals_df['birth_year'] = player_totals_df['birth_year'] - 1 
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
 # 5
 # Pete Smith
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
@@ -902,6 +916,10 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
+
+# MORE PLAYERS TO HAVE THEIR BIRTH_YEAR VALUES UPDATED - IN PROGRESS
+
+
 # 6
 player_per_game_df['age'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
 player_season_info_df['age'] = player_season_info_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
@@ -920,18 +938,16 @@ player_career_info_df = pd.merge(player_career_info_df,
 # saving updates
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
+# sort values by player_x
+player_career_info_df = player_career_info_df.sort_values(by=['player_x'], ascending=True)
+# saving updates
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 '''
 # 7 
-# temporary merge
-player_career_info_df = pd.merge(player_career_info_df, 
-                                 player_per_game_df,
-                                 on=['player_id'],
-                                 how='left')
-# saving updates
-player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
-# sort values by player_id
-player_career_info_df = player_career_info_df.sort_values(by=['player_id_x'], ascending=True)
+
+# sort values by player_x
+player_career_info_df = player_career_info_df.sort_values(by=['player_x'], ascending=True)
 # saving updates
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # populate birth_year column 

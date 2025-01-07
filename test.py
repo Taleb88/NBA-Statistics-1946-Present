@@ -79,6 +79,8 @@ players = list(player_per_game_df.values)
 index = 0
 
 # checking to see if players have an age of '0' in multiple datasets
+#   1_7_2025 - update, Index should now be an empty array [] given that all cells
+#                   now been populated accordingly
 def player(df):
     return df[df['age'] == 0]
 
