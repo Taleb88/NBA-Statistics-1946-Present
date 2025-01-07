@@ -1,23 +1,23 @@
-seas_id  season_ending_year  player_id             player
-27044     5554                1973       1470         Pete Smith
-27676     4391                1971       1253  Clarence Brookins
-27830     4545                1971       1291         Jim Wilson
-28432     4293                1970       1231        Walter Byrd
-28443     4304                1970       1233    Wilbur Kirkland
-28516     3550                1969       1081      Charles Parks
-28893     3141                1968        904         Bill Allen
-28922     3170                1968        922       Bobby Wilson
-28948     3196                1968        939      Darrell Hardy
-28958     3206                1968        945   Dexter Westbrook
-28959     3207                1968        945   Dexter Westbrook
-28960     3208                1968        945   Dexter Westbrook
-28962     3210                1968        946           Dick Lee
-28979     3227                1968        952       Errol Palmer
-28996     3244                1968        956        Gary Turner
-29151     3399                1968       1023         R.B. Lynam
-29153     3401                1968       1025        Randy Stoll
-29162     3410                1968       1031       Richie Moore
-29234     3482                1968       1067      Willis Thomas
-29235     3483                1968       1067      Willis Thomas
-29236     3484                1968       1067      Willis Thomas
-32260      107                1947         89      Howie McCarty
+index    seas_id  season_ending_yea   player_id           player
+27044     5554                1973       1470         Pete Smith - COMPLETE
+27676     4391                1971       1253  Clarence Brookins - COMPLETE
+27830     4545                1971       1291         Jim Wilson - COMPLETE
+28432     4293                1970       1231        Walter Byrd - COMPLETE
+28443     4304                1970       1233    Wilbur Kirkland - COMPLETE
+28516     3550                1969       1081      Charles Parks - COMPLETE
+28893     3141                1968        904         Bill Allen - COMPLETE
+28922     3170                1968        922       Bobby Wilson - COMPLETE
+28948     3196                1968        939      Darrell Hardy - COMPLETE
+28958     3206                1968        945   Dexter Westbrook - COMPLETE
+28959     3207                1968        945   Dexter Westbrook - COMPLETE
+28960     3208                1968        945   Dexter Westbrook - COMPLETE
+28962     3210                1968        946           Dick Lee - COMPLETE
+28979     3227                1968        952       Errol Palmer - COMPLETE
+28996     3244                1968        956        Gary Turner - COMPLETE
+29151     3399                1968       1023         R.B. Lynam - COMPLETE
+29153     3401                1968       1025        Randy Stoll - COMPLETE
+29162     3410                1968       1031       Richie Moore - COMPLETE
+29234     3482                1968       1067      Willis Thomas - COMPLETE
+29235     3483                1968       1067      Willis Thomas - COMPLETE
+29236     3484                1968       1067      Willis Thomas - COMPLETE
+32260      107                1947         89      Howie McCarty - COMPLETE

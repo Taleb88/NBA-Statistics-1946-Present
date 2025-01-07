@@ -28,6 +28,17 @@ for col_names in cols:
 print('')
 
 
+# Pete Smith
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+
+'''
 # =================#
 # groupby 
 # =================#
@@ -71,13 +82,13 @@ def player(df):
     return df[df['age'] == 0]
 
 print(player(player_per_game_df)\
-      .drop(player_per_game_df.iloc[:, 5:], axis=1)
+      .drop(player_per_game_df.iloc[:, 4:], axis=1)
       )
 print(player(player_season_info_df)\
-      .drop(player_season_info_df.iloc[:, 5:], axis=1)
+      .drop(player_season_info_df.iloc[:, 4:], axis=1)
       )
 print(player(player_totals_df)\
-      .drop(player_totals_df.iloc[:, 5:], axis=1)
+      .drop(player_totals_df.iloc[:, 4:], axis=1)
       )
 
 
@@ -166,3 +177,4 @@ while True:
         continue
 
 # =========================== #
+'''

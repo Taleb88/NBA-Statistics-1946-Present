@@ -587,15 +587,15 @@ player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4140
 player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
 # Robert Williams -> Robert Williams III (id = 4667)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4667, 'player'] = 'Robert Williams III'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4667, 'player'] = 'Robert Williams III'
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
+per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
+player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
+player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4666, 'player'] = 'Robert Williams III'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
@@ -689,10 +689,13 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # =================================== #
 #                       IN PROGRESS
 # 1. create a column called calendar year -> datatype = int
-#       ['calendar_year'] = ['season_ending_year'].astype(int) (SUCCESS)
-# 2. fillna(0) method used to fill empty cells with '0' values in birth_year and age columns (SUCCESS)
-# 3. ['birth_year'] = calendar year - age (SUCCESS)
-# 4. modify ['birth_year'] values that are initially '0' and then ['age'] = ['birth_year']
+#       ['calendar_year'] = ['season_ending_year'].astype(int) 
+# 2. fillna(0) method used to fill empty cells with '0' values in birth_year and age columns
+# 3. convert [birth_year] values to int datatype (player_per_game_df, player_season_info_df, player_totals_df) 
+# 5. modify ['birth_year'] values that are initially '0' (player_per_game_df, player_season_info_df, player_totals_df) 
+# 6. ['age'] = ['calendar_year'] - ['birth_year'] (player_per_game_df, player_season_info_df, player_totals_df)
+# 4. ['birth_year'] = calendar year - age 
+# . player_career_info_df['birth_year'] - merge - LATER ON
 # =================================== #
 
 # 1
@@ -732,19 +735,387 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 # 3
+player_per_game_df['birth_year'] = player_per_game_df['birth_year'].astype(int) 
+player_season_info_df['birth_year'] = player_season_info_df['birth_year'].astype(int) 
+player_totals_df['birth_year'] = player_totals_df['birth_year'].astype(int) 
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# 4
 player_per_game_df['birth_year'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
 player_play_by_play_df['birth_year'] = player_play_by_play_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
 player_season_info_df['birth_year'] = player_season_info_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
 player_shooting_df['birth_year'] = player_shooting_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
 player_totals_df['birth_year'] = player_totals_df.apply(lambda row: row['calendar_year'] - row['age'], axis=1)
-
+# saving updates
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-# 4
 
+# 5
+# Pete Smith
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Clarence Brookins
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1253,'birth_year'] = 1946
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1253,'birth_year'] = 1946
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1253,'birth_year'] = 1946
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Jim Wilson
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1291,'birth_year'] = 1948
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1291,'birth_year'] = 1948
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1291,'birth_year'] = 1948
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Walter Byrd
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1231,'birth_year'] = 1942
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1231,'birth_year'] = 1942
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1231,'birth_year'] = 1942
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Wilbur Kirkland
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1233,'birth_year'] = 1947
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1233,'birth_year'] = 1947
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1233,'birth_year'] = 1947
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Charles Parks
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1081,'birth_year'] = 1946
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1081,'birth_year'] = 1946
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1081,'birth_year'] = 1946
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Bill Allen
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 904,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 904,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 904,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Bobby Wilson
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 922,'birth_year'] = 1944
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 922,'birth_year'] = 1944
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 922,'birth_year'] = 1944
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Darrell Hardy
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 939,'birth_year'] = 1944
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 939,'birth_year'] = 1944
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 939,'birth_year'] = 1944
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Dexter Westbrook
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 945,'birth_year'] = 1943
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 945,'birth_year'] = 1943
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 945,'birth_year'] = 1943
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Dick Lee (birthdate nor year found online, birth_year value is an educational estimate based on college stats)
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 946,'birth_year'] = 1943
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 946,'birth_year'] = 1943
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 946,'birth_year'] = 1943
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Errol Palmer
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 952,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 952,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 952,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Gary Turner
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 956,'birth_year'] = 1942
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 956,'birth_year'] = 1942
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 956,'birth_year'] = 1942
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# R.B. Lynam
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1023,'birth_year'] = 1944
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1023,'birth_year'] = 1944
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1023,'birth_year'] = 1944
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Randy Stoll
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1025,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1025,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1025,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Richie Moore
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1031,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1031,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1031,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Willis Thomas
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1067,'birth_year'] = 1937
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1067,'birth_year'] = 1937
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1067,'birth_year'] = 1937
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Howie McCarty
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 89,'birth_year'] = 1919
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 89,'birth_year'] = 1919
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 89,'birth_year'] = 1919
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# 6
+player_per_game_df['age'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+player_season_info_df['age'] = player_season_info_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+player_totals_df['age'] = player_totals_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+'''
+# 4
+# Pete Smith
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Clarence Brookins
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1253,'birth_year'] = 1946
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1253,'birth_year'] = 1946
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1253,'birth_year'] = 1946
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Jim Wilson
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1291,'birth_year'] = 1948
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1291,'birth_year'] = 1948
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1291,'birth_year'] = 1948
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Walter Byrd
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1231,'birth_year'] = 1942
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1231,'birth_year'] = 1942
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1231,'birth_year'] = 1942
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Wilbur Kirkland
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1233,'birth_year'] = 1947
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1233,'birth_year'] = 1947
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1233,'birth_year'] = 1947
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Charles Parks
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1081,'birth_year'] = 1946
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1081,'birth_year'] = 1946
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1081,'birth_year'] = 1946
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Bill Allen
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 904,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 904,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 904,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Bobby Wilson
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 922,'birth_year'] = 1944
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 922,'birth_year'] = 1944
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 922,'birth_year'] = 1944
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Darrell Hardy
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 939,'birth_year'] = 1944
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 939,'birth_year'] = 1944
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 939,'birth_year'] = 1944
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Dexter Westbrook
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 945,'birth_year'] = 1943
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 945,'birth_year'] = 1943
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 945,'birth_year'] = 1943
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Dick Lee (birthdate nor year found online, birth_year value is an educational estimate based on college stats)
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 946,'birth_year'] = 1943
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 946,'birth_year'] = 1943
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 946,'birth_year'] = 1943
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Errol Palmer
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 952,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 952,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 952,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Gary Turner
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 956,'birth_year'] = 1942
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 956,'birth_year'] = 1942
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 956,'birth_year'] = 1942
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# R.B. Lynam
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1023,'birth_year'] = 1944
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1023,'birth_year'] = 1944
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1023,'birth_year'] = 1944
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Randy Stoll
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1025,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1025,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1025,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Richie Moore
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1031,'birth_year'] = 1945
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1031,'birth_year'] = 1945
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1031,'birth_year'] = 1945
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Willis Thomas
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1067,'birth_year'] = 1937
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1067,'birth_year'] = 1937
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1067,'birth_year'] = 1937
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# Howie McCarty
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 89,'birth_year'] = 1919
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 89,'birth_year'] = 1919
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 89,'birth_year'] = 1919
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+'''
+
+'''
+# 5
+player_per_game_df['age'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+player_season_info_df['age'] = player_season_info_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+player_totals_df['age'] = player_totals_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+'''
+
+
+
+# TESTING ONLY
+# Pete Smith
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# 5
+player_per_game_df['age'] = player_per_game_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+player_season_info_df['age'] = player_season_info_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+player_totals_df['age'] = player_totals_df.apply(lambda row: row['calendar_year'] - row['birth_year'], axis=1)
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+
+
+'''
+# 6 
+# temporary merge
+player_career_info_df = pd.merge(player_career_info_df, 
+                                 player_per_game_df,
+                                 on=['player_id'],
+                                 how='left')
+# saving updates
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# sort values by player_id
+player_career_info_df = player_career_info_df.sort_values(by=['player_id_x'], ascending=True)
+# saving updates
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# populate birth_year column 
+player_career_info_df['birth_year_x'] = player_career_info_df['birth_year_y']
+# saving updates
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# drop columns right of last_season column
+player_career_info_df = player_career_info_df.drop(player_career_info_df.iloc[:, 7:], axis=1)
+# saving updates
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# edit column names by removing ('_x')
+'''
 
 # ============= #
 # merging certain dataframes 
