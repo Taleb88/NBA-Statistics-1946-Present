@@ -158,8 +158,8 @@ test_temp_df['X'] = test_temp_df.apply(lambda x: x['X'] - 1
 test_temp_df.to_excel('TEST_TEMP_TO_BE_REMOVED.xlsx', index=False)
 '''
 
-
-# - IN PROGRESS AS OF 1_8_2025
+'''
+# - COMPLETE AS OF 1_8_2025
 # creating new dataframe with unique player ids
 unique_columns_df = pd.DataFrame()
 player_id = player_per_game_df.iloc[:,2]
@@ -174,6 +174,28 @@ unique_columns_df.to_excel('test_1_8_2025.xlsx', index=False)
 unique_columns_df = unique_columns_df.drop_duplicates()
 
 unique_columns_df.to_excel('test.xlsx', index=False)
+'''
+
+# TESTING IN PROGRESS 
+# read player_per_game and do the following modifications
+player_per_game_df = pd.merge(player_per_game_df, player_career_info_df,
+                              how='outer', on='player')
+
+player_per_game_df.to_excel('new_tile_temp.xlsx')
+
+player_per_game_df.sort_values(by='player')
+
+player_per_game_df.to_excel('new_tile_temp.xlsx')
+
+# copy player_id values from player_id_y to player_id_x
+player_per_game_df['player_id_x'] = player_per_game_df['player_id_y']
+
+player_per_game_df.to_excel('new_tile_temp.xlsx')
+
+def missing_values(df):
+    return df[df['player_id_y'] == '']
+
+print(missing_values(player_per_game_df))
 
 
 '''

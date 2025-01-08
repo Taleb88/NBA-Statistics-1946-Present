@@ -651,7 +651,11 @@ player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 
-# BULK UPDATES OF PLAYER_ID VALUES IN PLAYER_PER_GAME_DF - IN PROGRESS
+# DATA CLEANUP FOR PLAYER PER GAME DATAFRAME - IN PROGRESS
+
+
+'''
+# BULK UPDATES OF PLAYER_ID VALUES IN PLAYER_PER_GAME_DF - NO LONGER IN PROCESS AS OF 2025_01_08
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 1
                                                             if x['player_id'] == 2541
                                                             or x['player_id'] == 2542
@@ -905,7 +909,8 @@ player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_i
                                                             axis = 1)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
+
+# -2-
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 1
                                                             if x['player_id'] == 2658
                                                             or x['player_id'] == 2765
@@ -980,7 +985,8 @@ player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_i
                                                             axis = 1)  
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
+
+# -3-
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 2
                                                             if x['player_id'] == 3493
                                                             or x['player_id'] == 4248
@@ -997,7 +1003,8 @@ player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_i
                                                             axis = 1) 
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
+
+# -4-
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 2
                                                             if x['player_id'] == 4393
                                                             or x['player_id'] == 4394
@@ -1013,7 +1020,8 @@ player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_i
                                                             axis = 1)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
+
+# -5-
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 4
                                                             if x['player_id'] == 4154
                                                             or x['player_id'] == 4606
@@ -1022,7 +1030,7 @@ player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_i
                                                             axis = 1)  
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
+# -6-
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 6
                                                             if x['player_id'] == 4255
                                                             or x['player_id'] == 4951
@@ -1030,14 +1038,14 @@ player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_i
                                                             axis = 1)  
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
+# -7-
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 99
                                                             if x['player_id'] == 4587
                                                             else x['player_id'] + 0,
                                                             axis = 1)  
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
+# -8-
 player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 86
                                                             if x['player_id'] == 4375
                                                             else x['player_id'] + 0,
@@ -1121,162 +1129,8 @@ player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_i
                                                             axis = 1) 
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+'''
 
-
-# DATA CLEANUP 2025_01_08
-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 1
-                                                            if x['player_id'] == 5049
-                                                            or x['player_id'] == 4151
-                                                            or x['player_id'] == 2659
-                                                            or x['player_id'] == 2766
-                                                            or x['player_id'] == 3180
-                                                            or x['player_id'] == 3242
-                                                            or x['player_id'] == 3263
-                                                            or x['player_id'] == 3310
-                                                            or x['player_id'] == 3463
-                                                            or x['player_id'] == 3502
-                                                            or x['player_id'] == 3614
-                                                            or x['player_id'] == 3814
-                                                            or x['player_id'] == 3824
-                                                            or x['player_id'] == 4706
-                                                            or x['player_id'] == 4782
-                                                            or x['player_id'] == 4859
-                                                            or x['player_id'] == 5104
-                                                            or x['player_id'] == 4747
-                                                            or x['player_id'] == 4750
-                                                            or x['player_id'] == 4954
-                                                            or x['player_id'] == 4957
-                                                            or x['player_id'] == 4960
-                                                            or x['player_id'] == 4961
-                                                            or x['player_id'] == 4962
-                                                            or x['player_id'] == 4963
-                                                            or x['player_id'] == 4967
-                                                            or x['player_id'] == 4968
-                                                            or x['player_id'] == 5050
-                                                            or x['player_id'] == 5051
-                                                            or x['player_id'] == 5052
-                                                            or x['player_id'] == 5053
-                                                            or x['player_id'] == 5054
-                                                            or x['player_id'] == 5055
-                                                            or x['player_id'] == 5056
-                                                            or x['player_id'] == 5057
-                                                            or x['player_id'] == 5058
-                                                            or x['player_id'] == 5059
-                                                            or x['player_id'] == 5060
-                                                            else x['player_id'] + 0,
-                                                            axis = 1) 
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 1
-                                                            if x['player_id'] == 4377
-                                                            or x['player_id'] == 4380
-                                                            or x['player_id'] == 4381
-                                                            or x['player_id'] == 4385
-                                                            or x['player_id'] == 4388
-                                                            or x['player_id'] == 4403
-                                                            or x['player_id'] == 4408
-                                                            or x['player_id'] == 4410
-                                                            or x['player_id'] == 4411
-                                                            or x['player_id'] == 4413
-                                                            or x['player_id'] == 4415
-                                                            or x['player_id'] == 4419
-                                                            or x['player_id'] == 4422
-                                                            or x['player_id'] == 4424
-                                                            or x['player_id'] == 4435
-                                                            or x['player_id'] == 4448
-                                                            or x['player_id'] == 4592
-                                                            or x['player_id'] == 4595
-                                                            or x['player_id'] == 4597
-                                                            or x['player_id'] == 4600
-                                                            or x['player_id'] == 4608
-                                                            or x['player_id'] == 4609
-                                                            or x['player_id'] == 4616
-                                                            or x['player_id'] == 4620
-                                                            or x['player_id'] == 4621
-                                                            or x['player_id'] == 4625
-                                                            or x['player_id'] == 4628
-                                                            or x['player_id'] == 4630
-                                                            or x['player_id'] == 4632
-                                                            or x['player_id'] == 4635
-                                                            or x['player_id'] == 4636
-                                                            or x['player_id'] == 4642
-                                                            or x['player_id'] == 4644
-                                                            or x['player_id'] == 4645
-                                                            or x['player_id'] == 4646
-                                                            or x['player_id'] == 4647
-                                                            or x['player_id'] == 4650
-                                                            or x['player_id'] == 4651
-                                                            or x['player_id'] == 4652
-                                                            or x['player_id'] == 4654
-                                                            or x['player_id'] == 4656
-                                                            or x['player_id'] == 4657
-                                                            or x['player_id'] == 4659
-                                                            or x['player_id'] == 4660
-                                                            or x['player_id'] == 4661
-                                                            or x['player_id'] == 4668
-                                                            or x['player_id'] == 4669
-                                                            or x['player_id'] == 4670
-                                                            or x['player_id'] == 4674
-                                                            or x['player_id'] == 4676
-                                                            or x['player_id'] == 4680
-                                                            or x['player_id'] == 4682                                                           
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df.loc[player_per_game_df['player'] == 'Jock Landale', 'player_id'] = 4962
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 2
-                                                            if x['player_id'] == 4959
-                                                            or x['player_id'] == 5048
-                                                            or x['player_id'] == 4396
-                                                            or x['player_id'] == 4400
-                                                            or x['player_id'] == 4393
-                                                            or x['player_id'] == 4248
-                                                            or x['player_id'] == 4249
-                                                            or x['player_id'] == 4250
-                                                            or x['player_id'] == 4945
-                                                            or x['player_id'] == 4950
-                                                            or x['player_id'] == 4399
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 1
-                                                            if x['player_id'] == 4382
-                                                            or x['player_id'] == 4412
-                                                            or x['player_id'] == 4610
-                                                            or x['player_id'] == 4622
-                                                            or x['player_id'] == 4637
-                                                            or x['player_id'] == 4648
-                                                            or x['player_id'] == 4653
-                                                            or x['player_id'] == 4658
-                                                            or x['player_id'] == 4662
-                                                            or x['player_id'] == 4671
-                                                            or x['player_id'] == 4961
-                                                            or x['player_id'] == 5050
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 1
-                                                            if x['player_id'] == 5049
-                                                            or x['player_id'] == 4960
-                                                            or x['player_id'] == 4647
-                                                            or x['player_id'] == 4652
-                                                            or x['player_id'] == 4661
-                                                            or x['player_id'] == 4670
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
 #===========================================================================================================#
