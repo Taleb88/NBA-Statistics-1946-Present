@@ -144,7 +144,7 @@ print(player_instance.info())
 #############################
 #     TESTING AREA ONLY     #
 #############################
-'''
+''' #COMPLETED AS OF 1_7_2025 AND 1_8_2025
 test_temp_df = pd.read_excel('TEST_TEMP_TO_BE_REMOVED.xlsx')
 
 test_temp_df['X'] = test_temp_df.apply(lambda x: x['X'] - 1 
@@ -158,6 +158,22 @@ test_temp_df['X'] = test_temp_df.apply(lambda x: x['X'] - 1
 test_temp_df.to_excel('TEST_TEMP_TO_BE_REMOVED.xlsx', index=False)
 '''
 
+
+# - IN PROGRESS AS OF 1_8_2025
+# creating new dataframe with unique player ids
+unique_columns_df = pd.DataFrame()
+player_id = player_per_game_df.iloc[:,2]
+unique_columns_df['player_id'] = player_id.copy()
+player = player_per_game_df.iloc[:,3]
+unique_columns_df['player'] = player.copy()
+player = player_per_game_df.iloc[:,4]
+unique_columns_df['birth_year'] = player.copy()
+
+unique_columns_df.to_excel('test_1_8_2025.xlsx', index=False)
+
+unique_columns_df = unique_columns_df.drop_duplicates()
+
+unique_columns_df.to_excel('test.xlsx', index=False)
 
 
 '''
