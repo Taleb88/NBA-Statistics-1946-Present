@@ -52,8 +52,6 @@ grouped = player_award_shares_df.groupby(['player', 'award']).agg(
 )
 print(grouped)
 
-grouped.to_excel('test.xlsx')
-
 print('')
 
 grouped = player_award_shares_df.groupby('player')['pts_won'].mean()
@@ -95,6 +93,8 @@ print(player(player_totals_df)\
       .drop(player_totals_df.iloc[:, 4:], axis=1)
       )'''
 
+'''
+# - COMPLETED AS OF 1_7_2025 - CAN BE ADDED TO main.py - *MUST BE LEFT COMMENTED OUT*
 # creating new dataframe with unique player ids
 unique_columns_df = pd.DataFrame()
 player_id = player_per_game_df.iloc[:,2]
@@ -109,6 +109,7 @@ unique_columns_df.to_excel('test.xlsx', index=False)
 unique_columns_df = unique_columns_df.drop_duplicates()
 
 unique_columns_df.to_excel('test.xlsx', index=False)
+'''
 
 # defining a player class that corresponds to the 
 #   player_award_shares_and_player_per_game_merged dataframe
@@ -139,6 +140,27 @@ player_instance = Player(name=value['player_x'],
 print(player_instance.info())
 
 
+
+#############################
+#     TESTING AREA ONLY     #
+#############################
+'''
+test_temp_df = pd.read_excel('TEST_TEMP_TO_BE_REMOVED.xlsx')
+
+test_temp_df['X'] = test_temp_df.apply(lambda x: x['X'] - 1 
+                                       if x['X'] == 100 
+                                       or x['X'] == 200 
+                                       or x['X'] == 300
+                                       or x['X'] == 400 
+                                       else x['X'] + 0, 
+                                       axis=1)
+
+test_temp_df.to_excel('TEST_TEMP_TO_BE_REMOVED.xlsx', index=False)
+'''
+
+
+
+'''
 # ===================== #
 # interacting with user 
 # ===================== #
@@ -176,7 +198,7 @@ year_values = list(player_per_game_df['year'].values)
 
 while True:
 
-    player.lower = input("enter player's name: ")
+    player = input("enter player's name: ")
     year = int(input("enter year: "))
 
     if player == 'exit':
@@ -195,3 +217,4 @@ while True:
         continue
 
 # =========================== #
+'''

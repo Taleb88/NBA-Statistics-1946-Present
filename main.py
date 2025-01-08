@@ -586,16 +586,6 @@ player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4140, 'player'
 player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
 player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-# Robert Williams -> Robert Williams III (id = 4666)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4666, 'player'] = 'Robert Williams III'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4666, 'player'] = 'Robert Williams III'
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
@@ -606,6 +596,39 @@ player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# save changes to appropriate sheets
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+
+# change Robert Williams player_id value to 4666 (1 df at a time) - IN PROGRESS
+player_per_game_df.loc[player_per_game_df['player_id'] == 4667, 'player_id'] = 4666 # player_per_game_df
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+
+# Ray Spalding (name must be added to datasets) - IN PROGRESS
+#   1 - modify name by player_id 
+#   2 - change player_id value from 4666 to 5281 (brand new id) based on old player_id and team
+player_per_game_df.loc[(player_per_game_df['player_id'] == 4666) & \
+                       ((player_per_game_df['tm'] == 'HOU') | \
+                        (player_per_game_df['tm'] == 'TOT') | \
+                            (player_per_game_df['tm'] == 'DAL') | \
+                            (player_per_game_df['tm'] == 'PHO')), 'player_id'] = 5281 # player_per_game_df
+
+# save changes to appropriate sheets
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+# change name of player from Robert Williams to Ray Spalding based on player_id = 5281
+player_per_game_df.loc[player_per_game_df['player_id'] == 5281, 'player'] == 'Ray Spalding'
+
+# save changes to appropriate sheets
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
 # Herm Klotz -> Red Klotz (id = 181)
 advanced_df.loc[advanced_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
 per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
@@ -626,6 +649,264 @@ player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+
+# BULK UPDATES OF PLAYER_ID VALUES IN PLAYER_PER_GAME_DF - IN PROGRESS
+player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 1
+                                                            if x['player_id'] == 2541
+                                                            or x['player_id'] == 2542
+                                                            or x['player_id'] == 2543
+                                                            or x['player_id'] == 2544
+                                                            or x['player_id'] == 2545
+                                                            or x['player_id'] == 2546
+                                                            or x['player_id'] == 2547
+                                                            or x['player_id'] == 2548
+                                                            or x['player_id'] == 2549
+                                                            or x['player_id'] == 2550
+                                                            or x['player_id'] == 2551
+                                                            or x['player_id'] == 2552
+                                                            or x['player_id'] == 2553
+                                                            or x['player_id'] == 2554
+                                                            or x['player_id'] == 2555
+                                                            or x['player_id'] == 2556
+                                                            or x['player_id'] == 2557
+                                                            or x['player_id'] == 2558
+                                                            or x['player_id'] == 2659
+                                                            or x['player_id'] == 2766
+                                                            or x['player_id'] == 3180
+                                                            or x['player_id'] == 3242
+                                                            or x['player_id'] == 3263
+                                                            or x['player_id'] == 3310
+                                                            or x['player_id'] == 3342
+                                                            or x['player_id'] == 3343
+                                                            or x['player_id'] == 3344
+                                                            or x['player_id'] == 3345
+                                                            or x['player_id'] == 3346
+                                                            or x['player_id'] == 3347
+                                                            or x['player_id'] == 3348
+                                                            or x['player_id'] == 3349
+                                                            or x['player_id'] == 3350
+                                                            or x['player_id'] == 3351
+                                                            or x['player_id'] == 3352
+                                                            or x['player_id'] == 3353
+                                                            or x['player_id'] == 3354
+                                                            or x['player_id'] == 3355
+                                                            or x['player_id'] == 3356
+                                                            or x['player_id'] == 3357
+                                                            or x['player_id'] == 3358
+                                                            or x['player_id'] == 3359
+                                                            or x['player_id'] == 3360
+                                                            or x['player_id'] == 3361
+                                                            or x['player_id'] == 3362
+                                                            or x['player_id'] == 3363
+                                                            or x['player_id'] == 3463
+                                                            or x['player_id'] == 3494
+                                                            or x['player_id'] == 3495
+                                                            or x['player_id'] == 3502
+                                                            or x['player_id'] == 3614
+                                                            or x['player_id'] == 3641
+                                                            or x['player_id'] == 3642
+                                                            or x['player_id'] == 3643
+                                                            or x['player_id'] == 3644
+                                                            or x['player_id'] == 3645
+                                                            or x['player_id'] == 3646
+                                                            or x['player_id'] == 3647
+                                                            or x['player_id'] == 3648
+                                                            or x['player_id'] == 3649
+                                                            or x['player_id'] == 3650
+                                                            or x['player_id'] == 3814
+                                                            or x['player_id'] == 3824
+                                                            or x['player_id'] == 3966
+                                                            or x['player_id'] == 3969
+                                                            or x['player_id'] == 3970
+                                                            or x['player_id'] == 3971
+                                                            or x['player_id'] == 3972
+                                                            or x['player_id'] == 3973
+                                                            or x['player_id'] == 3974
+                                                            or x['player_id'] == 3975
+                                                            or x['player_id'] == 3976
+                                                            or x['player_id'] == 3977
+                                                            or x['player_id'] == 3978
+                                                            or x['player_id'] == 3979
+                                                            or x['player_id'] == 3980
+                                                            or x['player_id'] == 3981
+                                                            or x['player_id'] == 4376
+                                                            or x['player_id'] == 4377
+                                                            or x['player_id'] == 4378
+                                                            or x['player_id'] == 4379
+                                                            or x['player_id'] == 4380
+                                                            or x['player_id'] == 4381
+                                                            or x['player_id'] == 4382
+                                                            or x['player_id'] == 4383
+                                                            or x['player_id'] == 4384
+                                                            or x['player_id'] == 4385
+                                                            or x['player_id'] == 4386
+                                                            or x['player_id'] == 4387
+                                                            or x['player_id'] == 4388
+                                                            or x['player_id'] == 4389
+                                                            or x['player_id'] == 4390
+                                                            or x['player_id'] == 4391
+                                                            or x['player_id'] == 4403
+                                                            or x['player_id'] == 4404
+                                                            or x['player_id'] == 4405
+                                                            or x['player_id'] == 4406
+                                                            or x['player_id'] == 4407
+                                                            or x['player_id'] == 4408
+                                                            or x['player_id'] == 4409
+                                                            or x['player_id'] == 4410
+                                                            or x['player_id'] == 4411
+                                                            or x['player_id'] == 4412
+                                                            or x['player_id'] == 4413
+                                                            or x['player_id'] == 4414
+                                                            or x['player_id'] == 4415
+                                                            or x['player_id'] == 4416
+                                                            or x['player_id'] == 4417
+                                                            or x['player_id'] == 4418
+                                                            or x['player_id'] == 4419
+                                                            or x['player_id'] == 4420
+                                                            or x['player_id'] == 4421
+                                                            or x['player_id'] == 4422
+                                                            or x['player_id'] == 4423
+                                                            or x['player_id'] == 4424
+                                                            or x['player_id'] == 4425
+                                                            or x['player_id'] == 4426
+                                                            or x['player_id'] == 4427
+                                                            or x['player_id'] == 4428
+                                                            or x['player_id'] == 4429
+                                                            or x['player_id'] == 4430
+                                                            or x['player_id'] == 4431
+                                                            or x['player_id'] == 4432
+                                                            or x['player_id'] == 4433
+                                                            or x['player_id'] == 4434
+                                                            or x['player_id'] == 4435
+                                                            or x['player_id'] == 4436
+                                                            or x['player_id'] == 4437
+                                                            or x['player_id'] == 4438
+                                                            or x['player_id'] == 4439
+                                                            or x['player_id'] == 4440
+                                                            or x['player_id'] == 4441
+                                                            or x['player_id'] == 4442
+                                                            or x['player_id'] == 4443
+                                                            or x['player_id'] == 4444
+                                                            or x['player_id'] == 4445
+                                                            or x['player_id'] == 4446
+                                                            or x['player_id'] == 4447
+                                                            or x['player_id'] == 4448
+                                                            or x['player_id'] == 4449
+                                                            or x['player_id'] == 4450
+                                                            or x['player_id'] == 4451
+                                                            or x['player_id'] == 4452
+                                                            or x['player_id'] == 4453
+                                                            or x['player_id'] == 4454
+                                                            or x['player_id'] == 4455
+                                                            or x['player_id'] == 4456
+                                                            or x['player_id'] == 4457
+                                                            or x['player_id'] == 4458
+                                                            or x['player_id'] == 4459
+                                                            or x['player_id'] == 4460
+                                                            or x['player_id'] == 4461
+                                                            or x['player_id'] == 4588
+                                                            or x['player_id'] == 4589
+                                                            or x['player_id'] == 4590
+                                                            or x['player_id'] == 4591
+                                                            or x['player_id'] == 4592
+                                                            or x['player_id'] == 4593
+                                                            or x['player_id'] == 4594
+                                                            or x['player_id'] == 4595
+                                                            or x['player_id'] == 4596
+                                                            or x['player_id'] == 4597
+                                                            or x['player_id'] == 4598
+                                                            or x['player_id'] == 4599
+                                                            or x['player_id'] == 4600
+                                                            or x['player_id'] == 4601
+                                                            or x['player_id'] == 4602
+                                                            or x['player_id'] == 4607
+                                                            or x['player_id'] == 4608
+                                                            or x['player_id'] == 4609
+                                                            or x['player_id'] == 4610
+                                                            or x['player_id'] == 4611
+                                                            or x['player_id'] == 4612
+                                                            or x['player_id'] == 4613
+                                                            or x['player_id'] == 4614
+                                                            or x['player_id'] == 4615
+                                                            or x['player_id'] == 4616
+                                                            or x['player_id'] == 4617
+                                                            or x['player_id'] == 4618
+                                                            or x['player_id'] == 4620
+                                                            or x['player_id'] == 4621
+                                                            or x['player_id'] == 4622
+                                                            or x['player_id'] == 4623
+                                                            or x['player_id'] == 4624
+                                                            or x['player_id'] == 4625
+                                                            or x['player_id'] == 4626
+                                                            or x['player_id'] == 4627
+                                                            or x['player_id'] == 4628
+                                                            or x['player_id'] == 4629
+                                                            or x['player_id'] == 4630
+                                                            or x['player_id'] == 4631
+                                                            or x['player_id'] == 4632
+                                                            or x['player_id'] == 4633
+                                                            or x['player_id'] == 4634
+                                                            or x['player_id'] == 4635
+                                                            or x['player_id'] == 4636
+                                                            or x['player_id'] == 4637
+                                                            or x['player_id'] == 4638
+                                                            or x['player_id'] == 4639
+                                                            or x['player_id'] == 4640
+                                                            or x['player_id'] == 4641
+                                                            or x['player_id'] == 4642
+                                                            or x['player_id'] == 4643
+                                                            or x['player_id'] == 4644
+                                                            or x['player_id'] == 4645
+                                                            or x['player_id'] == 4646
+                                                            or x['player_id'] == 4647
+                                                            or x['player_id'] == 4648
+                                                            or x['player_id'] == 4649
+                                                            or x['player_id'] == 4650
+                                                            or x['player_id'] == 4651
+                                                            or x['player_id'] == 4652
+                                                            or x['player_id'] == 4653
+                                                            or x['player_id'] == 4654
+                                                            or x['player_id'] == 4655
+                                                            or x['player_id'] == 4656
+                                                            or x['player_id'] == 4657
+                                                            or x['player_id'] == 4658
+                                                            or x['player_id'] == 4659
+                                                            or x['player_id'] == 4660
+                                                            or x['player_id'] == 4661
+                                                            or x['player_id'] == 4662
+                                                            or x['player_id'] == 4663
+                                                            or x['player_id'] == 4664
+                                                            or x['player_id'] == 4665
+                                                            or x['player_id'] == 4668
+                                                            or x['player_id'] == 4669
+                                                            or x['player_id'] == 4670
+                                                            or x['player_id'] == 4671
+                                                            or x['player_id'] == 4672
+                                                            or x['player_id'] == 4673
+                                                            or x['player_id'] == 4674
+                                                            or x['player_id'] == 4675
+                                                            or x['player_id'] == 4676
+                                                            or x['player_id'] == 4677
+                                                            or x['player_id'] == 4678
+                                                            or x['player_id'] == 4679
+                                                            or x['player_id'] == 4680
+                                                            or x['player_id'] == 4681
+                                                            or x['player_id'] == 4682
+                                                            or x['player_id'] == 4683
+                                                            or x['player_id'] == 4684
+                                                            or x['player_id'] == 4685
+                                                            or x['player_id'] == 4686
+                                                            or x['player_id'] == 4706
+                                                            or x['player_id'] == 4782
+                                                            or x['player_id'] == 4859
+                                                            or x['player_id'] == 5104
+                                                            else x['player_id'] + 0,
+                                                            axis = 1)
+
+  
+
+#===========================================================================================================#
 
 
 # CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
@@ -1087,11 +1368,7 @@ player_totals_df['age'] = player_totals_df.apply(lambda row: row['calendar_year'
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-# 7
-# creating new dataframe with unique player ids
-unique_columns_df = pd.DataFrame()
-player_id = player_career_info_df.iloc[:,2].unique()
-unique_columns_df['player_id'] = player_id.copy()
+# 7 - BEGINNING ON TBD
 
 
 # ============= #
