@@ -7,6 +7,8 @@ player_season_info_df = pd.read_csv('csv/Player Season Info.csv')
 player_shooting_df = pd.read_csv('csv/Player Shooting.csv')
 player_totals_df = pd.read_csv('csv/Player Totals.csv')
 
+player_per_game_df.to_excel('test.xlsx', index=False)
+
 
 #player per game
 cols = list(player_per_game_df.columns)
@@ -161,6 +163,29 @@ print(player_instance.info())
 #############################
 #     TESTING AREA ONLY     #
 #############################
+
+
+# 1-10-2025 - IN PROGRESS
+x = pd.read_excel('Player Per Game.xlsx')
+
+x = x['player'].replace('.0', '')
+
+x.to_excel('test.xlsx')
+
+
+'''
+x = x.sort_values(by=['player'], ascending=True)
+
+x.to_excel('test.xlsx')
+
+x['player'] = x['player'].replace('.0','',inplace=True)
+
+x.to_excel('test.xlsx')
+
+x['player_id'] = x['player'].factorize()[0] + 1
+
+x.to_excel('test.xlsx')
+'''
 
 
 

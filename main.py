@@ -1137,7 +1137,7 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
-# increment player_id based on player value ONLY in 
+# reset player_id to 0 for now
 #   player_per_game_df, player_season_info, player_totals_df
 player_per_game_df['player_id'] = 0
 player_season_info_df['player_id'] = 0
@@ -1146,13 +1146,27 @@ player_totals_df['player_id'] = 0
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# increment player_id based on player value ONLY 
+player_per_game_df['player_id'] = player_per_game_df['player'].factorize()[0] + 1
+player_season_info_df['player_id'] = player_season_info_df['player'].factorize()[0] + 1
+player_totals_df['player_id'] = player_totals_df['player'].factorize()[0] + 1
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+# remove birth_year from player values
+player_per_game_df['player'] = player_per_game_df['player'].astype(str).str[:-12]
+player_season_info_df['player'] = player_season_info_df['player'].astype(str).str[:-12]
+player_totals_df['player'] = player_totals_df['player'].astype(str).str[:-12]
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
-
-
-
-# recreate player_career_info_df (player_directory_df) and make sure to include following columns
+# recreate player_career_info_df (player_directory_1_df) and make sure to include following columns
 #   player_id, player, birth_year, hof, num_seasons, first_season, last_season
 #   this pertains to the player_per_game, player_season_info_, and player_totals dataframes ONLY
+
 
 # hof (use lambda and reference player_ids) num seasons = last_season - first_season
 
