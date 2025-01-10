@@ -7,9 +7,6 @@ player_season_info_df = pd.read_csv('csv/Player Season Info.csv')
 player_shooting_df = pd.read_csv('csv/Player Shooting.csv')
 player_totals_df = pd.read_csv('csv/Player Totals.csv')
 
-player_per_game_df.to_excel('test.xlsx', index=False)
-
-
 #player per game
 cols = list(player_per_game_df.columns)
 index = 0
@@ -164,14 +161,14 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
-
-# 1-10-2025 - IN PROGRESS
+'''
+# 1-10-2025 - SUCCESS
 x = pd.read_excel('Player Per Game.xlsx')
 
 x = x['player'].replace('.0', '')
 
 x.to_excel('test.xlsx')
-
+'''
 
 '''
 x = x.sort_values(by=['player'], ascending=True)
@@ -269,7 +266,7 @@ while True:
             break
 
         if player_id in player_values:
-            #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 4:28], axis=1)
+            player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 5:28], axis=1)
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 8:10], axis=1)
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
