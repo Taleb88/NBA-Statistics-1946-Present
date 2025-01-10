@@ -1,11 +1,12 @@
 # TESTING VARIOUS QUERIES
 import pandas as pd
 
-player_per_game_df = pd.read_excel('Player Per Game.xlsx')
-player_career_info_df = pd.read_excel('Player Career Info.xlsx')
-player_season_info_df = pd.read_excel('Player Season Info.xlsx')
-player_shooting_df = pd.read_excel('Player Shooting.xlsx')
-player_totals_df = pd.read_excel('Player Totals.xlsx')
+player_per_game_df = pd.read_csv('csv/Player Per Game.csv')
+player_career_info_df = pd.read_csv('csv/Player Career Info.csv')
+player_season_info_df = pd.read_csv('csv/Player Season Info.csv')
+player_shooting_df = pd.read_csv('csv/Player Shooting.csv')
+player_totals_df = pd.read_csv('csv/Player Totals.csv')
+
 
 #player per game
 cols = list(player_per_game_df.columns)
@@ -27,6 +28,7 @@ for col_names in cols:
 
 print('')
 
+
 '''
 # TESTING PORTION = SUCCESS
 # Pete Smith
@@ -45,7 +47,7 @@ player_totals_df.to_excel('Player Totals.xlsx', index=False)
 # =================#
 
 # player_award_shares_df
-player_award_shares_df = pd.read_excel('Player Award Shares.xlsx')
+player_award_shares_df = pd.read_csv('csv/Player Award Shares.csv')
 
 grouped = player_award_shares_df.groupby(['player', 'award']).agg(
     first_place_votes_avg = ('first', 'mean')
@@ -59,7 +61,7 @@ print(grouped)
 
 print('')
 # team_summaries_df
-team_summaries_df = pd.read_excel('Team Summaries.xlsx')
+team_summaries_df = pd.read_csv('csv/Team Summaries.csv')
 grouped = team_summaries_df.groupby('team').agg(
     player_age_average=('age', 'mean'),
     reg_season_win_average=('w', 'mean'),
@@ -75,6 +77,20 @@ print(grouped.head(50).sort_values(by='team', ascending=True))
 
 players = list(player_per_game_df.values)
 index = 0
+
+
+'''
+# TEST ONLY - 1-9-2025 = SUCCESS
+player_per_game_df['birth_year'] = player_per_game_df['birth_year'].fillna(0).astype(int)
+player_per_game_df.to_excel('test.xlsx', index=False)
+
+player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
+player_per_game_df.to_excel('test.xlsx', index=False)
+
+player_per_game_df['player'] = player_per_game_df['player'].astype(str) + " (b. " + player_per_game_df['birth_year'].astype(str) + ")"
+player_per_game_df.to_excel('test.xlsx', index=False)
+'''
+
 
 '''
 # checking to see if players have an age of '0' in multiple datasets
@@ -141,10 +157,24 @@ print(player_instance.info())
 
 
 
+
 #############################
 #     TESTING AREA ONLY     #
 #############################
-''' #COMPLETED AS OF 1_7_2025 AND 1_8_2025
+
+
+
+'''
+# COMPLETED AS OF 1-9-2025
+player_season_info_df['player'] = player_season_info_df['player'].astype(str) + " (b. " + player_season_info_df['birth_year'].astype(str) + ")"
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+'''
+
+''''
+#COMPLETED AS OF 1_7_2025 AND 1_8_2025
 test_temp_df = pd.read_excel('TEST_TEMP_TO_BE_REMOVED.xlsx')
 
 test_temp_df['X'] = test_temp_df.apply(lambda x: x['X'] - 1 
@@ -176,7 +206,8 @@ unique_columns_df = unique_columns_df.drop_duplicates()
 unique_columns_df.to_excel('test.xlsx', index=False)
 '''
 
-# TESTING IN PROGRESS 
+'''
+# TESTING IN PROGRESS - COMPLETE ON 1-8-2025
 # read player_per_game and do the following modifications
 player_per_game_df = pd.merge(player_per_game_df, player_career_info_df,
                               how='outer', on='player')
@@ -190,18 +221,41 @@ player_per_game_df.to_excel('new_tile_temp.xlsx')
 # copy player_id values from player_id_y to player_id_x
 player_per_game_df['player_id_x'] = player_per_game_df['player_id_y']
 
+
 player_per_game_df.to_excel('new_tile_temp.xlsx')
-
-def missing_values(df):
-    return df[df['player_id_y'] == '']
-
-print(missing_values(player_per_game_df))
-
-
 '''
+
+
 # ===================== #
 # interacting with user 
 # ===================== #
+
+# look up player in player_per_game_df via player_id
+print('\nlook up player via player_id in player_per_game_df')
+
+player_values = list(player_per_game_df['player_id'].values)
+
+while True:
+
+    try:
+        player_id = int(input("enter player_id: "))
+
+        if player_id == 'exit':
+            break
+
+        if player_id in player_values:
+            #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 4:28], axis=1)
+            #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 8:10], axis=1)
+            #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
+            #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
+            print(f"{player_per_game_df[(player_per_game_df['player_id'] == player_id)]}")
+        elif player_id not in player_values:
+            print('not exist')
+        elif not player_id.isnumeric():
+            print('please enter a numerical value only')
+    except ValueError:
+        print('please enter a number only')
+        continue
 
 # look up player in player_per_game_df
 print('\nlook up player (first name and last name required) in player_per_game_df')
@@ -255,4 +309,3 @@ while True:
         continue
 
 # =========================== #
-'''

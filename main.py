@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+import numpy as ny
 
 # read csv
 advanced_df = pd.read_csv('csv/advanced.csv')
@@ -524,616 +524,108 @@ player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
 # ==================== #
-# data cleanup - IN PROGRESS
+# data cleanup -
 # ==================== #
 # player name updates
+
 # Patrick Ewing -> Patrick ewing jr.
 advanced_df.loc[advanced_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+
 # Metta World Peace -> Metta Sandiford-Artest
 advanced_df.loc[advanced_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
 per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
 player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-# Marcus Morris -> Marcus Morris Sr. (different player_id values in datasets)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr..'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4042, 'player'] = 'Marcus Morris Sr.'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4042, 'player'] = 'Marcus Morris Sr.'
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4043, 'player'] = 'Marcus Morris Sr.'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4043, 'player'] = 'Marcus Morris Sr.'
-# Enes Freedom -> Enes Kanter Freedom (id = 4006)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-# Will Barton -> Will Barton III (id = 4140)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4140, 'player'] = 'Will Barton III'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
-per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
-player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
+# Enes Freedom -> Enes Kanter Freedom (id = 4006)
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+
 # save changes to appropriate sheets
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+advanced_df.to_excel('advanced.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
-per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
-player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
-
-# change Robert Williams player_id value to 4666 (1 df at a time) - IN PROGRESS
-player_per_game_df.loc[player_per_game_df['player_id'] == 4667, 'player_id'] = 4666 # player_per_game_df
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-
-# Ray Spalding (name must be added to datasets) - IN PROGRESS
-#   1 - modify name by player_id 
-#   2 - change player_id value from 4666 to 5281 (brand new id) based on old player_id and team
-player_per_game_df.loc[(player_per_game_df['player_id'] == 4666) & \
-                       ((player_per_game_df['tm'] == 'HOU') | \
-                        (player_per_game_df['tm'] == 'TOT') | \
-                            (player_per_game_df['tm'] == 'DAL') | \
-                            (player_per_game_df['tm'] == 'PHO')), 'player_id'] = 5281 # player_per_game_df
+# Will Barton -> Will Barton III (id = 4140)
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
 
 # save changes to appropriate sheets
+advanced_df.to_excel('advanced.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# change name of player from Robert Williams to Ray Spalding based on player_id = 5281
-player_per_game_df.loc[player_per_game_df['player_id'] == 5281, 'player'] == 'Ray Spalding'
-
-# save changes to appropriate sheets
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Herm Klotz -> Red Klotz (id = 181)
 advanced_df.loc[advanced_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
 per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
+#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
+#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
 player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 181, 'player'] = 'Red Klotz'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 181, 'player'] = 'Red Klotz'
 player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
+#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
 player_totals_df.loc[player_totals_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
+
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
 per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
-per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
-player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-
-
-# DATA CLEANUP FOR PLAYER PER GAME DATAFRAME - IN PROGRESS
-
-
-'''
-# BULK UPDATES OF PLAYER_ID VALUES IN PLAYER_PER_GAME_DF - NO LONGER IN PROCESS AS OF 2025_01_08
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 1
-                                                            if x['player_id'] == 2541
-                                                            or x['player_id'] == 2542
-                                                            or x['player_id'] == 2543
-                                                            or x['player_id'] == 2544
-                                                            or x['player_id'] == 2545
-                                                            or x['player_id'] == 2546
-                                                            or x['player_id'] == 2547
-                                                            or x['player_id'] == 2548
-                                                            or x['player_id'] == 2549
-                                                            or x['player_id'] == 2550
-                                                            or x['player_id'] == 2551
-                                                            or x['player_id'] == 2552
-                                                            or x['player_id'] == 2553
-                                                            or x['player_id'] == 2554
-                                                            or x['player_id'] == 2555
-                                                            or x['player_id'] == 2556
-                                                            or x['player_id'] == 2557
-                                                            or x['player_id'] == 2558
-                                                            or x['player_id'] == 2659
-                                                            or x['player_id'] == 2766
-                                                            or x['player_id'] == 3180
-                                                            or x['player_id'] == 3242
-                                                            or x['player_id'] == 3263
-                                                            or x['player_id'] == 3310
-                                                            or x['player_id'] == 3342
-                                                            or x['player_id'] == 3343
-                                                            or x['player_id'] == 3344
-                                                            or x['player_id'] == 3345
-                                                            or x['player_id'] == 3346
-                                                            or x['player_id'] == 3347
-                                                            or x['player_id'] == 3348
-                                                            or x['player_id'] == 3349
-                                                            or x['player_id'] == 3350
-                                                            or x['player_id'] == 3351
-                                                            or x['player_id'] == 3352
-                                                            or x['player_id'] == 3353
-                                                            or x['player_id'] == 3354
-                                                            or x['player_id'] == 3355
-                                                            or x['player_id'] == 3356
-                                                            or x['player_id'] == 3357
-                                                            or x['player_id'] == 3358
-                                                            or x['player_id'] == 3359
-                                                            or x['player_id'] == 3360
-                                                            or x['player_id'] == 3361
-                                                            or x['player_id'] == 3362
-                                                            or x['player_id'] == 3363
-                                                            or x['player_id'] == 3463
-                                                            or x['player_id'] == 3494
-                                                            or x['player_id'] == 3495
-                                                            or x['player_id'] == 3502
-                                                            or x['player_id'] == 3614
-                                                            or x['player_id'] == 3641
-                                                            or x['player_id'] == 3642
-                                                            or x['player_id'] == 3643
-                                                            or x['player_id'] == 3644
-                                                            or x['player_id'] == 3645
-                                                            or x['player_id'] == 3646
-                                                            or x['player_id'] == 3647
-                                                            or x['player_id'] == 3648
-                                                            or x['player_id'] == 3649
-                                                            or x['player_id'] == 3650
-                                                            or x['player_id'] == 3814
-                                                            or x['player_id'] == 3824
-                                                            or x['player_id'] == 3966
-                                                            or x['player_id'] == 3969
-                                                            or x['player_id'] == 3970
-                                                            or x['player_id'] == 3971
-                                                            or x['player_id'] == 3972
-                                                            or x['player_id'] == 3973
-                                                            or x['player_id'] == 3974
-                                                            or x['player_id'] == 3975
-                                                            or x['player_id'] == 3976
-                                                            or x['player_id'] == 3977
-                                                            or x['player_id'] == 3978
-                                                            or x['player_id'] == 3979
-                                                            or x['player_id'] == 3980
-                                                            or x['player_id'] == 3981
-                                                            or x['player_id'] == 4376
-                                                            or x['player_id'] == 4377
-                                                            or x['player_id'] == 4378
-                                                            or x['player_id'] == 4379
-                                                            or x['player_id'] == 4380
-                                                            or x['player_id'] == 4381
-                                                            or x['player_id'] == 4382
-                                                            or x['player_id'] == 4383
-                                                            or x['player_id'] == 4384
-                                                            or x['player_id'] == 4385
-                                                            or x['player_id'] == 4386
-                                                            or x['player_id'] == 4387
-                                                            or x['player_id'] == 4388
-                                                            or x['player_id'] == 4389
-                                                            or x['player_id'] == 4390
-                                                            or x['player_id'] == 4391
-                                                            or x['player_id'] == 4403
-                                                            or x['player_id'] == 4404
-                                                            or x['player_id'] == 4405
-                                                            or x['player_id'] == 4406
-                                                            or x['player_id'] == 4407
-                                                            or x['player_id'] == 4408
-                                                            or x['player_id'] == 4409
-                                                            or x['player_id'] == 4410
-                                                            or x['player_id'] == 4411
-                                                            or x['player_id'] == 4412
-                                                            or x['player_id'] == 4413
-                                                            or x['player_id'] == 4414
-                                                            or x['player_id'] == 4415
-                                                            or x['player_id'] == 4416
-                                                            or x['player_id'] == 4417
-                                                            or x['player_id'] == 4418
-                                                            or x['player_id'] == 4419
-                                                            or x['player_id'] == 4420
-                                                            or x['player_id'] == 4421
-                                                            or x['player_id'] == 4422
-                                                            or x['player_id'] == 4423
-                                                            or x['player_id'] == 4424
-                                                            or x['player_id'] == 4425
-                                                            or x['player_id'] == 4426
-                                                            or x['player_id'] == 4427
-                                                            or x['player_id'] == 4428
-                                                            or x['player_id'] == 4429
-                                                            or x['player_id'] == 4430
-                                                            or x['player_id'] == 4431
-                                                            or x['player_id'] == 4432
-                                                            or x['player_id'] == 4433
-                                                            or x['player_id'] == 4434
-                                                            or x['player_id'] == 4435
-                                                            or x['player_id'] == 4436
-                                                            or x['player_id'] == 4437
-                                                            or x['player_id'] == 4438
-                                                            or x['player_id'] == 4439
-                                                            or x['player_id'] == 4440
-                                                            or x['player_id'] == 4441
-                                                            or x['player_id'] == 4442
-                                                            or x['player_id'] == 4443
-                                                            or x['player_id'] == 4444
-                                                            or x['player_id'] == 4445
-                                                            or x['player_id'] == 4446
-                                                            or x['player_id'] == 4447
-                                                            or x['player_id'] == 4448
-                                                            or x['player_id'] == 4449
-                                                            or x['player_id'] == 4450
-                                                            or x['player_id'] == 4451
-                                                            or x['player_id'] == 4452
-                                                            or x['player_id'] == 4453
-                                                            or x['player_id'] == 4454
-                                                            or x['player_id'] == 4455
-                                                            or x['player_id'] == 4456
-                                                            or x['player_id'] == 4457
-                                                            or x['player_id'] == 4458
-                                                            or x['player_id'] == 4459
-                                                            or x['player_id'] == 4460
-                                                            or x['player_id'] == 4461
-                                                            or x['player_id'] == 4588
-                                                            or x['player_id'] == 4589
-                                                            or x['player_id'] == 4590
-                                                            or x['player_id'] == 4591
-                                                            or x['player_id'] == 4592
-                                                            or x['player_id'] == 4593
-                                                            or x['player_id'] == 4594
-                                                            or x['player_id'] == 4595
-                                                            or x['player_id'] == 4596
-                                                            or x['player_id'] == 4597
-                                                            or x['player_id'] == 4598
-                                                            or x['player_id'] == 4599
-                                                            or x['player_id'] == 4600
-                                                            or x['player_id'] == 4601
-                                                            or x['player_id'] == 4602
-                                                            or x['player_id'] == 4607
-                                                            or x['player_id'] == 4608
-                                                            or x['player_id'] == 4609
-                                                            or x['player_id'] == 4610
-                                                            or x['player_id'] == 4611
-                                                            or x['player_id'] == 4612
-                                                            or x['player_id'] == 4613
-                                                            or x['player_id'] == 4614
-                                                            or x['player_id'] == 4615
-                                                            or x['player_id'] == 4616
-                                                            or x['player_id'] == 4617
-                                                            or x['player_id'] == 4618
-                                                            or x['player_id'] == 4620
-                                                            or x['player_id'] == 4621
-                                                            or x['player_id'] == 4622
-                                                            or x['player_id'] == 4623
-                                                            or x['player_id'] == 4624
-                                                            or x['player_id'] == 4625
-                                                            or x['player_id'] == 4626
-                                                            or x['player_id'] == 4627
-                                                            or x['player_id'] == 4628
-                                                            or x['player_id'] == 4629
-                                                            or x['player_id'] == 4630
-                                                            or x['player_id'] == 4631
-                                                            or x['player_id'] == 4632
-                                                            or x['player_id'] == 4633
-                                                            or x['player_id'] == 4634
-                                                            or x['player_id'] == 4635
-                                                            or x['player_id'] == 4636
-                                                            or x['player_id'] == 4637
-                                                            or x['player_id'] == 4638
-                                                            or x['player_id'] == 4639
-                                                            or x['player_id'] == 4640
-                                                            or x['player_id'] == 4641
-                                                            or x['player_id'] == 4642
-                                                            or x['player_id'] == 4643
-                                                            or x['player_id'] == 4644
-                                                            or x['player_id'] == 4645
-                                                            or x['player_id'] == 4646
-                                                            or x['player_id'] == 4647
-                                                            or x['player_id'] == 4648
-                                                            or x['player_id'] == 4649
-                                                            or x['player_id'] == 4650
-                                                            or x['player_id'] == 4651
-                                                            or x['player_id'] == 4652
-                                                            or x['player_id'] == 4653
-                                                            or x['player_id'] == 4654
-                                                            or x['player_id'] == 4655
-                                                            or x['player_id'] == 4656
-                                                            or x['player_id'] == 4657
-                                                            or x['player_id'] == 4658
-                                                            or x['player_id'] == 4659
-                                                            or x['player_id'] == 4660
-                                                            or x['player_id'] == 4661
-                                                            or x['player_id'] == 4662
-                                                            or x['player_id'] == 4663
-                                                            or x['player_id'] == 4664
-                                                            or x['player_id'] == 4665
-                                                            or x['player_id'] == 4668
-                                                            or x['player_id'] == 4669
-                                                            or x['player_id'] == 4670
-                                                            or x['player_id'] == 4671
-                                                            or x['player_id'] == 4672
-                                                            or x['player_id'] == 4673
-                                                            or x['player_id'] == 4674
-                                                            or x['player_id'] == 4675
-                                                            or x['player_id'] == 4676
-                                                            or x['player_id'] == 4677
-                                                            or x['player_id'] == 4678
-                                                            or x['player_id'] == 4679
-                                                            or x['player_id'] == 4680
-                                                            or x['player_id'] == 4681
-                                                            or x['player_id'] == 4682
-                                                            or x['player_id'] == 4683
-                                                            or x['player_id'] == 4684
-                                                            or x['player_id'] == 4685
-                                                            or x['player_id'] == 4686
-                                                            or x['player_id'] == 4706
-                                                            or x['player_id'] == 4782
-                                                            or x['player_id'] == 4859
-                                                            or x['player_id'] == 5104
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-# -2-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 1
-                                                            if x['player_id'] == 2658
-                                                            or x['player_id'] == 2765
-                                                            or x['player_id'] == 3179
-                                                            or x['player_id'] == 3241
-                                                            or x['player_id'] == 3262
-                                                            or x['player_id'] == 3309
-                                                            or x['player_id'] == 3462
-                                                            or x['player_id'] == 3501
-                                                            or x['player_id'] == 3613
-                                                            or x['player_id'] == 3813
-                                                            or x['player_id'] == 3823
-                                                            or x['player_id'] == 4150
-                                                            or x['player_id'] == 4151
-                                                            or x['player_id'] == 4152
-                                                            or x['player_id'] == 4252
-                                                            or x['player_id'] == 4253
-                                                            or x['player_id'] == 4254
-                                                            or x['player_id'] == 4705
-                                                            or x['player_id'] == 4744
-                                                            or x['player_id'] == 4745
-                                                            or x['player_id'] == 4746
-                                                            or x['player_id'] == 4747
-                                                            or x['player_id'] == 4748
-                                                            or x['player_id'] == 4749
-                                                            or x['player_id'] == 4750
-                                                            or x['player_id'] == 4751
-                                                            or x['player_id'] == 4781
-                                                            or x['player_id'] == 4814
-                                                            or x['player_id'] == 4815
-                                                            or x['player_id'] == 4816
-                                                            or x['player_id'] == 4817
-                                                            or x['player_id'] == 4852
-                                                            or x['player_id'] == 4853
-                                                            or x['player_id'] == 4858
-                                                            or x['player_id'] == 4952
-                                                            or x['player_id'] == 4953
-                                                            or x['player_id'] == 4954
-                                                            or x['player_id'] == 4955
-                                                            or x['player_id'] == 4956
-                                                            or x['player_id'] == 4957
-                                                            or x['player_id'] == 4958
-                                                            or x['player_id'] == 4959
-                                                            or x['player_id'] == 4960
-                                                            or x['player_id'] == 4961
-                                                            or x['player_id'] == 4962
-                                                            or x['player_id'] == 4963
-                                                            or x['player_id'] == 4964
-                                                            or x['player_id'] == 4965
-                                                            or x['player_id'] == 4966
-                                                            or x['player_id'] == 4967
-                                                            or x['player_id'] == 4968
-                                                            or x['player_id'] == 4969
-                                                            or x['player_id'] == 4970
-                                                            or x['player_id'] == 4971
-                                                            or x['player_id'] == 5048
-                                                            or x['player_id'] == 5049
-                                                            or x['player_id'] == 5050
-                                                            or x['player_id'] == 5051
-                                                            or x['player_id'] == 5052
-                                                            or x['player_id'] == 5053
-                                                            or x['player_id'] == 5054
-                                                            or x['player_id'] == 5055
-                                                            or x['player_id'] == 5056
-                                                            or x['player_id'] == 5057
-                                                            or x['player_id'] == 5058
-                                                            or x['player_id'] == 5059
-                                                            or x['player_id'] == 5060
-                                                            or x['player_id'] == 5061
-                                                            or x['player_id'] == 5103
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-# -3-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 2
-                                                            if x['player_id'] == 3493
-                                                            or x['player_id'] == 4248
-                                                            or x['player_id'] == 4249
-                                                            or x['player_id'] == 4250
-                                                            or x['player_id'] == 4944
-                                                            or x['player_id'] == 4945
-                                                            or x['player_id'] == 4946
-                                                            or x['player_id'] == 4947
-                                                            or x['player_id'] == 4948
-                                                            or x['player_id'] == 4949
-                                                            or x['player_id'] == 4950
-                                                            else x['player_id'] + 0,
-                                                            axis = 1) 
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-# -4-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 2
-                                                            if x['player_id'] == 4393
-                                                            or x['player_id'] == 4394
-                                                            or x['player_id'] == 4395
-                                                            or x['player_id'] == 4396
-                                                            or x['player_id'] == 4397
-                                                            or x['player_id'] == 4398
-                                                            or x['player_id'] == 4399
-                                                            or x['player_id'] == 4400
-                                                            or x['player_id'] == 4401
-                                                            or x['player_id'] == 4402
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-# -5-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 4
-                                                            if x['player_id'] == 4154
-                                                            or x['player_id'] == 4606
-                                                            or x['player_id'] == 4818
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# -6-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 6
-                                                            if x['player_id'] == 4255
-                                                            or x['player_id'] == 4951
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# -7-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 99
-                                                            if x['player_id'] == 4587
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# -8-
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 86
-                                                            if x['player_id'] == 4375
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 22
-                                                            if x['player_id'] == 3341
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 18
-                                                            if x['player_id'] == 2540
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 16
-                                                            if x['player_id'] == 3965
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 10
-                                                            if x['player_id'] == 3640
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# IN PROGRESS (DAVIS BERTANS - TO BE RESEARCHED ACCORDINGLY)
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 9
-                                                            if x['player_id'] == 4392
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)  
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 3
-                                                            if x['player_id'] == 4251
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)    
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 8
-                                                            if x['player_id'] == 4752
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)    
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# IN PROGRESS
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] + 14
-                                                            if x['player_id'] == 5062
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 28
-                                                            if x['player_id'] == 4972
-                                                            else x['player_id'] + 0,
-                                                            axis = 1)   
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 1448
-                                                            if x['player_id'] == 4153
-                                                            else x['player_id'] + 0,
-                                                            axis = 1) 
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-# CONFIRMED
-player_per_game_df['player_id'] = player_per_game_df.apply(lambda x: x['player_id'] - 4162
-                                                            if x['player_id'] == 4619
-                                                            else x['player_id'] + 0,
-                                                            axis = 1) 
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-'''
-
-
-
-#===========================================================================================================#
 
 
 # CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
@@ -1215,7 +707,7 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
 # =================================== #
-#                       IN PROGRESS
+#                       COMPLETE
 # 1. create a column called calendar year -> datatype = int
 #       ['calendar_year'] = ['season_ending_year'].astype(int) - COMPLETE
 # 2. fillna(0) method used to fill empty cells with '0' values in birth_year and age columns - COMPLETE
@@ -1223,7 +715,6 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 # 4. ['birth_year'] = calendar year - age and then subtract 1 from ['birth_year'] column for accuracy purposes - COMPLETE
 # 5. modify ['birth_year'] values that are initially '0' (player_per_game_df, player_season_info_df, player_totals_df) - COMPLETE
 # 6. ['age'] = ['calendar_year'] - ['birth_year'] (player_per_game_df, player_season_info_df, player_totals_df) - COMPLETE
-# 7. player_career_info_df['birth_year'] - MUST POPULATE column accordingly
 # =================================== #
 
 # 1
@@ -1595,9 +1086,82 @@ player_totals_df['age'] = player_totals_df.apply(lambda row: row['calendar_year'
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
-# 7 - BEGINNING ON TBD
+
+# append birth_year values to player values in player_per_game_df, player_season_info, player_totals_df 
+player_per_game_df['player'] = player_per_game_df['player'].astype(str) + " (b. " + player_per_game_df['birth_year'].astype(str) + ")"
+player_season_info_df['player'] = player_season_info_df['player'].astype(str) + " (b. " + player_season_info_df['birth_year'].astype(str) + ")"
+player_totals_df['player'] = player_totals_df['player'].astype(str) + " (b. " + player_season_info_df['birth_year'].astype(str) + ")"
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
+player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
+player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# update Alperen Sengun player value to -> Alperen Şengün in player_per_game_df, player_season_info, player_totals_df
+#   (player_id = 4904)
+advanced_df.loc[advanced_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4904, 'player'] = 'Alperen Şengün'
+player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Şengün'
+
+# save changes to appropriate sheets
+advanced_df.to_excel('advanced.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# sort player values in by ASC order in player_per_game_df, player_season_info, player_totals_df
+player_per_game_df = player_per_game_df.sort_values(['player'], ascending=True)
+player_season_info_df = player_season_info_df.sort_values(['player'], ascending=True)
+player_totals_df = player_totals_df.sort_values(['player'], ascending=True)
+
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# increment player_id based on player value ONLY in 
+#   player_per_game_df, player_season_info, player_totals_df
+player_per_game_df['player_id'] = 0
+player_season_info_df['player_id'] = 0
+player_totals_df['player_id'] = 0
+# saving updates
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 
+
+
+# recreate player_career_info_df (player_directory_df) and make sure to include following columns
+#   player_id, player, birth_year, hof, num_seasons, first_season, last_season
+#   this pertains to the player_per_game, player_season_info_, and player_totals dataframes ONLY
+
+# hof (use lambda and reference player_ids) num seasons = last_season - first_season
+
+
+# LATER ON - CREATE SEPARATE PLAYER_INFO_BASED_ON_"NAME OF DF"_DF sheet/file - TBD
+
+# REMOVE (B."YEAR") FROM player values in affected dataframes
+
+''''
 # ============= #
 # merging certain dataframes 
 # ============= #
@@ -2339,5 +1903,6 @@ player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlight
                                                        subset=['stl_per_game', 'blk_per_game'])
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+'''
 
-# ============ #
+# ======================================================================== #
