@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as ny
+import time
 
 # read csv
 advanced_df = pd.read_csv('csv/advanced.csv')
@@ -47,6 +48,8 @@ team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
+start_time = time.time()
+print('read_csv and to_excel = success', ' - ', (time.time() - start_time))
 
 #print(player_award_shares_df)
 #print(player_per_game_df)
@@ -74,6 +77,8 @@ team_stats_per_100_poss_df['season'] = team_stats_per_100_poss_df['season'].asty
 team_stats_per_game_df['season'] = team_stats_per_game_df['season'].astype(str)
 team_summaries_df['season'] = team_summaries_df['season'].astype(str)
 team_totals_df['season'] = team_totals_df['season'].astype(str)
+
+print('conversion of season columns in all dataframes = success - ', (time.time() - start_time))
 
 # saving updated season value conversions to all files
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -523,32 +528,46 @@ player_career_info_df = season_column_names(player_career_info_df)
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
+print('first season and last season modifications = success - ', (time.time() - start_time))
+
+
 # ==================== #
 # data cleanup -
 # ==================== #
 # player name updates
 
 # Patrick Ewing -> Patrick ewing jr.
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+advanced_df.loc[advanced_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 #per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 #player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+player_per_game_df.loc[player_per_game_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+player_season_info_df.loc[player_season_info_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 #player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+player_totals_df.loc[player_totals_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
+
+# save changes to appropriate sheets
+advanced_df.to_excel('advanced.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Metta World Peace -> Metta Sandiford-Artest
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+advanced_df.loc[advanced_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_per_game_df.loc[player_per_game_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_season_info_df.loc[player_season_info_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_totals_df.loc[player_totals_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -562,15 +581,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Enes Freedom -> Enes Kanter Freedom (id = 4006)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+advanced_df.loc[advanced_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4006, 'player'] = 'Enes Kanter Freedom'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+player_totals_df.loc[player_totals_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -584,15 +603,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Will Barton -> Will Barton III (id = 4140)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+advanced_df.loc[advanced_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4140, 'player'] = 'Will Barton III'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4140, 'player'] = 'Will Barton III'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4140, 'player'] = 'Will Barton III'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+player_totals_df.loc[player_totals_df['player_id'] == 4140, 'player'] = 'Will Barton III'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -606,26 +625,37 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Herm Klotz -> Red Klotz (id = 181)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
+advanced_df.loc[advanced_df['player_id'] == 181, 'player'] = 'Red Klotz'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 181, 'player'] = 'Red Klotz'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 181, 'player'] = 'Red Klotz'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 181, 'player'] = 'Red Klotz'
+player_per_game_df.loc[player_per_game_df['player_id'] == 181, 'player'] = 'Red Klotz'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 181, 'player'] = 'Red Klotz'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 181, 'player'] = 'Red Klotz'
+player_season_info_df.loc[player_season_info_df['player_id'] == 181, 'player'] = 'Red Klotz'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 181, 'player'] = 'Red Klotz'
+player_totals_df.loc[player_totals_df['player_id'] == 181, 'player'] = 'Red Klotz'
+
+# save changes to appropriate sheets
+advanced_df.to_excel('advanced.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Alperen Sengun (player_id = 4904)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
+advanced_df.loc[advanced_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4904, 'player'] = 'Alperen Sengun'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
+player_totals_df.loc[player_totals_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -639,15 +669,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Sarunas Jaskievicius (player_id = 3640)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
+advanced_df.loc[advanced_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
+player_per_game_df.loc[player_per_game_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3640, 'player'] = 'Sarunas Jaskievicius'
+player_season_info_df.loc[player_season_info_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
+player_totals_df.loc[player_totals_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -661,15 +691,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Sarunas Marciulionis (player_id = 2540)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
+advanced_df.loc[advanced_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
+player_per_game_df.loc[player_per_game_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 2540, 'player'] = 'Sarunas Marciulionis'
+player_season_info_df.loc[player_season_info_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
+player_totals_df.loc[player_totals_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -683,15 +713,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Alex Abrines (player_id = 4375)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
+advanced_df.loc[advanced_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4375, 'player'] = 'Alex Abrines'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
+player_totals_df.loc[player_totals_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -705,15 +735,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Angel Delgado (player_id = 4587)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
+advanced_df.loc[advanced_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4587, 'player'] = 'Angel Delgado'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
+player_totals_df.loc[player_totals_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -727,15 +757,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zan Tabak (player_id = 2891)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
+advanced_df.loc[advanced_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
+player_per_game_df.loc[player_per_game_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 2891, 'player'] = 'Zan Tabak'
+player_season_info_df.loc[player_season_info_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
+player_totals_df.loc[player_totals_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -749,15 +779,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zarko Cabarkapa (player_id = 3493)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
+advanced_df.loc[advanced_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
+player_per_game_df.loc[player_per_game_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3493, 'player'] = 'Zarko Cabarkapa'
+player_season_info_df.loc[player_season_info_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
+player_totals_df.loc[player_totals_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -771,15 +801,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zarko Paspalj (player_id = 2559)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
+advanced_df.loc[advanced_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
+player_per_game_df.loc[player_per_game_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 2559, 'player'] = 'Zarko Paspalj'
+player_season_info_df.loc[player_season_info_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
+player_totals_df.loc[player_totals_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -793,15 +823,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zeljko Rebraca (player_id = 3364)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
+advanced_df.loc[advanced_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
+player_per_game_df.loc[player_per_game_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3364, 'player'] = 'Zeljko Rebraca'
+player_season_info_df.loc[player_season_info_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
+player_totals_df.loc[player_totals_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -815,15 +845,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Omer Asik (player_id = 3965)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
+advanced_df.loc[advanced_df['player_id'] == 3965, 'player'] = 'Omer Asik'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3965, 'player'] = 'Omer Asik'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 3965, 'player'] = 'Omer Asik'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 3965, 'player'] = 'Omer Asik'
+player_per_game_df.loc[player_per_game_df['player_id'] == 3965, 'player'] = 'Omer Asik'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3965, 'player'] = 'Omer Asik'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3965, 'player'] = 'Omer Asik'
+player_season_info_df.loc[player_season_info_df['player_id'] == 3965, 'player'] = 'Omer Asik'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 3965, 'player'] = 'Omer Asik'
+player_totals_df.loc[player_totals_df['player_id'] == 3965, 'player'] = 'Omer Asik'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -837,15 +867,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Dario Saric (player_id = 4390)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
+advanced_df.loc[advanced_df['player_id'] == 4390, 'player'] = 'Dario Saric'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4390, 'player'] = 'Dario Saric'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4390, 'player'] = 'Dario Saric'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4390, 'player'] = 'Dario Saric'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4390, 'player'] = 'Dario Saric'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4390, 'player'] = 'Dario Saric'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4390, 'player'] = 'Dario Saric'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4390, 'player'] = 'Dario Saric'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 4390, 'player'] = 'Dario Saric'
+player_totals_df.loc[player_totals_df['player_id'] == 4390, 'player'] = 'Dario Saric'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -859,15 +889,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Donte Greene (player_id = 3813)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
+advanced_df.loc[advanced_df['player_id'] == 3813, 'player'] = 'Donte Greene'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3813, 'player'] = 'Donte Greene'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 3813, 'player'] = 'Donte Greene'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 3813, 'player'] = 'Donte Greene'
+player_per_game_df.loc[player_per_game_df['player_id'] == 3813, 'player'] = 'Donte Greene'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3813, 'player'] = 'Donte Greene'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 3813, 'player'] = 'Donte Greene'
+player_season_info_df.loc[player_season_info_df['player_id'] == 3813, 'player'] = 'Donte Greene'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 3813, 'player'] = 'Donte Greene'
+player_totals_df.loc[player_totals_df['player_id'] == 3813, 'player'] = 'Donte Greene'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -881,15 +911,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Fernando Martin (player_id = 2303)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
+advanced_df.loc[advanced_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
+player_per_game_df.loc[player_per_game_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 2303, 'player'] = 'Fernando Martin'
+player_season_info_df.loc[player_season_info_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
+player_totals_df.loc[player_totals_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -903,15 +933,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Lester Quinones (player_id = 5078)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
+advanced_df.loc[advanced_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
+player_per_game_df.loc[player_per_game_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 5078, 'player'] = 'Lester Quinones'
+player_season_info_df.loc[player_season_info_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
+player_totals_df.loc[player_totals_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -925,15 +955,15 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Tomas Satoransky (player_id = 4454)
-advanced_df.loc[advanced_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
-per_36_minutes_df.loc[per_36_minutes_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
-#per_100_poss_df.loc[per_100_poss_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
-#player_career_info_df.loc[player_career_info_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
+advanced_df.loc[advanced_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 4454, 'player'] = 'Tomas Satoransky'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+#player_shooting_df.loc[player_shooting_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+player_totals_df.loc[player_totals_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
 
 # save changes to appropriate sheets
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -945,6 +975,9 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 #player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+
+print('player value modifications = success - ', (time.time() - start_time))
 
 
 # CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
@@ -1000,6 +1033,9 @@ player_per_game_df['triple_double_avg'] = ['Yes'
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
+print('creation of double-double and triple-double columns = success - ', (time.time() - start_time))
+
+
 # populating the stl_per_game and blk_per_game columns with the following ->
 #   N/A - Stat tracked as of the 1973-74 NBA Season;
 #   N/A - Stat tracked as of the 1973-74 ABA Season
@@ -1023,6 +1059,17 @@ player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1
                        'stl_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+print('updating stl_per_game and blk_per_game columns accordingly = success - ', (time.time() - start_time))
+
+
+'''
+#TEST ONLY 
+player_per_game_df['stl_per_game'] = ['N/A - Stat tracked as of the 1973-74 NBA Season'
+                                      if player_per_game_df[1] > 1974 
+                                      else ''
+                                      for x in player_per_game_df.itertuples()]
+'''
 
 
 # =================================== #
@@ -1470,9 +1517,13 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
+
+print('massive data cleanup in player_per_game_df, player_season_info)df, and player_totals_df = success - ', (time.time() - start_time))
+
+
 # recreate player_career_info_df (player_directory_1_df) and make sure to include following columns
 #   player_id, player, birth_year, hof, num_seasons, first_season, last_season
-#   this pertains to the player_per_game, player_season_info_, and player_totals dataframes ONLY
+#   this pertains to the player_per_game, player_season_info, and player_totals dataframes ONLY
 
 
 # hof (use lambda and reference player_ids) num seasons = last_season - first_season
@@ -1482,7 +1533,8 @@ player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # REMOVE (B."YEAR") FROM player values in affected dataframes
 
-''''
+
+'''
 # ============= #
 # merging certain dataframes 
 # ============= #

@@ -1,11 +1,34 @@
 # TESTING VARIOUS QUERIES
 import pandas as pd
 
-player_per_game_df = pd.read_csv('csv/Player Per Game.csv')
-player_career_info_df = pd.read_csv('csv/Player Career Info.csv')
-player_season_info_df = pd.read_csv('csv/Player Season Info.csv')
-player_shooting_df = pd.read_csv('csv/Player Shooting.csv')
-player_totals_df = pd.read_csv('csv/Player Totals.csv')
+#player_per_game_df = pd.read_csv('csv/Player Per Game.csv')
+#player_career_info_df = pd.read_csv('csv/Player Career Info.csv')
+#player_season_info_df = pd.read_csv('csv/Player Season Info.csv')
+#player_shooting_df = pd.read_csv('csv/Player Shooting.csv')
+#player_totals_df = pd.read_csv('csv/Player Totals.csv')
+
+advanced_df = pd.read_excel('advanced.xlsx')
+all_star_selections_df = pd.read_excel('All-Star Selections.xlsx')
+end_of_season_teams_voting_df = pd.read_excel('End of Season Teams (Voting).xlsx')
+end_of_season_teams_df = pd.read_excel('End of Season Teams.xlsx')
+opponent_stats_per_100_poss_df = pd.read_excel('Opponent Stats Per 100 Poss.xlsx')
+opponent_stats_per_game_df = pd.read_excel('Opponent Stats Per Game.xlsx')
+opponent_totals_df = pd.read_excel('Opponent Totals.xlsx')
+per_36_minutes_df = pd.read_excel('Per 36 Minutes.xlsx')
+per_100_poss_df = pd.read_excel('Per 100 Poss.xlsx')
+player_award_shares_df = pd.read_excel('Player Award Shares.xlsx')
+player_career_info_df = pd.read_excel('Player Career Info.xlsx')
+player_per_game_df = pd.read_excel('Player Per Game.xlsx')
+player_play_by_play_df = pd.read_excel('Player Play By Play.xlsx')
+player_season_info_df = pd.read_excel('Player Season Info.xlsx')
+player_shooting_df = pd.read_excel('Player Shooting.xlsx')
+player_totals_df = pd.read_excel('Player Totals.xlsx')
+team_abbrev_df = pd.read_excel('Team Abbrev.xlsx')
+team_stats_per_100_poss_df = pd.read_excel('Team Stats Per 100 Poss.xlsx')
+team_stats_per_game_df = pd.read_excel('Team Stats Per Game.xlsx')
+team_summaries_df = pd.read_excel('Team Summaries.xlsx')
+team_totals_df = pd.read_excel('Team Totals.xlsx')
+
 
 #player per game
 cols = list(player_per_game_df.columns)
@@ -73,9 +96,6 @@ print('')
 grouped = team_summaries_df.groupby('team').filter(lambda row: row['w'].mean() < 20.0)
 print(grouped.head(50).sort_values(by='team', ascending=True))
 
-
-players = list(player_per_game_df.values)
-index = 0
 
 
 '''
@@ -160,6 +180,15 @@ print(player_instance.info())
 #############################
 #     TESTING AREA ONLY     #
 #############################
+
+'''
+# 1-10-2025 - SUCCESS
+advanced_df = pd.read_excel('advanced.xlsx')
+
+advanced_df.loc[advanced_df['player_id'] == 1, 'player'] = 'Patrick Ewing Jr.'
+
+advanced_df.to_excel('test.xlsx', index=False)
+'''
 
 '''
 # 1-10-2025 - SUCCESS
@@ -252,6 +281,7 @@ player_per_game_df.to_excel('new_tile_temp.xlsx')
 # interacting with user 
 # ===================== #
 
+
 # look up player in player_per_game_df via player_id
 print('\nlook up player via player_id in player_per_game_df')
 
@@ -278,6 +308,7 @@ while True:
     except ValueError:
         print('please enter a number only')
         continue
+
 
 # look up player in player_per_game_df
 print('\nlook up player (first name and last name required) in player_per_game_df')
