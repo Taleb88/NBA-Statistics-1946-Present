@@ -1697,7 +1697,6 @@ player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player
 print('creation of true shooting percentage columns = success - ', (time.time() - start_time))
 
 
-'''
 # ================== #
 # filtering #
 # ================== #
@@ -2365,6 +2364,6 @@ player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlight
                                                        subset=['stl_per_game', 'blk_per_game'])
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-'''
+
 
 # ======================================================================== #
