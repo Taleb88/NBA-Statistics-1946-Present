@@ -1,5 +1,6 @@
 # TESTING VARIOUS QUERIES
 import pandas as pd
+import time
 
 #player_per_game_df = pd.read_csv('csv/Player Per Game.csv')
 #player_career_info_df = pd.read_csv('csv/Player Career Info.csv')
@@ -38,7 +39,8 @@ print('\nPlayer Per Game:')
 for col_names in cols:
     print(index, col_names)
     index += 1
-    
+
+
 # player career info
 cols = list(player_career_info_df.columns)
 index = 0
@@ -49,19 +51,6 @@ for col_names in cols:
     index += 1
 
 print('')
-
-
-'''
-# TESTING PORTION = SUCCESS
-# Pete Smith
-player_per_game_df.loc[player_per_game_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
-player_season_info_df.loc[player_season_info_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
-player_totals_df.loc[player_totals_df['player_id'].astype(int) == 1470,'birth_year'] = 1947
-# saving updates
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-player_totals_df.to_excel('Player Totals.xlsx', index=False)
-'''
 
 
 # =================#
@@ -180,6 +169,74 @@ print(player_instance.info())
 #############################
 #     TESTING AREA ONLY     #
 #############################
+'''
+# TEST ONLY 1-11-2025 - COMPLETE
+player_career_info_df = pd.DataFrame()
+player_id = player_per_game_df.iloc[:, 2]
+player_career_info_df['player_id'] = player_id.copy()
+player = player_per_game_df.iloc[:, 3]
+player_career_info_df['player'] = player.copy()
+birth_year = player_per_game_df.iloc[:, 4]
+player_career_info_df['birth_year'] = birth_year.copy()
+player_career_info_df['hof'] = ['No'] * len(player_per_game_df) # list comprehension to follow for Yes, No values
+num_seasons = player_per_game_df.iloc[:, 7]
+player_career_info_df['num_seasons'] = num_seasons.copy() # column to be converted to int
+first_season = player_per_game_df.iloc[:, 38]
+player_career_info_df['first_season'] = first_season.copy() # get min value later
+last_season = player_per_game_df.iloc[:, 38]
+player_career_info_df['last_season'] = last_season.copy() # get max value later
+# save file
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# min value for first_season
+player_career_info_df = \
+    player_career_info_df.groupby(['player_id', 'player', 'birth_year', 'hof']).agg({
+        'num_seasons': "max",
+        'first_season': "min", 
+        'last_season': "max"
+        }
+    ).reset_index()
+# save file
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+'''
+
+'''
+# TEST ONLY 1-11-2025 - COMPLETE
+import os
+
+file_path = 'Player Career Info.xlsx'
+
+if os.path.isfile(file_path):
+    os.remove(file_path)
+    print('removal of initial player_career_info.xlsx file = success')
+else:
+    print('player_career_info_df.xlsx does not exist')
+
+start_time = time.time()
+
+print('removal of player_career_info_df.xlsx accordingly = success - ', (time.time() - start_time))
+'''
+
+'''
+#TEST ONLY 1-10-2025; 1-11-2025 - COMPLETE
+#   WILL NOT MOVE FORWARD WITH THIS DUE TO ELSE STATEMENT REQUIRED
+player_per_game_df['stl_per_game'] = ['N/A - Stat tracked as of the 1973-74 NBA Season'
+                                      if x[1] < 1974 and (x[8] == 'NBA' or x[8] == 'BAA')
+                                      else ''
+                                      for x in player_per_game_df.itertuples()]
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+player_per_game_df['stl_per_game'] = ['N/A - Stat tracked as of the 1973-74 ABA Season'
+                                      if x[1] < 1974 and x[8] == 'ABA'
+                                      else ''
+                                      for x in player_per_game_df.itertuples()]
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+start_time = time.time()
+
+print('updating stl_per_game and blk_per_game columns accordingly = success - ', (time.time() - start_time))
+'''
 
 '''
 # 1-10-2025 - SUCCESS
@@ -224,7 +281,7 @@ player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 '''
 
-''''
+'''
 #COMPLETED AS OF 1_7_2025 AND 1_8_2025
 test_temp_df = pd.read_excel('TEST_TEMP_TO_BE_REMOVED.xlsx')
 
@@ -281,6 +338,25 @@ player_per_game_df.to_excel('new_tile_temp.xlsx')
 # interacting with user 
 # ===================== #
 
+# look up player in player_career_info_df
+print('\nlook up player (first name and last name required) in player_career_info_df')
+
+player_values = list(player_career_info_df['player'].values)
+
+while True:
+
+    player = input("enter player's name: ")
+
+    if player == 'exit':
+        break
+
+    if player in player_values:
+        print(f"{player_career_info_df[(player_career_info_df['player'] == player)]}")
+    elif player not in player_values:
+        print('not exist')
+    else:
+        continue
+
 
 # look up player in player_per_game_df via player_id
 print('\nlook up player via player_id in player_per_game_df')
@@ -292,11 +368,11 @@ while True:
     try:
         player_id = int(input("enter player_id: "))
 
-        if player_id == 'exit':
+        if player_id == -1:
             break
 
         if player_id in player_values:
-            player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 5:28], axis=1)
+            #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 5:28], axis=1)
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 8:10], axis=1)
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
@@ -323,10 +399,10 @@ while True:
         break
 
     if player in player_values:
-        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 4:28], axis=1)
-        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 8:10], axis=1)
-        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
-        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
+        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 4:28], axis=1)
+        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 8:10], axis=1)
+        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
+        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
         print(f"{player_per_game_df[(player_per_game_df['player'] == player)]}")
     elif player not in player_values:
         print('not exist')

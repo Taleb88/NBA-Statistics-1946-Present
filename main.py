@@ -201,136 +201,6 @@ team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 
-# define function that corrects season value 
-#   ex: 1956 -> 1955-56
-def season_values(df):
-    try:
-        return df.replace(to_replace={'season': {'1947': '1946-47', 
-                                                '1948': '1947-48',
-                                                '1949': '1948-49',
-                                                '1950': '1949-50',
-                                                '1951': '1950-51',
-                                                '1952': '1951-52',
-                                                '1953': '1952-53',
-                                                '1954': '1953-54',
-                                                '1955': '1954-55',
-                                                '1956': '1955-56',
-                                                '1957': '1956-57',
-                                                '1958': '1957-58',
-                                                '1959': '1958-59',
-                                                '1960': '1959-60',
-                                                '1961': '1960-61',
-                                                '1962': '1960-62',
-                                                '1963': '1962-63',
-                                                '1964': '1963-64',
-                                                '1965': '1964-65',
-                                                '1966': '1965-66',
-                                                '1967': '1966-67',
-                                                '1968': '1967-68',
-                                                '1969': '1968-69',
-                                                '1970': '1969-70',
-                                                '1971': '1970-71',
-                                                '1972': '1971-72',
-                                                '1973': '1972-73',
-                                                '1974': '1973-74',
-                                                '1975': '1974-75',
-                                                '1976': '1975-76',
-                                                '1977': '1976-77',
-                                                '1978': '1977-78',
-                                                '1979': '1978-79',
-                                                '1980': '1979-80',
-                                                '1981': '1980-81',
-                                                '1982': '1981-82',
-                                                '1983': '1982-83',
-                                                '1984': '1983-84',
-                                                '1985': '1984-85',
-                                                '1986': '1985-86',
-                                                '1987': '1986-87',
-                                                '1988': '1987-88',
-                                                '1989': '1988-89',
-                                                '1990': '1989-90',
-                                                '1991': '1990-91',
-                                                '1992': '1991-92',
-                                                '1993': '1992-93',
-                                                '1994': '1993-94',
-                                                '1995': '1994-95',
-                                                '1996': '1995-06',
-                                                '1997': '1996-97',
-                                                '1998': '1997-98',
-                                                '1999': '1998-99',
-                                                '2000': '1999-00',
-                                                '2001': '2000-01',
-                                                '2002': '2001-02',
-                                                '2003': '2002-03',
-                                                '2004': '2003-04',
-                                                '2005': '2004-05',
-                                                '2006': '2005-06',
-                                                '2007': '2006-07',
-                                                '2008': '2007-08',
-                                                '2009': '2008-09',
-                                                '2010': '2009-10',
-                                                '2011': '2010-11',
-                                                '2012': '2011-12',
-                                                '2013': '2012-13',
-                                                '2014': '2013-14',
-                                                '2015': '2014-15',
-                                                '2016': '2015-16',
-                                                '2017': '2016-17',
-                                                '2018': '2017-18',
-                                                '2019': '2018-19',
-                                                '2020': '2019-20',
-                                                '2021': '2020-21',
-                                                '2022': '2021-22',
-                                                '2023': '2022-23',
-                                                '2024': '2023-24',
-                                                '2025': '2024-25'
-                                                }}) 
-    except Exception as e:
-        print(f'caught {type(e)}: e \n'
-            f'cannot update values')
-
-advanced_df = season_values(advanced_df)
-all_star_selections_df = season_values(all_star_selections_df)
-end_of_season_teams_voting_df = season_values(end_of_season_teams_voting_df)
-end_of_season_teams_df = season_values(end_of_season_teams_df)
-opponent_stats_per_100_poss_df = season_values(opponent_stats_per_100_poss_df)
-opponent_stats_per_game_df = season_values(opponent_stats_per_game_df)
-opponent_totals_df = season_values(opponent_totals_df)
-per_36_minutes_df = season_values(per_36_minutes_df)
-per_100_poss_df = season_values(per_100_poss_df)
-player_award_shares_df = season_values(player_award_shares_df)
-player_per_game_df = season_values(player_per_game_df)
-player_play_by_play_df = season_values(player_play_by_play_df)
-player_season_info_df = season_values(player_season_info_df)
-player_shooting_df = season_values(player_shooting_df)
-player_totals_df = season_values(player_totals_df)
-team_abbrev_df = season_values(team_abbrev_df)
-team_stats_per_100_poss_df = season_values(team_stats_per_100_poss_df)
-team_stats_per_game_df = season_values(team_stats_per_game_df)
-team_summaries_df = season_values(team_summaries_df)
-team_totals_df = season_values(team_totals_df)
-
-# saving changes to all files
-advanced_df.to_excel('advanced.xlsx', index=False)
-all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
-end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
-end_of_season_teams_df.to_excel('End of Season Teams.xlsx', index=False)
-opponent_stats_per_100_poss_df.to_excel('Opponent Stats Per 100 Poss.xlsx', index=False)
-opponent_stats_per_game_df.to_excel('Opponent Stats Per Game.xlsx', index=False)
-opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
-per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
-per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
-player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
-player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
-player_totals_df.to_excel('Player Totals.xlsx', index=False)
-team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
-team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
-team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
-team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
-team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 # first_seas column in player_career_info_df
 def first_season_values(df):
@@ -514,6 +384,138 @@ player_career_info_df = last_season_values(player_career_info_df)
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
+print('first_season and last_season value modifications = success - ', (time.time() - start_time))
+
+# define function that corrects season value 
+#   ex: 1956 -> 1955-56
+def season_values(df):
+    try:
+        return df.replace(to_replace={'season': {'1947': '1946-47', 
+                                                '1948': '1947-48',
+                                                '1949': '1948-49',
+                                                '1950': '1949-50',
+                                                '1951': '1950-51',
+                                                '1952': '1951-52',
+                                                '1953': '1952-53',
+                                                '1954': '1953-54',
+                                                '1955': '1954-55',
+                                                '1956': '1955-56',
+                                                '1957': '1956-57',
+                                                '1958': '1957-58',
+                                                '1959': '1958-59',
+                                                '1960': '1959-60',
+                                                '1961': '1960-61',
+                                                '1962': '1960-62',
+                                                '1963': '1962-63',
+                                                '1964': '1963-64',
+                                                '1965': '1964-65',
+                                                '1966': '1965-66',
+                                                '1967': '1966-67',
+                                                '1968': '1967-68',
+                                                '1969': '1968-69',
+                                                '1970': '1969-70',
+                                                '1971': '1970-71',
+                                                '1972': '1971-72',
+                                                '1973': '1972-73',
+                                                '1974': '1973-74',
+                                                '1975': '1974-75',
+                                                '1976': '1975-76',
+                                                '1977': '1976-77',
+                                                '1978': '1977-78',
+                                                '1979': '1978-79',
+                                                '1980': '1979-80',
+                                                '1981': '1980-81',
+                                                '1982': '1981-82',
+                                                '1983': '1982-83',
+                                                '1984': '1983-84',
+                                                '1985': '1984-85',
+                                                '1986': '1985-86',
+                                                '1987': '1986-87',
+                                                '1988': '1987-88',
+                                                '1989': '1988-89',
+                                                '1990': '1989-90',
+                                                '1991': '1990-91',
+                                                '1992': '1991-92',
+                                                '1993': '1992-93',
+                                                '1994': '1993-94',
+                                                '1995': '1994-95',
+                                                '1996': '1995-06',
+                                                '1997': '1996-97',
+                                                '1998': '1997-98',
+                                                '1999': '1998-99',
+                                                '2000': '1999-00',
+                                                '2001': '2000-01',
+                                                '2002': '2001-02',
+                                                '2003': '2002-03',
+                                                '2004': '2003-04',
+                                                '2005': '2004-05',
+                                                '2006': '2005-06',
+                                                '2007': '2006-07',
+                                                '2008': '2007-08',
+                                                '2009': '2008-09',
+                                                '2010': '2009-10',
+                                                '2011': '2010-11',
+                                                '2012': '2011-12',
+                                                '2013': '2012-13',
+                                                '2014': '2013-14',
+                                                '2015': '2014-15',
+                                                '2016': '2015-16',
+                                                '2017': '2016-17',
+                                                '2018': '2017-18',
+                                                '2019': '2018-19',
+                                                '2020': '2019-20',
+                                                '2021': '2020-21',
+                                                '2022': '2021-22',
+                                                '2023': '2022-23',
+                                                '2024': '2023-24',
+                                                '2025': '2024-25'
+                                                }}) 
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+            f'cannot update values')
+
+advanced_df = season_values(advanced_df)
+all_star_selections_df = season_values(all_star_selections_df)
+end_of_season_teams_voting_df = season_values(end_of_season_teams_voting_df)
+end_of_season_teams_df = season_values(end_of_season_teams_df)
+opponent_stats_per_100_poss_df = season_values(opponent_stats_per_100_poss_df)
+opponent_stats_per_game_df = season_values(opponent_stats_per_game_df)
+opponent_totals_df = season_values(opponent_totals_df)
+per_36_minutes_df = season_values(per_36_minutes_df)
+per_100_poss_df = season_values(per_100_poss_df)
+player_award_shares_df = season_values(player_award_shares_df)
+player_per_game_df = season_values(player_per_game_df)
+player_play_by_play_df = season_values(player_play_by_play_df)
+player_season_info_df = season_values(player_season_info_df)
+player_shooting_df = season_values(player_shooting_df)
+player_totals_df = season_values(player_totals_df)
+team_abbrev_df = season_values(team_abbrev_df)
+team_stats_per_100_poss_df = season_values(team_stats_per_100_poss_df)
+team_stats_per_game_df = season_values(team_stats_per_game_df)
+team_summaries_df = season_values(team_summaries_df)
+team_totals_df = season_values(team_totals_df)
+
+# saving changes to all files
+advanced_df.to_excel('advanced.xlsx', index=False)
+all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
+end_of_season_teams_voting_df.to_excel('End of Season Teams (Voting).xlsx', index=False)
+end_of_season_teams_df.to_excel('End of Season Teams.xlsx', index=False)
+opponent_stats_per_100_poss_df.to_excel('Opponent Stats Per 100 Poss.xlsx', index=False)
+opponent_stats_per_game_df.to_excel('Opponent Stats Per Game.xlsx', index=False)
+opponent_totals_df.to_excel('Opponent Totals.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+player_award_shares_df.to_excel('Player Award Shares.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_100_poss_df.to_excel('Team Stats Per 100 Poss.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 # changing names of first_seas and second_seas columns in player_career_info_df respectively
 def season_column_names(df):
@@ -528,11 +530,11 @@ player_career_info_df = season_column_names(player_career_info_df)
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
-print('first season and last season modifications = success - ', (time.time() - start_time))
+print('changing of column names to first_season and last_season = success - ', (time.time() - start_time))
 
 
 # ==================== #
-# data cleanup -
+# data cleanup - IN PROGRESS
 # ==================== #
 # player name updates
 
@@ -544,7 +546,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3967, 'player'] = 'Patri
 player_per_game_df.loc[player_per_game_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_season_info_df.loc[player_season_info_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
-#player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
+player_shooting_df.loc[player_shooting_df['player_id'].astype(int) == 3967, 'player'] = 'Patrick Ewing Jr.'
 player_totals_df.loc[player_totals_df['player_id'] == 3967, 'player'] = 'Patrick Ewing Jr.'
 
 # save changes to appropriate sheets
@@ -555,7 +557,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Metta World Peace -> Metta Sandiford-Artest
@@ -566,7 +568,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3205, 'player'] = 'Metta
 player_per_game_df.loc[player_per_game_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
 player_season_info_df.loc[player_season_info_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
+player_shooting_df.loc[player_shooting_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
 player_totals_df.loc[player_totals_df['player_id'] == 3205, 'player'] = 'Metta Sandiford-Artest'
 
 # save changes to appropriate sheets
@@ -577,7 +579,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Enes Freedom -> Enes Kanter Freedom (id = 4006)
@@ -588,7 +590,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4006, 'player'] = 'Enes 
 player_per_game_df.loc[player_per_game_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
 player_season_info_df.loc[player_season_info_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
 player_totals_df.loc[player_totals_df['player_id'] == 4006, 'player'] = 'Enes Kanter Freedom'
 
 # save changes to appropriate sheets
@@ -599,7 +601,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Will Barton -> Will Barton III (id = 4140)
@@ -610,7 +612,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4140, 'player'] = 'Will 
 player_per_game_df.loc[player_per_game_df['player_id'] == 4140, 'player'] = 'Will Barton III'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4140, 'player'] = 'Will Barton III'
 player_season_info_df.loc[player_season_info_df['player_id'] == 4140, 'player'] = 'Will Barton III'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 4140, 'player'] = 'Will Barton III'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4140, 'player'] = 'Will Barton III'
 player_totals_df.loc[player_totals_df['player_id'] == 4140, 'player'] = 'Will Barton III'
 
 # save changes to appropriate sheets
@@ -621,7 +623,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Herm Klotz -> Red Klotz (id = 181)
@@ -654,7 +656,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4904, 'player'] = 'Alper
 player_per_game_df.loc[player_per_game_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
 player_season_info_df.loc[player_season_info_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
 player_totals_df.loc[player_totals_df['player_id'] == 4904, 'player'] = 'Alperen Sengun'
 
 # save changes to appropriate sheets
@@ -665,7 +667,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Sarunas Jaskievicius (player_id = 3640)
@@ -676,7 +678,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3640, 'player'] = 'Sarun
 player_per_game_df.loc[player_per_game_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
 player_season_info_df.loc[player_season_info_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
+player_shooting_df.loc[player_shooting_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
 player_totals_df.loc[player_totals_df['player_id'] == 3640, 'player'] = 'Sarunas Jaskievicius'
 
 # save changes to appropriate sheets
@@ -687,7 +689,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Sarunas Marciulionis (player_id = 2540)
@@ -698,7 +700,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2540, 'player'] = 'Sarun
 player_per_game_df.loc[player_per_game_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
 player_season_info_df.loc[player_season_info_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
+player_shooting_df.loc[player_shooting_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
 player_totals_df.loc[player_totals_df['player_id'] == 2540, 'player'] = 'Sarunas Marciulionis'
 
 # save changes to appropriate sheets
@@ -709,7 +711,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Alex Abrines (player_id = 4375)
@@ -720,7 +722,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4375, 'player'] = 'Alex 
 player_per_game_df.loc[player_per_game_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
 player_season_info_df.loc[player_season_info_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
 player_totals_df.loc[player_totals_df['player_id'] == 4375, 'player'] = 'Alex Abrines'
 
 # save changes to appropriate sheets
@@ -731,7 +733,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Angel Delgado (player_id = 4587)
@@ -742,7 +744,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4587, 'player'] = 'Angel
 player_per_game_df.loc[player_per_game_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
 player_season_info_df.loc[player_season_info_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
 player_totals_df.loc[player_totals_df['player_id'] == 4587, 'player'] = 'Angel Delgado'
 
 # save changes to appropriate sheets
@@ -753,7 +755,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zan Tabak (player_id = 2891)
@@ -764,7 +766,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2891, 'player'] = 'Zan T
 player_per_game_df.loc[player_per_game_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
 player_season_info_df.loc[player_season_info_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
+player_shooting_df.loc[player_shooting_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
 player_totals_df.loc[player_totals_df['player_id'] == 2891, 'player'] = 'Zan Tabak'
 
 # save changes to appropriate sheets
@@ -775,7 +777,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zarko Cabarkapa (player_id = 3493)
@@ -786,7 +788,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3493, 'player'] = 'Zarko
 player_per_game_df.loc[player_per_game_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
 player_season_info_df.loc[player_season_info_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
+player_shooting_df.loc[player_shooting_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
 player_totals_df.loc[player_totals_df['player_id'] == 3493, 'player'] = 'Zarko Cabarkapa'
 
 # save changes to appropriate sheets
@@ -797,7 +799,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zarko Paspalj (player_id = 2559)
@@ -808,7 +810,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2559, 'player'] = 'Zarko
 player_per_game_df.loc[player_per_game_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
 player_season_info_df.loc[player_season_info_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
+player_shooting_df.loc[player_shooting_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
 player_totals_df.loc[player_totals_df['player_id'] == 2559, 'player'] = 'Zarko Paspalj'
 
 # save changes to appropriate sheets
@@ -819,7 +821,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Zeljko Rebraca (player_id = 3364)
@@ -830,7 +832,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3364, 'player'] = 'Zeljk
 player_per_game_df.loc[player_per_game_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
 player_season_info_df.loc[player_season_info_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
+player_shooting_df.loc[player_shooting_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
 player_totals_df.loc[player_totals_df['player_id'] == 3364, 'player'] = 'Zeljko Rebraca'
 
 # save changes to appropriate sheets
@@ -841,7 +843,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Omer Asik (player_id = 3965)
@@ -852,7 +854,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3965, 'player'] = 'Omer 
 player_per_game_df.loc[player_per_game_df['player_id'] == 3965, 'player'] = 'Omer Asik'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3965, 'player'] = 'Omer Asik'
 player_season_info_df.loc[player_season_info_df['player_id'] == 3965, 'player'] = 'Omer Asik'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 3965, 'player'] = 'Omer Asik'
+player_shooting_df.loc[player_shooting_df['player_id'] == 3965, 'player'] = 'Omer Asik'
 player_totals_df.loc[player_totals_df['player_id'] == 3965, 'player'] = 'Omer Asik'
 
 # save changes to appropriate sheets
@@ -863,7 +865,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Dario Saric (player_id = 4390)
@@ -874,7 +876,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4390, 'player'] = 'Dario
 player_per_game_df.loc[player_per_game_df['player_id'] == 4390, 'player'] = 'Dario Saric'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4390, 'player'] = 'Dario Saric'
 player_season_info_df.loc[player_season_info_df['player_id'] == 4390, 'player'] = 'Dario Saric'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 4390, 'player'] = 'Dario Saric'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4390, 'player'] = 'Dario Saric'
 player_totals_df.loc[player_totals_df['player_id'] == 4390, 'player'] = 'Dario Saric'
 
 # save changes to appropriate sheets
@@ -885,7 +887,29 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# Dario Saric (letter accents)
+advanced_df.loc[advanced_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+per_36_minutes_df.loc[per_36_minutes_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+#per_100_poss_df.loc[per_100_poss_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+#player_career_info_df.loc[player_career_info_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+player_per_game_df.loc[player_per_game_df['player'] == 'Dario Šarić', 'player']= 'Dario Saric'
+#player_play_by_play_df.loc[player_play_by_play_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+player_season_info_df.loc[player_season_info_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+player_shooting_df.loc[player_shooting_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+player_totals_df.loc[player_totals_df['player'] == 'Dario Šarić', 'player'] = 'Dario Saric'
+
+# save changes to appropriate sheets
+advanced_df.to_excel('advanced.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Donte Greene (player_id = 3813)
@@ -896,7 +920,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 3813, 'player'] = 'Donte
 player_per_game_df.loc[player_per_game_df['player_id'] == 3813, 'player'] = 'Donte Greene'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 3813, 'player'] = 'Donte Greene'
 player_season_info_df.loc[player_season_info_df['player_id'] == 3813, 'player'] = 'Donte Greene'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 3813, 'player'] = 'Donte Greene'
+player_shooting_df.loc[player_shooting_df['player_id'] == 3813, 'player'] = 'Donte Greene'
 player_totals_df.loc[player_totals_df['player_id'] == 3813, 'player'] = 'Donte Greene'
 
 # save changes to appropriate sheets
@@ -907,7 +931,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Fernando Martin (player_id = 2303)
@@ -918,7 +942,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2303, 'player'] = 'Ferna
 player_per_game_df.loc[player_per_game_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
 player_season_info_df.loc[player_season_info_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
+player_shooting_df.loc[player_shooting_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
 player_totals_df.loc[player_totals_df['player_id'] == 2303, 'player'] = 'Fernando Martin'
 
 # save changes to appropriate sheets
@@ -929,7 +953,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Lester Quinones (player_id = 5078)
@@ -940,7 +964,7 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 5078, 'player'] = 'Leste
 player_per_game_df.loc[player_per_game_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
 player_season_info_df.loc[player_season_info_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
+player_shooting_df.loc[player_shooting_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
 player_totals_df.loc[player_totals_df['player_id'] == 5078, 'player'] = 'Lester Quinones'
 
 # save changes to appropriate sheets
@@ -951,7 +975,7 @@ per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 #player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
-#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 # Tomas Satoransky (player_id = 4454)
@@ -962,7 +986,29 @@ per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4454, 'player'] = 'Tomas
 player_per_game_df.loc[player_per_game_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
 #player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
 player_season_info_df.loc[player_season_info_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
-#player_shooting_df.loc[player_shooting_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+player_totals_df.loc[player_totals_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+
+# save changes to appropriate sheets
+advanced_df.to_excel('advanced.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
+# Tomas Satoransky (player_id = 4454)
+advanced_df.loc[advanced_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+player_per_game_df.loc[player_per_game_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+player_season_info_df.loc[player_season_info_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
+player_shooting_df.loc[player_shooting_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
 player_totals_df.loc[player_totals_df['player_id'] == 4454, 'player'] = 'Tomas Satoransky'
 
 # save changes to appropriate sheets
@@ -1037,7 +1083,7 @@ print('creation of double-double and triple-double columns = success - ', (time.
 
 
 # populating the stl_per_game and blk_per_game columns with the following ->
-#   N/A - Stat tracked as of the 1973-74 NBA Season;
+#   N/A - Stat tracked as of the 1973-74 NBA Season
 #   N/A - Stat tracked as of the 1973-74 ABA Season
 player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & \
     ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'stl_per_game'] = \
@@ -1061,16 +1107,6 @@ player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 print('updating stl_per_game and blk_per_game columns accordingly = success - ', (time.time() - start_time))
-
-
-'''
-#TEST ONLY 
-player_per_game_df['stl_per_game'] = ['N/A - Stat tracked as of the 1973-74 NBA Season'
-                                      if player_per_game_df[1] > 1974 
-                                      else ''
-                                      for x in player_per_game_df.itertuples()]
-'''
-
 
 # =================================== #
 #                       COMPLETE
@@ -1463,8 +1499,8 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
-player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
-player_per_game_df['player'] = player_per_game_df['player'].replace('.0','')
+player_season_info_df['player'] = player_season_info_df['player'].replace('.0','')
+player_totals_df['player'] = player_totals_df['player'].replace('.0','')
 # saving updates
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
@@ -1518,42 +1554,86 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 
-print('massive data cleanup in player_per_game_df, player_season_info)df, and player_totals_df = success - ', (time.time() - start_time))
+print('massive data cleanup in player_per_game_df, player_season_info_df, and player_totals_df = success - ', (time.time() - start_time))
 
 
+#                                       IN PROGRESS
 # recreate player_career_info_df (player_directory_1_df) and make sure to include following columns
 #   player_id, player, birth_year, hof, num_seasons, first_season, last_season
 #   this pertains to the player_per_game, player_season_info, and player_totals dataframes ONLY
 
+# removing initial player_career_info_df.xlsx prior to recreating it
+import os
 
-# hof (use lambda and reference player_ids) num seasons = last_season - first_season
+file_path = 'Player Career Info.xlsx'
+
+if os.path.isfile(file_path):
+    os.remove(file_path)
+    print('removal of initial player_career_info.xlsx file = success')
+else:
+    print('player_career_info_df.xlsx does not exist')
+
+start_time = time.time()
+
+print('removal of player_career_info_df.xlsx accordingly = success - ', (time.time() - start_time))
+
+# creating new version of player_career_info_df dataframe
+player_career_info_df = pd.DataFrame()
+player_id = player_per_game_df.iloc[:, 2]
+player_career_info_df['player_id'] = player_id.copy()
+player = player_per_game_df.iloc[:, 3]
+player_career_info_df['player'] = player.copy()
+birth_year = player_per_game_df.iloc[:, 4]
+player_career_info_df['birth_year'] = birth_year.copy()
+player_career_info_df['hof'] = ['No'] * len(player_per_game_df) # list comprehension to follow for Yes, No values
+num_seasons = player_per_game_df.iloc[:, 7]
+player_career_info_df['num_seasons'] = num_seasons.copy() # column to be converted to int
+first_season = player_per_game_df.iloc[:, 38]
+player_career_info_df['first_season'] = first_season.copy() # get min value later
+last_season = player_per_game_df.iloc[:, 38]
+player_career_info_df['last_season'] = last_season.copy() # get max value later
+# save file
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# min value for first_season
+player_career_info_df = \
+    player_career_info_df.groupby(['player_id', 'player', 'birth_year', 'hof']).agg({
+        'num_seasons': "max",
+        'first_season': "min", 
+        'last_season': "max"
+        }
+    ).reset_index()
+# save file
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# first_season_values updated in string format to display full values per column
 
 
-# LATER ON - CREATE SEPARATE PLAYER_INFO_BASED_ON_"NAME OF DF"_DF sheet/file - TBD
-
-# REMOVE (B."YEAR") FROM player values in affected dataframes
+print('recreation of player_career_info_df.xlsx = success - ', (time.time() - start_time))
 
 
-'''
+# hof values to be updated per player_id in player_career_info_df accordingly - TBD
+
+
+
 # ============= #
 # merging certain dataframes 
 # ============= #
 
+# UPDATES IN PROGRESS AS OF 1-11-2025
 # merging player award shares and player per game dataframes
 player_award_shares_and_player_per_game_merged_df = pd.merge(player_award_shares_df,
                                                           player_per_game_df, 
-                                                          on=['player_id'])
+                                                          on=['seas_id'])
 #print(player_award_shares_and_player_per_game_merged_df)
 player_award_shares_and_player_per_game_merged_df.\
     to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
+
 # merging player shooting and player totals dataframes
 player_shooting_and_player_totals_merged_df = pd.merge(player_shooting_df, 
                                                        player_totals_df,
-                                                       on=['player_id'])
+                                                       on=['seas_id'])
 #print(player_shooting_and_player_totals_merged_df)
 player_shooting_and_player_totals_merged_df.\
     to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
-
 
 # converting values to string format
 player_award_shares_and_player_per_game_merged_df['winner'] = \
@@ -1562,6 +1642,9 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 # changing 'nan' values to 'True' in Bobby Jones' case - 1983 sixth man of the year
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
+
+
+print('merging of player_award_shares_df and player_per_game_df = success - ', (time.time() - start_time))
 
 
 # ================== #
@@ -1611,6 +1694,10 @@ player_shooting_and_player_totals_merged_df['true_shooting_percentage'] = \
 player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
 
 
+print('creation of true shooting percentage columns = success - ', (time.time() - start_time))
+
+
+'''
 # ================== #
 # filtering #
 # ================== #
@@ -2227,11 +2314,13 @@ plt.title('Michael Jordan and Lebron James - BPG Career Avg')
 plt.xlabel('PLAYERS')
 plt.ylabel('Career BPG Averages')
 plt.show()
+'''
 
 
 # =============== #
 # conditional formatting 
 # =============== #
+'''
 def award_winners_highlighted(x):
     try:
         if x == 'True':
