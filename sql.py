@@ -4,11 +4,13 @@ import csv
 import sqlite3
 
 player_career_info_df = pd.read_excel('Player Career Info.xlsx')
-player_career_info_df.to_csv('player_career_info_01_05_2024.csv', index=False)
+player_career_info_df.to_csv('player_career_info.csv', index=False)
 
+'''
+# EXECUTED ON 1-12-2025
 try:
     # import csv 
-    with open('player_career_info_01_04_2024.csv', 'r', encoding='utf-8') as file:
+    with open('player_career_info.csv', 'r', encoding='utf-8') as file:
         dict_reader = csv.DictReader(file)
         player_data = [(x['player_id'],
                         x['player'],
@@ -21,7 +23,7 @@ try:
         print(player_data)
 
     # connect to db
-    conn = sqlite3.connect('player_career_info.db')
+    conn = sqlite3.connect('player_career_info_2025_01_12.db')
     cur = conn.cursor()
 
     # set up player_table in variable
@@ -51,6 +53,21 @@ try:
         print('data ingestion success')
 
     cur.close() # close db
+
+except sqlite3.Error as error:
+    print(f'error: ', error)
+'''
+
+# EXECUTED ON 1-12-2025 - QUERY TEST = SUCCESS
+try: 
+    # connect to db
+    conn = sqlite3.connect('player_career_info_2025_01_12.db')
+    cur = conn.cursor()
+
+    # display player table
+    cur.execute("SELECT * FROM player WHERE num_seasons >= 21 AND last_season <= 2025")
+    result = cur.fetchall()
+    print(result)
 
 except sqlite3.Error as error:
     print(f'error: ', error)

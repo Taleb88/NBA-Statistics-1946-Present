@@ -1812,6 +1812,9 @@ aba_roy_winners_df = aba_roy_winners(player_award_shares_and_player_per_game_mer
 aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
 
 
+print('filtering in certain tables = success - ', (time.time() - start_time))
+
+
 # =========== #
 # pivot tables - individual awards
 # =========== #
@@ -1932,7 +1935,6 @@ print(aba_roy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
-
 # nba mvp and top 10 highest scoring averages
 def nba_mvp_ppg(df):
     try:
@@ -2034,6 +2036,9 @@ aba_roy_pivot_table_df = aba_roy_pivot_table_df.\
     rename(columns={'player_x': 'player'})
 
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
+
+
+print('creation and modification of pivot tables = success - ', (time.time() - start_time))
 
 
 # ================= #
@@ -2141,6 +2146,9 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df[cols] = \
 
 michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
     to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx', index=False)
+
+
+print('creation of multiple dataframes for individual players = success - ', (time.time() - start_time))
 
 
 # ================== #
@@ -2313,13 +2321,15 @@ plt.title('Michael Jordan and Lebron James - BPG Career Avg')
 plt.xlabel('PLAYERS')
 plt.ylabel('Career BPG Averages')
 plt.show()
-'''
+
+
+print('development of charts = success - ', (time.time() - start_time))
 
 
 # =============== #
 # conditional formatting 
 # =============== #
-'''
+
 def award_winners_highlighted(x):
     try:
         if x == 'True':
@@ -2331,7 +2341,7 @@ def award_winners_highlighted(x):
 player_award_shares_and_player_per_game_merged_styled_df = (
     player_award_shares_and_player_per_game_merged_df.
     style.
-    applymap(award_winners_highlighted, subset=['winner'])
+    applymap(award_winners_highlighted)
 )
 
 player_award_shares_and_player_per_game_merged_styled_df.to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
@@ -2360,10 +2370,11 @@ def player_per_game_highlighted(x):
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
         
-player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlighted, 
-                                                       subset=['stl_per_game', 'blk_per_game'])
+player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlighted)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
+
+print('conditional formatting = success - ', (time.time() - start_time))
 
 # ======================================================================== #

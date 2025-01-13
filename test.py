@@ -154,7 +154,7 @@ class Player:
             print(f'caught {type(e)}: e \n'
                 f'cannot list results')
     
-value = player_award_shares_and_player_per_game_merged_df.iloc[5]
+value = player_award_shares_and_player_per_game_merged_df.iloc[0]
 
 player_instance = Player(name=value['player_x'], 
                          season_ending_year=value['season_ending_year_x'], 
@@ -169,6 +169,18 @@ print(player_instance.info())
 #############################
 #     TESTING AREA ONLY     #
 #############################
+
+'''
+# TEST ONLY 1-12-2025 - IN PROGRESS
+def player_per_game_highlighted(x):
+    if x == 'N/A - Stat tracked as of the 1973-74 NBA Season':
+        return 'background-color: yellow'
+
+player_per_game_df.style.apply(player_per_game_highlighted)
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+'''
+
 '''
 # TEST ONLY 1-11-2025 - COMPLETE
 player_career_info_df = pd.DataFrame()
