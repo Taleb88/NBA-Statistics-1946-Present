@@ -178,7 +178,7 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
-# TEST ONLY 1-13-2025 - IN PROGRESS
+# TEST ONLY 1-13-2025 - COMPLETE
 # web scraping from basketball-reference.com
 url = \
     pd.read_html('https://www.basketball-reference.com/awards/hof.html')
@@ -188,57 +188,72 @@ data = url
 print(len(data)) # how many tables there are on the basketball-reference.com
 print(data[0])
 
-df = url[0]
+hofers_list_df = url[0]
 
-df.to_excel('hofers.xlsx')
+hofers_list_df.to_excel('hofers.xlsx')
 
-cols = list(df.columns)
+cols = list(hofers_list_df.columns)
 index = 0
 
 for x in cols:
     print(index, x)
     index += 1
 
-df = pd.read_excel('hofers.xlsx', header=1) # removes first row of dataset
+hofers_list_df = pd.read_excel('hofers.xlsx', header=1) # removes first row of dataset
 
-df.to_excel('hofers.xlsx', index=False)
+hofers_list_df.to_excel('hofers.xlsx', index=False)
 
-print(df)
+print(hofers_list_df)
 print('')
+# rename column Name to Player
+hofers_list_df = hofers_list_df.rename(columns={'Name': 'player'}) 
 
-df = df.rename(columns={'Name': 'player'})
+hofers_list_df.to_excel('hofers.xlsx', index=False)
 
-df.to_excel('hofers.xlsx', index=False)
-
-print(df)
+print(hofers_list_df)
 print('')
+# remove first row
+hofers_list_df = hofers_list_df.iloc[1:]
 
-df = df.iloc[1:]
+hofers_list_df.to_excel('hofers.xlsx', index=False)
 
-df.to_excel('hofers.xlsx', index=False)
-
-print(df)
+print(hofers_list_df)
 print('')
+# filter out all rows that do not contain 'Player'
+hofers_list_df = hofers_list_df.loc[hofers_list_df['Category'] == 'Player']
 
-df = df.loc[df['Category'] == 'Player']
+hofers_list_df.to_excel('hofers.xlsx', index=False)
 
-df.to_excel('hofers.xlsx', index=False)
-
-print(df)
+print(hofers_list_df)
 print('')
-
+# array of words to be removed
 words_to_be_removed = ["WNBA", "Int'l", "/", "CBB Player", "Coach", "Exec", "Oly", "CBB Coach"]
-df['player'] = [' '.join([item for item in x.split(' ')[:2]
+hofers_list_df['player'] = [' '.join([item for item in x.split(' ')[:2]
                           if item not in words_to_be_removed])
-                          for x in df['player']]
+                          for x in hofers_list_df['player']]
 
-df.to_excel('hofers.xlsx', index=False)
+hofers_list_df.to_excel('hofers.xlsx', index=False)
 
-print(df)
+print(hofers_list_df)
+
+# TEST 1-14-2025 - IN PROGRESS
+
+# merge both player_career_info_df and hofers
+test = pd.merge(player_career_info_df,
+                hofers_list_df,
+                how='outer',
+                left_index=True,
+                right_index=True)
+
+test.to_excel('test.xlsx', index=False)
+# python pandas simple xlookup/vlookup version
+test['hof_updated'] = test['player_x'].isin(test['player_y'])
+
+test.to_excel('test.xlsx', index=False)
 
 
 '''
-# TEST ONLY 1-12-2025 - IN PROGRESS
+# TEST ONLY 1-12-2025 - COMPLETE - WILL NOT USE
 def player_per_game_highlighted(x):
     if x == 'N/A - Stat tracked as of the 1973-74 NBA Season':
         return 'background-color: yellow'
