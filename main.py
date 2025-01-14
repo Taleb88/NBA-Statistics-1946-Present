@@ -1611,6 +1611,7 @@ print('recreation of player_career_info_df.xlsx = success - ', (time.time() - st
 
 
 # hof values to be updated per player_id in player_career_info_df accordingly - TBD
+#   to be done via list comprehension
 
 
 

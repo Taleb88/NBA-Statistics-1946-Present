@@ -85,6 +85,14 @@ print('')
 grouped = team_summaries_df.groupby('team').filter(lambda row: row['w'].mean() < 20.0)
 print(grouped.head(50).sort_values(by='team', ascending=True))
 
+print('')
+
+# new york knicks - 50-win seasons
+team_summaries_df.loc[(team_summaries_df['team'] == 'New York Knicks') & 
+                          (team_summaries_df['w'] > 50)]
+print(team_summaries_df)
+print('')
+
 
 
 '''
@@ -169,6 +177,65 @@ print(player_instance.info())
 #############################
 #     TESTING AREA ONLY     #
 #############################
+
+# TEST ONLY 1-13-2025 - IN PROGRESS
+# web scraping from basketball-reference.com
+url = \
+    pd.read_html('https://www.basketball-reference.com/awards/hof.html')
+
+data = url
+
+print(len(data)) # how many tables there are on the basketball-reference.com
+print(data[0])
+
+df = url[0]
+
+df.to_excel('hofers.xlsx')
+
+cols = list(df.columns)
+index = 0
+
+for x in cols:
+    print(index, x)
+    index += 1
+
+df = pd.read_excel('hofers.xlsx', header=1) # removes first row of dataset
+
+df.to_excel('hofers.xlsx', index=False)
+
+print(df)
+print('')
+
+df = df.rename(columns={'Name': 'player'})
+
+df.to_excel('hofers.xlsx', index=False)
+
+print(df)
+print('')
+
+df = df.iloc[1:]
+
+df.to_excel('hofers.xlsx', index=False)
+
+print(df)
+print('')
+
+df = df.loc[df['Category'] == 'Player']
+
+df.to_excel('hofers.xlsx', index=False)
+
+print(df)
+print('')
+
+words_to_be_removed = ["WNBA", "Int'l", "/", "CBB Player", "Coach", "Exec", "Oly", "CBB Coach"]
+df['player'] = [' '.join([item for item in x.split(' ')[:2]
+                          if item not in words_to_be_removed])
+                          for x in df['player']]
+
+df.to_excel('hofers.xlsx', index=False)
+
+print(df)
+
 
 '''
 # TEST ONLY 1-12-2025 - IN PROGRESS
