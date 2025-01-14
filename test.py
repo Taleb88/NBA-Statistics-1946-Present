@@ -178,6 +178,8 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
+
+
 '''
 # TEST ONLY 1-13-2025 - COMPLETE - SUCCESS
 # web scraping from basketball-reference.com
@@ -238,6 +240,7 @@ hofers_list_df.to_excel('hofers.xlsx', index=False)
 print(hofers_list_df)
 '''
 
+'''
 # TEST 1-14-2025 - COMPLETE - SUCCESS
 hofers_list_df = pd.read_excel('hofers.xlsx')
 # merge both player_career_info_df and hofers
@@ -254,9 +257,7 @@ player_career_info_df['hof'] = player_career_info_df['player_x'].isin(player_car
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 print(player_career_info_df)
-
-
-
+'''
 
 '''
 # TEST ONLY 1-12-2025 - COMPLETE - WILL NOT USE

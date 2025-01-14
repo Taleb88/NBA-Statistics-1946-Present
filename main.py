@@ -1625,17 +1625,32 @@ player_career_info_df['hof'] = player_career_info_df['player_x'].isin(player_car
 # save changes
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # change True values to "Yes"
-player_career_info_df = player_career_info_df['hof'].replace('TRUE', 'Yes')
+player_career_info_df['hof'] = player_career_info_df['hof'].replace('TRUE', 'Yes')
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # change True values to "Yes"
-player_career_info_df = player_career_info_df['hof'].replace('FALSE', 'No')
+player_career_info_df['hof'] = player_career_info_df['hof'].replace('FALSE', 'No')
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
 print('updating hof values accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
 
 
-# further update of hof values with conditions (TO BE TESTED MANUALLY AND AUTOMATED)
+# removing extra columns in player_career_info_df
+player_career_info_df = \
+    player_career_info_df.drop(player_career_info_df.iloc[:,7:21], axis=1)
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# renaming column from player_x back to player
+player_career_info_df = player_career_info_df.rename(columns={'player_x': 'player'})
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+
+print('updating hof values accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
+
+
+# update hof values further
+
 
 
 # ============= #
