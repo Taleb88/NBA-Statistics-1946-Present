@@ -178,7 +178,8 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
-# TEST ONLY 1-13-2025 - COMPLETE
+'''
+# TEST ONLY 1-13-2025 - COMPLETE - SUCCESS
 # web scraping from basketball-reference.com
 url = \
     pd.read_html('https://www.basketball-reference.com/awards/hof.html')
@@ -235,21 +236,26 @@ hofers_list_df['player'] = [' '.join([item for item in x.split(' ')[:2]
 hofers_list_df.to_excel('hofers.xlsx', index=False)
 
 print(hofers_list_df)
+'''
 
-# TEST 1-14-2025 - IN PROGRESS
-
+# TEST 1-14-2025 - COMPLETE - SUCCESS
+hofers_list_df = pd.read_excel('hofers.xlsx')
 # merge both player_career_info_df and hofers
-test = pd.merge(player_career_info_df,
+player_career_info_df = pd.merge(player_career_info_df,
                 hofers_list_df,
                 how='outer',
                 left_index=True,
                 right_index=True)
 
-test.to_excel('test.xlsx', index=False)
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # python pandas simple xlookup/vlookup version
-test['hof_updated'] = test['player_x'].isin(test['player_y'])
+player_career_info_df['hof'] = player_career_info_df['player_x'].isin(player_career_info_df['player_y'])
 
-test.to_excel('test.xlsx', index=False)
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+print(player_career_info_df)
+
+
 
 
 '''
@@ -427,7 +433,7 @@ player_per_game_df['player_id_x'] = player_per_game_df['player_id_y']
 player_per_game_df.to_excel('new_tile_temp.xlsx')
 '''
 
-
+'''
 # ===================== #
 # interacting with user 
 # ===================== #
@@ -532,3 +538,4 @@ while True:
         continue
 
 # =========================== #
+'''

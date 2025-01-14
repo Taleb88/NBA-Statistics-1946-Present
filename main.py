@@ -1610,9 +1610,32 @@ player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 print('recreation of player_career_info_df.xlsx = success - ', (time.time() - start_time))
 
 
-# hof values to be updated per player_id in player_career_info_df accordingly - TBD
-#   to be done via list comprehension
+# hof values to be updated accordingly
+hofers_list_df = pd.read_excel('hofers.xlsx')
+# merge both player_career_info_df and hofers temporarily
+player_career_info_df = pd.merge(player_career_info_df,
+                hofers_list_df,
+                how='outer',
+                left_index=True,
+                right_index=True)
+# save changes
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# python pandas simple xlookup/vlookup version checking if player is in hof - evaluates to TRUE or FALSE
+player_career_info_df['hof'] = player_career_info_df['player_x'].isin(player_career_info_df['player_y'])
+# save changes
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# change True values to "Yes"
+player_career_info_df = player_career_info_df['hof'].replace('TRUE', 'Yes')
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+# change True values to "Yes"
+player_career_info_df = player_career_info_df['hof'].replace('FALSE', 'No')
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
+
+print('updating hof values accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
+
+
+# further update of hof values with conditions (TO BE TESTED MANUALLY AND AUTOMATED)
 
 
 # ============= #
