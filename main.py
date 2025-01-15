@@ -201,7 +201,6 @@ team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 
-
 # first_seas column in player_career_info_df
 def first_season_values(df):
     try:
@@ -1696,7 +1695,6 @@ print('update hof values further accordingly in player_career_info_df.xlsx = suc
 # merging certain dataframes 
 # ============= #
 
-# UPDATES IN PROGRESS AS OF 1-11-2025
 # merging player award shares and player per game dataframes
 player_award_shares_and_player_per_game_merged_df = pd.merge(player_award_shares_df,
                                                           player_per_game_df, 
@@ -1888,6 +1886,8 @@ def aba_roy_winners(df):
 aba_roy_winners_df = aba_roy_winners(player_award_shares_and_player_per_game_merged_df)
 
 aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
+
+
 
 
 print('filtering in certain tables = success - ', (time.time() - start_time))
@@ -2229,6 +2229,34 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
 print('creation of multiple dataframes for individual players = success - ', (time.time() - start_time))
 
 
+# hof df
+def hof(df):
+    try:
+        return df[df['hof'] == 'Yes']
+    except Exception as e:
+        return f'error - cannot filter rows - {type(e)}'
+
+hofers_list_df = hof(player_career_info_df)
+
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+# more merges 
+hofers_list_player_per_game_df = pd.merge(hofers_list_df,
+                                          player_per_game_df,
+                                          how='outer',
+                                          left_index=True,
+                                          right_index=True)
+
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+hofers_list_df = hofers_list_df.sort_values(by=['player'], ascending=True)                           
+
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+
+print('updating hofers list + merge of hofers list and player per game df = success - ', (time.time() - start_time))
+
+
 # ================== #
 # creating graphs via matplotlib
 # ================== #
@@ -2453,6 +2481,20 @@ player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlight
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
+def player_per_game_highlighted(x):
+    try:
+        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or x == 'N/A - Stat tracked as of the 1973-74 ABA Season':
+            return 'background-color: red'
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
+        
+player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlighted)
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+
 print('conditional formatting = success - ', (time.time() - start_time))
+
 
 # ======================================================================== #

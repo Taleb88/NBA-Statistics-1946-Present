@@ -462,7 +462,7 @@ player_per_game_df['player_id_x'] = player_per_game_df['player_id_y']
 player_per_game_df.to_excel('new_tile_temp.xlsx')
 '''
 
-'''
+
 # ===================== #
 # interacting with user 
 # ===================== #
@@ -506,6 +506,8 @@ while True:
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
             #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
             print(f"{player_per_game_df[(player_per_game_df['player_id'] == player_id)]}")
+        elif player_id == 0:
+            print('please enter a number greater than zero')
         elif player_id not in player_values:
             print('not exist')
         elif not player_id.isnumeric():
@@ -528,10 +530,10 @@ while True:
         break
 
     if player in player_values:
-        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 4:28], axis=1)
-        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 8:10], axis=1)
-        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
-        player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
+        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 4:28], axis=1)
+        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 8:10], axis=1)
+        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 0:1], axis=1)
+        #player_per_game_df = player_per_game_df.drop(player_per_game_df.iloc[:, 1:2], axis=1)
         print(f"{player_per_game_df[(player_per_game_df['player'] == player)]}")
     elif player not in player_values:
         print('not exist')
@@ -567,4 +569,4 @@ while True:
         continue
 
 # =========================== #
-'''
+
