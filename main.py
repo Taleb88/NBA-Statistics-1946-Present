@@ -1022,6 +1022,28 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 #player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
+# Toni Kukoc (player_id = 2829)
+advanced_df.loc[advanced_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+per_36_minutes_df.loc[per_36_minutes_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+#per_100_poss_df.loc[per_100_poss_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+#player_career_info_df.loc[player_career_info_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+player_per_game_df.loc[player_per_game_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+#player_play_by_play_df.loc[player_play_by_play_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+player_season_info_df.loc[player_season_info_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+player_shooting_df.loc[player_shooting_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+player_totals_df.loc[player_totals_df['player_id'] == 2829, 'player'] = 'Toni Kukoc'
+
+# save changes to appropriate sheets
+advanced_df.to_excel('advanced.xlsx', index=False)
+per_36_minutes_df.to_excel('Per 36 Minutes.xlsx', index=False)
+#per_100_poss_df.to_excel('Per 100 Poss.xlsx', index=False)
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+#player_play_by_play_df.to_excel('Player Play By Play.xlsx', index=False)
+player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
+#player_shooting_df.to_excel('Player Shooting.xlsx', index=False)
+player_totals_df.to_excel('Player Totals.xlsx', index=False)
+
 
 print('player value modifications = success - ', (time.time() - start_time))
 
@@ -1625,10 +1647,10 @@ player_career_info_df['hof'] = player_career_info_df['player_x'].isin(player_car
 # save changes
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # change True values to "Yes"
-player_career_info_df['hof'] = player_career_info_df['hof'].replace('TRUE', 'Yes')
+player_career_info_df['hof'] = player_career_info_df['hof'].replace(True, 'Yes')
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # change True values to "Yes"
-player_career_info_df['hof'] = player_career_info_df['hof'].replace('FALSE', 'No')
+player_career_info_df['hof'] = player_career_info_df['hof'].replace(False, 'No')
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
@@ -1645,12 +1667,29 @@ player_career_info_df = player_career_info_df.rename(columns={'player_x': 'playe
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
+# removing extra columns in player_career_info_df
+player_career_info_df = \
+    player_career_info_df.drop(player_career_info_df.iloc[:, 7:13], axis=1)
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
 
 print('updating hof values accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
 
 
 # update hof values further
+player_career_info_df.loc[(player_career_info_df['player'] == 'Bill Bradley') & 
+                          (player_career_info_df['birth_year'].astype(int) == 1941), 'hof'] = 'No'
 
+player_career_info_df.loc[(player_career_info_df['player'] == 'Bobby Jones') & 
+                          (player_career_info_df['birth_year'].astype(int) == 1983), 'hof'] = 'No'
+
+player_career_info_df.loc[(player_career_info_df['player'] == 'Roger Brown') & 
+                          (player_career_info_df['birth_year'].astype(int) == 1950), 'hof'] = 'No'
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+print('update hof values further accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
 
 
 # ============= #

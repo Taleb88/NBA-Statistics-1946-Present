@@ -179,6 +179,34 @@ print(player_instance.info())
 #############################
 
 
+'''
+# TEST ONLY 1-14-2025 - COMPLETE - SUCCESS
+#   hof updates to appropriate rows in player_career_info_df
+#player_career_info_df['hof'] = player_career_info_df['hof'].replace(False, 'No')
+#player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+player_career_info_df.loc[(player_career_info_df['player'] == 'Bill Bradley') & 
+                          (player_career_info_df['birth_year'].astype(int) == 1941), 'hof'] = 'No'
+
+player_career_info_df.loc[(player_career_info_df['player'] == 'Bobby Jones') & 
+                          (player_career_info_df['birth_year'].astype(int) == 1983), 'hof'] = 'No'
+
+player_career_info_df.loc[(player_career_info_df['player'] == 'Roger Brown') & 
+                          (player_career_info_df['birth_year'].astype(int) == 1950), 'hof'] = 'No'
+
+player_career_info_df.to_excel('test.xlsx', index=False)
+'''
+
+
+'''
+# TEST ONLY 1-13-2025 - COMPLETE - SUCCESS
+player_career_info_df = \
+    player_career_info_df.drop(player_career_info_df.iloc[:, 7:13], axis=1)
+
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+print(player_career_info_df)
+'''
 
 '''
 # TEST ONLY 1-13-2025 - COMPLETE - SUCCESS
