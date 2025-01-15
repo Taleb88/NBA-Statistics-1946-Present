@@ -1583,20 +1583,20 @@ print('massive data cleanup in player_per_game_df, player_season_info_df, and pl
 #   player_id, player, birth_year, hof, num_seasons, first_season, last_season
 #   this pertains to the player_per_game, player_season_info, and player_totals dataframes ONLY
 
-# removing initial player_career_info_df.xlsx prior to recreating it
+# removing initial Player Career Info.xlsx prior to recreating it
 import os
 
 file_path = 'Player Career Info.xlsx'
 
 if os.path.isfile(file_path):
     os.remove(file_path)
-    print('removal of initial player_career_info.xlsx file = success')
+    print('removal of initial Player Career Info.xlsx file = success')
 else:
-    print('player_career_info_df.xlsx does not exist')
+    print('Player Career Info.xlsx does not exist')
 
 start_time = time.time()
 
-print('removal of player_career_info_df.xlsx accordingly = success - ', (time.time() - start_time))
+print('removal of Player Career Info.xlsx accordingly = success - ', (time.time() - start_time))
 
 # creating new version of player_career_info_df dataframe
 player_career_info_df = pd.DataFrame()
@@ -1628,12 +1628,51 @@ player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # first_season_values updated in string format to display full values per column
 
 
-print('recreation of player_career_info_df.xlsx = success - ', (time.time() - start_time))
+print('recreation of player_career_info_df = success - ', (time.time() - start_time))
 
-
+# ===================================== #
+# hof
 # hof values to be updated accordingly
-hofers_list_df = pd.read_excel('hofers.xlsx')
-# merge both player_career_info_df and hofers temporarily
+# ===================================== #
+
+# web scraping via basketball-reference.com
+url = \
+    pd.read_html('https://www.basketball-reference.com/awards/hof.html')
+
+data = url
+
+hofers_list_df = url[0]
+# save changes
+hofers_list_df.to_excel('hofers.xlsx')
+
+hofers_list_df = pd.read_excel('hofers.xlsx', header=1) # removes first row of dataset
+# save changes
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+# rename column Name to Player
+hofers_list_df = hofers_list_df.rename(columns={'Name': 'player'}) 
+# save changes
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+# remove first row
+hofers_list_df = hofers_list_df.iloc[1:]
+# save changes
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+# filter out all rows that do not contain 'Player'
+hofers_list_df = hofers_list_df.loc[hofers_list_df['Category'] == 'Player']
+
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+# array of words to be removed
+words_to_be_removed = ["WNBA", "Int'l", "/", "CBB Player", "Coach", "Exec", "Oly", "CBB Coach"]
+hofers_list_df['player'] = [' '.join([item for item in x.split(' ')[:2]
+                          if item not in words_to_be_removed])
+                          for x in hofers_list_df['player']]
+# save changes
+hofers_list_df.to_excel('hofers.xlsx', index=False)
+
+# merge both player_career_info_df and hofers
 player_career_info_df = pd.merge(player_career_info_df,
                 hofers_list_df,
                 how='outer',
@@ -1647,18 +1686,20 @@ player_career_info_df['hof'] = player_career_info_df['player_x'].isin(player_car
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # change True values to "Yes"
 player_career_info_df['hof'] = player_career_info_df['hof'].replace(True, 'Yes')
+# save changes
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
-# change True values to "Yes"
+# change False values to "No"
 player_career_info_df['hof'] = player_career_info_df['hof'].replace(False, 'No')
+# save changes
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
-print('updating hof values accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
+print('updating hof values accordingly in player_career_info_df = success - ', (time.time() - start_time))
 
 
 # removing extra columns in player_career_info_df
 player_career_info_df = \
-    player_career_info_df.drop(player_career_info_df.iloc[:,7:21], axis=1)
+    player_career_info_df.drop(player_career_info_df.iloc[:,7:27], axis=1)
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # renaming column from player_x back to player
@@ -1666,15 +1707,16 @@ player_career_info_df = player_career_info_df.rename(columns={'player_x': 'playe
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
-# removing extra columns in player_career_info_df
+'''
+# removing extra columns in player_career_info_df - MAY NOT BE NECESSARY
 player_career_info_df = \
     player_career_info_df.drop(player_career_info_df.iloc[:, 7:13], axis=1)
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
-print('updating hof values accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
-
+print('updating hof values accordingly in player_career_info_df = success - ', (time.time() - start_time))
+'''
 
 # update hof values further
 player_career_info_df.loc[(player_career_info_df['player'] == 'Bill Bradley') & 
@@ -1688,7 +1730,8 @@ player_career_info_df.loc[(player_career_info_df['player'] == 'Roger Brown') &
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
-print('update hof values further accordingly in player_career_info_df.xlsx = success - ', (time.time() - start_time))
+
+print('update hof values further accordingly in player_career_info_df = success - ', (time.time() - start_time))
 
 
 # ============= #
@@ -1886,8 +1929,6 @@ def aba_roy_winners(df):
 aba_roy_winners_df = aba_roy_winners(player_award_shares_and_player_per_game_merged_df)
 
 aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
-
-
 
 
 print('filtering in certain tables = success - ', (time.time() - start_time))
@@ -2229,34 +2270,6 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
 print('creation of multiple dataframes for individual players = success - ', (time.time() - start_time))
 
 
-# hof df
-def hof(df):
-    try:
-        return df[df['hof'] == 'Yes']
-    except Exception as e:
-        return f'error - cannot filter rows - {type(e)}'
-
-hofers_list_df = hof(player_career_info_df)
-
-hofers_list_df.to_excel('hofers.xlsx', index=False)
-
-# more merges 
-hofers_list_player_per_game_df = pd.merge(hofers_list_df,
-                                          player_per_game_df,
-                                          how='outer',
-                                          left_index=True,
-                                          right_index=True)
-
-hofers_list_df.to_excel('hofers.xlsx', index=False)
-
-hofers_list_df = hofers_list_df.sort_values(by=['player'], ascending=True)                           
-
-hofers_list_df.to_excel('hofers.xlsx', index=False)
-
-
-print('updating hofers list + merge of hofers list and player per game df = success - ', (time.time() - start_time))
-
-
 # ================== #
 # creating graphs via matplotlib
 # ================== #
@@ -2481,20 +2494,6 @@ player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlight
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
-def player_per_game_highlighted(x):
-    try:
-        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or x == 'N/A - Stat tracked as of the 1973-74 ABA Season':
-            return 'background-color: red'
-    except Exception as e:
-        print(f'caught {type(e)}: e \n'
-              f'cannot list results')
-        
-player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlighted)
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-
 print('conditional formatting = success - ', (time.time() - start_time))
-
 
 # ======================================================================== #
