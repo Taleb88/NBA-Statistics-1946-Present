@@ -1754,9 +1754,7 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 # hofers and player_per_game dataframes merged
 player_career_info_and_player_per_game_merged_df = pd.merge(player_career_info_df,
                           player_per_game_df,
-                          how='outer',
-                          left_index=True,
-                          right_index=True)
+                          on=['player_id'])
 
 player_career_info_and_player_per_game_merged_df.to_excel('player_career_and_player_per_game_merged.xlsx', index=False)
 
@@ -1765,9 +1763,9 @@ print('merging of multiple dataframes = success - ', (time.time() - start_time))
 
 
 # filter out non-hofers here
-player_career_info_and_player_per_game_merged_df.loc[player_career_info_and_player_per_game_merged_df['hof'] == 'Yes']
+hofers_list_and_player_per_game_df = player_career_info_and_player_per_game_merged_df.loc[player_career_info_and_player_per_game_merged_df['hof'] == 'Yes']
 
-player_career_info_and_player_per_game_merged_df.to_excel('player_career_and_player_per_game_merged.xlsx', index=False)
+hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game.xlsx', index=False)
 
 
 # groupby to be utilized to get all averages (mean) of one's hof career in hofers.xlsx
