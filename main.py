@@ -1707,17 +1707,6 @@ player_career_info_df = player_career_info_df.rename(columns={'player_x': 'playe
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
-'''
-# removing extra columns in player_career_info_df - MAY NOT BE NECESSARY
-player_career_info_df = \
-    player_career_info_df.drop(player_career_info_df.iloc[:, 7:13], axis=1)
-
-player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
-
-
-print('updating hof values accordingly in player_career_info_df = success - ', (time.time() - start_time))
-'''
-
 # update hof values further
 player_career_info_df.loc[(player_career_info_df['player'] == 'Bill Bradley') & 
                           (player_career_info_df['birth_year'].astype(int) == 1941), 'hof'] = 'No'
