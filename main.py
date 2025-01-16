@@ -1751,8 +1751,27 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
 
+# hofers and player_per_game dataframes merged
+player_career_info_and_player_per_game_merged_df = pd.merge(player_career_info_df,
+                          player_per_game_df,
+                          how='outer',
+                          left_index=True,
+                          right_index=True)
 
-print('merging of player_award_shares_df and player_per_game_df = success - ', (time.time() - start_time))
+player_career_info_and_player_per_game_merged_df.to_excel('player_career_and_player_per_game_merged.xlsx', index=False)
+
+
+print('merging of multiple dataframes = success - ', (time.time() - start_time))
+
+
+# filter out non-hofers here
+player_career_info_and_player_per_game_merged_df.loc[player_career_info_and_player_per_game_merged_df['hof'] == 'Yes']
+
+player_career_info_and_player_per_game_merged_df.to_excel('player_career_and_player_per_game_merged.xlsx', index=False)
+
+
+# groupby to be utilized to get all averages (mean) of one's hof career in hofers.xlsx
+
 
 
 # ================== #
@@ -1920,11 +1939,8 @@ aba_roy_winners_df = aba_roy_winners(player_award_shares_and_player_per_game_mer
 aba_roy_winners_df.to_excel('aba_roy_winners.xlsx', index=False)
 
 
-print('filtering in certain tables = success - ', (time.time() - start_time))
-
-
 # =========== #
-# pivot tables - individual awards
+# pivot tables 
 # =========== #
 
 # clutch poy
