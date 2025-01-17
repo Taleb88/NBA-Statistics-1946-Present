@@ -177,9 +177,31 @@ print(player_instance.info())
 #############################
 
 
+'''
+# TEST ONLY 1-17-2025 - COMPLETED - SUCCESS
+#  nba all-star pivot table
+all_star_selections_pivot_table_df = pd.read_excel('All-Star Selections.xlsx')
+# create pivot table of all-star selections
+all_star_selections_pivot_table_df = pd.pivot_table(all_star_selections_pivot_table_df,
+                                             index=['player'],
+                                             values=['team'],
+                                             aggfunc='count')
+# save changes accordingly
+all_star_selections_pivot_table_df.to_excel('all_star_selections_pivot_table.xlsx')
+# sort values by team number values, asc should be false since we want the highest value on top
+all_star_selections_pivot_table_df = all_star_selections_pivot_table_df.sort_values(by=['team'], ascending=False)
+# save changes accordingly
+all_star_selections_pivot_table_df.to_excel('all_star_selections_pivot_table.xlsx')
+# all-star selections >= 10
+all_star_selections_10_plus_pivot_table_df = \
+    all_star_selections_pivot_table_df.loc[all_star_selections_pivot_table_df['team'] >= 10]
+# save changes accordingly
+all_star_selections_10_plus_pivot_table_df.to_excel('all_star_selections_10_plus_pivot_table.xlsx')
+'''
+
 
 '''
-# TEST ONLY 1-16-2025 - COMPLETED (note - WILL NOT ADD stls_per_game nor blks_per_game columns due to sporadic nba/aba official stat keepings)
+# TEST ONLY 1-16-2025 - COMPLETED - SUCCESS (note - WILL NOT ADD stls_per_game nor blks_per_game columns due to sporadic nba/aba official stat keepings)
 #   filter out rows with ['tm'] == 'TOT'
 #   hofer_list_and_player_per_game_df = pd.read_excel('hofer_list_and_player_per_game_df')
 #       version 2 - rebounds (values should = 0)

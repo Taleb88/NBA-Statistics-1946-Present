@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as ny
+import numpy as np
 import time
 
 # read csv
@@ -2206,8 +2206,24 @@ print(aba_roy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
-# nba all-star pivot table
-
+# all-star pivot table
+all_star_selections_pivot_table_df = pd.read_excel('All-Star Selections.xlsx')
+# create pivot table of all-star selections
+all_star_selections_pivot_table_df = pd.pivot_table(all_star_selections_pivot_table_df,
+                                             index=['player'],
+                                             values=['team'],
+                                             aggfunc='count')
+# save changes accordingly
+all_star_selections_pivot_table_df.to_excel('all_star_selections_pivot_table.xlsx')
+# sort values by team number values, asc should be false since we want the highest value on top
+all_star_selections_pivot_table_df = all_star_selections_pivot_table_df.sort_values(by=['team'], ascending=False)
+# save changes accordingly
+all_star_selections_pivot_table_df.to_excel('all_star_selections_pivot_table.xlsx')
+# all-star selections >= 10
+all_star_selections_10_plus_pivot_table_df = \
+    all_star_selections_pivot_table_df.loc[all_star_selections_pivot_table_df['team'] >= 10]
+# save changes accordingly
+all_star_selections_10_plus_pivot_table_df.to_excel('all_star_selections_10_plus_pivot_table.xlsx')
 
 # nba mvp and top 10 highest scoring averages
 def nba_mvp_ppg(df):
