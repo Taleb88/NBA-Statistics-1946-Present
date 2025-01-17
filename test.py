@@ -180,7 +180,7 @@ print(player_instance.info())
 #   filter out rows with ['tm'] == 'TOT'
 #   hofer_list_and_player_per_game_df = pd.read_excel('hofer_list_and_player_per_game_df')
 #       version 2 - rebounds (values should = 0)
-#                   subtract num_seasons from the following player_ids
+#                   subtract num_seasons from the following player_ids:
 #                       player_id = 57 (num_seasons-1) 1 
 #                       player_id = 205 (num_seasons-3) 3
 #                       player_id = 278 (num_seasons-2) 2
@@ -198,7 +198,10 @@ print(player_instance.info())
 #                       player_id = 5051 (num_seasons-1) 1 
 #       
 #      version 3 - steals and blocks (values should = 0)
-#                   
+#                   subtract num_seasons from the following player_ids TBD   
+#
+
+# VERSION 2 - COMPLETE                
 hofer_list_and_player_per_game_df_version_2 = pd.read_excel('hofers_list_and_player_per_game.xlsx')
 # change 'N/A - Stat tracked as of the 1950-51 NBA Season' value to '0' (zero) 
 hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['season_ending_year'] < 1951, 'trb_per_game'] = 0
@@ -252,6 +255,22 @@ hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_
 #hofers_list_and_player_per_game_df['trb_per_game'] = hofer_list_and_player_per_game_df_version_2['trb_per_game']
 # save changes
 #hofers_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
+
+# VERSION 3 - IN PROGRESS                
+hofer_list_and_player_per_game_df_version_3 = pd.read_excel('hofer_list_and_player_per_game.xlsx')
+# change 'N/A - Stat tracked as of the 1973-74 NBA Season' value to '0' (zero) 
+hofer_list_and_player_per_game_df_version_3.loc[hofer_list_and_player_per_game_df_version_3['season_ending_year'] < 1974, 'stl_per_game'] = 0
+hofer_list_and_player_per_game_df_version_3.loc[hofer_list_and_player_per_game_df_version_3['season_ending_year'] < 1974, 'blk_per_game'] = 0
+# save changes
+hofer_list_and_player_per_game_df_version_3.to_excel('hofer_list_and_player_per_game_version_3.xlsx', index=False)
+# filter out rows that have ['tm'] == TOT
+hofer_list_and_player_per_game_df_version_3 = hofer_list_and_player_per_game_df_version_3.loc[hofer_list_and_player_per_game_df_version_3['tm'] != 'TOT']
+# save changes
+hofer_list_and_player_per_game_df_version_3.to_excel('hofer_list_and_player_per_game_version_3.xlsx', index=False)
+# update num_seasons values for players who played prior to the 1973-74 nba season
+
+
+# MAIN SHEET IS hofer_list_and_player_per_game_averages.xlsx NOT hofers_list_and_player_per_game_averages.xlsx
 
 
 '''

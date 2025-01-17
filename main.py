@@ -1655,40 +1655,40 @@ url = \
 
 data = url
 
-hofers_list_df = url[0]
+hofer_list_df = url[0]
 # save changes
-hofers_list_df.to_excel('hofers.xlsx')
+hofer_list_df.to_excel('hofer.xlsx')
 
-hofers_list_df = pd.read_excel('hofers.xlsx', header=1) # removes first row of dataset
+hofer_list_df = pd.read_excel('hofer.xlsx', header=1) # removes first row of dataset
 # save changes
-hofers_list_df.to_excel('hofers.xlsx', index=False)
+hofer_list_df.to_excel('hofer.xlsx', index=False)
 
 # rename column Name to Player
-hofers_list_df = hofers_list_df.rename(columns={'Name': 'player'}) 
+hofer_list_df = hofer_list_df.rename(columns={'Name': 'player'}) 
 # save changes
-hofers_list_df.to_excel('hofers.xlsx', index=False)
+hofer_list_df.to_excel('hofer.xlsx', index=False)
 
 # remove first row
-hofers_list_df = hofers_list_df.iloc[1:]
+hofer_list_df = hofer_list_df.iloc[1:]
 # save changes
-hofers_list_df.to_excel('hofers.xlsx', index=False)
+hofer_list_df.to_excel('hofer.xlsx', index=False)
 
 # filter out all rows that do not contain 'Player'
-hofers_list_df = hofers_list_df.loc[hofers_list_df['Category'] == 'Player']
+hofer_list_df = hofer_list_df.loc[hofer_list_df['Category'] == 'Player']
 
-hofers_list_df.to_excel('hofers.xlsx', index=False)
+hofer_list_df.to_excel('hofer.xlsx', index=False)
 
 # array of words to be removed
 words_to_be_removed = ["WNBA", "Int'l", "/", "CBB Player", "Coach", "Exec", "Oly", "CBB Coach"]
-hofers_list_df['player'] = [' '.join([item for item in x.split(' ')[:2]
+hofer_list_df['player'] = [' '.join([item for item in x.split(' ')[:2]
                           if item not in words_to_be_removed])
-                          for x in hofers_list_df['player']]
+                          for x in hofer_list_df['player']]
 # save changes
-hofers_list_df.to_excel('hofers.xlsx', index=False)
+hofer_list_df.to_excel('hofer.xlsx', index=False)
 
-# merge both player_career_info_df and hofers
+# merge both player_career_info_df and hofer
 player_career_info_df = pd.merge(player_career_info_df,
-                hofers_list_df,
+                hofer_list_df,
                 how='outer',
                 left_index=True,
                 right_index=True)
@@ -1707,9 +1707,7 @@ player_career_info_df['hof'] = player_career_info_df['hof'].replace(False, 'No')
 # save changes
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
-
 print('updating hof values accordingly in player_career_info_df = success - ', (time.time() - start_time))
-
 
 # removing extra columns in player_career_info_df
 player_career_info_df = \
@@ -1733,9 +1731,7 @@ player_career_info_df.loc[(player_career_info_df['player'] == 'Roger Brown') &
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
-
 print('update hof values further accordingly in player_career_info_df = success - ', (time.time() - start_time))
-
 
 # ============= #
 # merging certain dataframes 
@@ -1765,45 +1761,41 @@ player_award_shares_and_player_per_game_merged_df['winner'] = \
 player_award_shares_and_player_per_game_merged_df['winner'] = \
     player_award_shares_and_player_per_game_merged_df['winner'].replace('nan', 'True')
 
-# hofers and player_per_game dataframes merged
+# hofer and player_per_game dataframes merged
 player_career_info_and_player_per_game_merged_df = pd.merge(player_career_info_df,
                           player_per_game_df,
                           on=['player_id'])
 
 player_career_info_and_player_per_game_merged_df.to_excel('player_career_and_player_per_game_merged.xlsx', index=False)
 
-
 print('merging of multiple dataframes = success - ', (time.time() - start_time))
 
+# filter out non-hofer here
+hofer_list_and_player_per_game_df = player_career_info_and_player_per_game_merged_df.loc[player_career_info_and_player_per_game_merged_df['hof'] == 'Yes']
 
-# filter out non-hofers here
-hofers_list_and_player_per_game_df = player_career_info_and_player_per_game_merged_df.loc[player_career_info_and_player_per_game_merged_df['hof'] == 'Yes']
+hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game.xlsx', index=False)
 
-hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game.xlsx', index=False)
-
-
-print('filter out non-hofers here = success - ', (time.time() - start_time))
-
+print('filter out non-hofer here = success - ', (time.time() - start_time))
 
 # 1-16-2025 - COMPLETE
-#   hofers_list_and_player_per_game_df (DATAFRAME) = SUCCESS
+#   hofer_list_and_player_per_game_df (DATAFRAME) = SUCCESS
 #   player_id -> ASC seas_id -> DSC = SUCCESS
 #   remove rows with df['tm'] == 'TOT' = SUCCESS
 #   formula = SUCCESS
-hofers_list_and_player_per_game_df = pd.read_excel('hofers_list_and_player_per_game.xlsx')
+hofer_list_and_player_per_game_df = pd.read_excel('hofer_list_and_player_per_game.xlsx')
 # sort values in dataframe by player_id and season_ending_year
-hofers_list_and_player_per_game_df = \
-    hofers_list_and_player_per_game_df.\
+hofer_list_and_player_per_game_df = \
+    hofer_list_and_player_per_game_df.\
         sort_values(by=['player_id', 'season_ending_year'], 
                     ascending=[True, False])
 # save changes
-hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game.xlsx', index=False)
+hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game.xlsx', index=False)
 # filter out rows that have ['tm'] == TOT
-hofers_list_and_player_per_game_df.loc[hofers_list_and_player_per_game_df['tm'] != 'TOT']
+hofer_list_and_player_per_game_df.loc[hofer_list_and_player_per_game_df['tm'] != 'TOT']
 # save changes
-hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 # groupby implemented to display games, points per game, and assists per game averages for the hall-of-famers
-hofers_list_and_player_per_game_df = hofers_list_and_player_per_game_df.groupby(
+hofer_list_and_player_per_game_df = hofer_list_and_player_per_game_df.groupby(
         ['player_id',
          'player_x',
          'birth_year_x',
@@ -1818,25 +1810,23 @@ hofers_list_and_player_per_game_df = hofers_list_and_player_per_game_df.groupby(
         }
     ).reset_index()
 # save changes
-hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 # calcuations
-hofers_list_and_player_per_game_df['g'] = hofers_list_and_player_per_game_df.apply(lambda row: row['g']
+hofer_list_and_player_per_game_df['g'] = hofer_list_and_player_per_game_df.apply(lambda row: row['g']
                                                                                     / row['num_seasons'], axis=1)
-hofers_list_and_player_per_game_df['pts_per_game'] = hofers_list_and_player_per_game_df.apply(lambda row: row['pts_per_game'] / row['num_seasons'], axis=1)
-hofers_list_and_player_per_game_df['ast_per_game'] = hofers_list_and_player_per_game_df.apply(lambda row: row['ast_per_game'] / row['num_seasons'], axis=1)
+hofer_list_and_player_per_game_df['pts_per_game'] = hofer_list_and_player_per_game_df.apply(lambda row: row['pts_per_game'] / row['num_seasons'], axis=1)
+hofer_list_and_player_per_game_df['ast_per_game'] = hofer_list_and_player_per_game_df.apply(lambda row: row['ast_per_game'] / row['num_seasons'], axis=1)
 
 # save changes   
-hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 # round values 2 decimal spaces
-hofers_list_and_player_per_game_df['g'] = hofers_list_and_player_per_game_df['g'].apply(lambda row: round(row, 2))
-hofers_list_and_player_per_game_df['pts_per_game'] = hofers_list_and_player_per_game_df['pts_per_game'].apply(lambda row: round(row, 2))
-hofers_list_and_player_per_game_df['ast_per_game'] = hofers_list_and_player_per_game_df['ast_per_game'].apply(lambda row: round(row, 2))
+hofer_list_and_player_per_game_df['g'] = hofer_list_and_player_per_game_df['g'].apply(lambda row: round(row, 2))
+hofer_list_and_player_per_game_df['pts_per_game'] = hofer_list_and_player_per_game_df['pts_per_game'].apply(lambda row: round(row, 2))
+hofer_list_and_player_per_game_df['ast_per_game'] = hofer_list_and_player_per_game_df['ast_per_game'].apply(lambda row: round(row, 2))
 # save changes
-hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 
-
-print('updates made to hofers_list_and_player_per_game_df = success - ', (time.time() - start_time))
-
+print('updates made to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
 
 # TEST ONLY 1-16-2025 - IN PROGRESS
 #   filter out rows with ['tm'] == 'TOT'
@@ -1861,7 +1851,7 @@ print('updates made to hofers_list_and_player_per_game_df = success - ', (time.t
 #       
 #      version 3 - steals and blocks (values should = 0)
 #                   
-hofer_list_and_player_per_game_df_version_2 = pd.read_excel('hofers_list_and_player_per_game.xlsx')
+hofer_list_and_player_per_game_df_version_2 = pd.read_excel('hofer_list_and_player_per_game.xlsx')
 # change 'N/A - Stat tracked as of the 1950-51 NBA Season' value to '0' (zero) 
 hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['season_ending_year'] < 1951, 'trb_per_game'] = 0
 # save changes
@@ -1910,14 +1900,15 @@ hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_
 hofer_list_and_player_per_game_df_version_2['trb_per_game'] = hofer_list_and_player_per_game_df_version_2['trb_per_game'].apply(lambda row: round(row, 2))
 # save changes
 hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_game_version_2.xlsx', index=False)
-# copy trb_per_game column from version_2 to main hofer_list_and_player_per_game_df (averages list is the main dataframe/sheet for all hofers)
+# copy trb_per_game column from version_2 to main hofer_list_and_player_per_game_df (averages list is the main dataframe/sheet for all hofer)
 trb_per_game = hofer_list_and_player_per_game_df_version_2.iloc[:,7]
-hofers_list_and_player_per_game_df['trb_per_game'] = trb_per_game.copy()
+hofer_list_and_player_per_game_df['trb_per_game'] = trb_per_game.copy()
 # save changes to main hofer_list_and_player_per_game_df
-hofers_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
+hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
+
+print('adding trb_per_game column to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
 
 
-print('adding trb_per_game column to hofers_list_and_player_per_game_df = success - ', (time.time() - start_time))
 
 
 # ================== #
