@@ -1592,7 +1592,7 @@ player_totals_df.to_excel('Player Totals.xlsx', index=False)
 print('massive data cleanup in player_per_game_df, player_season_info_df, and player_totals_df = success - ', (time.time() - start_time))
 
 
-#                                       IN PROGRESS
+#                                       COMPLETE AS OF 1-17-2025
 # recreate player_career_info_df (player_directory_1_df) and make sure to include following columns
 #   player_id, player, birth_year, hof, num_seasons, first_season, last_season
 #   this pertains to the player_per_game, player_season_info, and player_totals dataframes ONLY
@@ -1610,7 +1610,9 @@ else:
 
 start_time = time.time()
 
+
 print('removal of Player Career Info.xlsx accordingly = success - ', (time.time() - start_time))
+
 
 # creating new version of player_career_info_df dataframe
 player_career_info_df = pd.DataFrame()
@@ -1643,6 +1645,7 @@ player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
 print('recreation of player_career_info_df = success - ', (time.time() - start_time))
+
 
 # ===================================== #
 # hof
@@ -1707,7 +1710,9 @@ player_career_info_df['hof'] = player_career_info_df['hof'].replace(False, 'No')
 # save changes
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
+
 print('updating hof values accordingly in player_career_info_df = success - ', (time.time() - start_time))
+
 
 # removing extra columns in player_career_info_df
 player_career_info_df = \
@@ -1731,7 +1736,9 @@ player_career_info_df.loc[(player_career_info_df['player'] == 'Roger Brown') &
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
+
 print('update hof values further accordingly in player_career_info_df = success - ', (time.time() - start_time))
+
 
 # ============= #
 # merging certain dataframes 
@@ -1768,14 +1775,18 @@ player_career_info_and_player_per_game_merged_df = pd.merge(player_career_info_d
 
 player_career_info_and_player_per_game_merged_df.to_excel('player_career_and_player_per_game_merged.xlsx', index=False)
 
+
 print('merging of multiple dataframes = success - ', (time.time() - start_time))
+
 
 # filter out non-hofer here
 hofer_list_and_player_per_game_df = player_career_info_and_player_per_game_merged_df.loc[player_career_info_and_player_per_game_merged_df['hof'] == 'Yes']
 
 hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game.xlsx', index=False)
 
+
 print('filter out non-hofer here = success - ', (time.time() - start_time))
+
 
 # 1-16-2025 - COMPLETE
 #   hofer_list_and_player_per_game_df (DATAFRAME) = SUCCESS
@@ -1826,9 +1837,11 @@ hofer_list_and_player_per_game_df['ast_per_game'] = hofer_list_and_player_per_ga
 # save changes
 hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 
+
 print('updates made to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
 
-# TEST ONLY 1-16-2025 - IN PROGRESS
+
+# COMPLETE
 #   filter out rows with ['tm'] == 'TOT'
 #   hofer_list_and_player_per_game_df = pd.read_excel('hofer_list_and_player_per_game_df')
 #       version 2 - rebounds (values should = 0)
@@ -1848,8 +1861,6 @@ print('updates made to hofer_list_and_player_per_game_df = success - ', (time.ti
 #                       player_id = 2679 (num_seasons-1) 1 
 #                       player_id = 4620 (num_seasons-1) 1 
 #                       player_id = 5051 (num_seasons-1) 1 
-#       
-#      version 3 - steals and blocks (values should = 0)
 #                   
 hofer_list_and_player_per_game_df_version_2 = pd.read_excel('hofer_list_and_player_per_game.xlsx')
 # change 'N/A - Stat tracked as of the 1950-51 NBA Season' value to '0' (zero) 
@@ -1906,9 +1917,8 @@ hofer_list_and_player_per_game_df['trb_per_game'] = trb_per_game.copy()
 # save changes to main hofer_list_and_player_per_game_df
 hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 
+
 print('adding trb_per_game column to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
-
-
 
 
 # ================== #
@@ -2195,6 +2205,9 @@ aba_roy_pivot_table_df['award'] = \
 print(aba_roy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
+
+# nba all-star pivot table
+
 
 # nba mvp and top 10 highest scoring averages
 def nba_mvp_ppg(df):
