@@ -1103,7 +1103,7 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 print('creation of double-double and triple-double columns = success - ', (time.time() - start_time))
 
 
-# populating the stl_per_game and blk_per_game columns with the following ->
+# populating certain cells/values the stl_per_game and blk_per_game columns with the following ->
 #   N/A - Stat tracked as of the 1973-74 NBA Season
 #   N/A - Stat tracked as of the 1973-74 ABA Season
 player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & \
@@ -1120,6 +1120,7 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
                        'blk_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
+
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
@@ -1128,6 +1129,19 @@ player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 print('updating stl_per_game and blk_per_game columns accordingly = success - ', (time.time() - start_time))
+
+
+# populating certain cells/values the trb_per_game column with the following ->
+#   N/A - Stat tracked as of the 1950-51 NBA Season (NBA AND BAA merged on August 3,1949)
+player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1951) & \
+    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'trb_per_game'] = \
+    'N/A - Stat tracked as of the 1950-51 NBA Season'
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+
+print('updating trb_per_game columns accordingly = success - ', (time.time() - start_time))
+
 
 # =================================== #
 #                       COMPLETE
@@ -1768,8 +1782,142 @@ hofers_list_and_player_per_game_df = player_career_info_and_player_per_game_merg
 hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game.xlsx', index=False)
 
 
-# groupby to be utilized to get all averages (mean) of one's hof career in hofers.xlsx
+print('filter out non-hofers here = success - ', (time.time() - start_time))
 
+
+# 1-16-2025 - COMPLETE
+#   hofers_list_and_player_per_game_df (DATAFRAME) = SUCCESS
+#   player_id -> ASC seas_id -> DSC = SUCCESS
+#   remove rows with df['tm'] == 'TOT' = SUCCESS
+#   formula = SUCCESS
+hofers_list_and_player_per_game_df = pd.read_excel('hofers_list_and_player_per_game.xlsx')
+# sort values in dataframe by player_id and season_ending_year
+hofers_list_and_player_per_game_df = \
+    hofers_list_and_player_per_game_df.\
+        sort_values(by=['player_id', 'season_ending_year'], 
+                    ascending=[True, False])
+# save changes
+hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game.xlsx', index=False)
+# filter out rows that have ['tm'] == TOT
+hofers_list_and_player_per_game_df.loc[hofers_list_and_player_per_game_df['tm'] != 'TOT']
+# save changes
+hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+# groupby implemented to display games, points per game, and assists per game averages for the hall-of-famers
+hofers_list_and_player_per_game_df = hofers_list_and_player_per_game_df.groupby(
+        ['player_id',
+         'player_x',
+         'birth_year_x',
+         'hof',
+         'num_seasons',
+         'first_season',
+         'last_season']
+         ).agg({
+        'g': "sum",
+        'pts_per_game': "sum",
+        'ast_per_game': "sum"
+        }
+    ).reset_index()
+# save changes
+hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+# calcuations
+hofers_list_and_player_per_game_df['g'] = hofers_list_and_player_per_game_df.apply(lambda row: row['g']
+                                                                                    / row['num_seasons'], axis=1)
+hofers_list_and_player_per_game_df['pts_per_game'] = hofers_list_and_player_per_game_df.apply(lambda row: row['pts_per_game'] / row['num_seasons'], axis=1)
+hofers_list_and_player_per_game_df['ast_per_game'] = hofers_list_and_player_per_game_df.apply(lambda row: row['ast_per_game'] / row['num_seasons'], axis=1)
+
+# save changes   
+hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+# round values 2 decimal spaces
+hofers_list_and_player_per_game_df['g'] = hofers_list_and_player_per_game_df['g'].apply(lambda row: round(row, 2))
+hofers_list_and_player_per_game_df['pts_per_game'] = hofers_list_and_player_per_game_df['pts_per_game'].apply(lambda row: round(row, 2))
+hofers_list_and_player_per_game_df['ast_per_game'] = hofers_list_and_player_per_game_df['ast_per_game'].apply(lambda row: round(row, 2))
+# save changes
+hofers_list_and_player_per_game_df.to_excel('hofers_list_and_player_per_game_averages.xlsx', index=False)
+
+
+print('updates made to hofers_list_and_player_per_game_df = success - ', (time.time() - start_time))
+
+
+# TEST ONLY 1-16-2025 - IN PROGRESS
+#   filter out rows with ['tm'] == 'TOT'
+#   hofer_list_and_player_per_game_df = pd.read_excel('hofer_list_and_player_per_game_df')
+#       version 2 - rebounds (values should = 0)
+#                   subtract num_seasons from the following player_ids
+#                       player_id = 57 (num_seasons-1) 1 
+#                       player_id = 205 (num_seasons-3) 3
+#                       player_id = 278 (num_seasons-2) 2
+#                       player_id = 479 (num_seasons-2) 2
+#                       player_id = 568 (num_seasons-2) 2
+#                       player_id = 749 (num_seasons-3) 3
+#                       player_id = 1401 (num_seasons-1) 1 
+#                       player_id = 1434 (num_seasons-1) 1 
+#                       player_id = 1599 (num_seasons-1) 1 
+#                       player_id = 1909 (num_seasons-2) 2
+#                       player_id = 2074 (num_seasons-2) 2
+#                       player_id = 2617 (num_seasons-2) 2
+#                       player_id = 2679 (num_seasons-1) 1 
+#                       player_id = 4620 (num_seasons-1) 1 
+#                       player_id = 5051 (num_seasons-1) 1 
+#       
+#      version 3 - steals and blocks (values should = 0)
+#                   
+hofer_list_and_player_per_game_df_version_2 = pd.read_excel('hofers_list_and_player_per_game.xlsx')
+# change 'N/A - Stat tracked as of the 1950-51 NBA Season' value to '0' (zero) 
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['season_ending_year'] < 1951, 'trb_per_game'] = 0
+# save changes
+hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_game_version_2.xlsx', index=False)
+# filter out rows that have ['tm'] == TOT
+hofer_list_and_player_per_game_df_version_2 = hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['tm'] != 'TOT']
+# save changes
+hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_game_version_2.xlsx', index=False)
+# groupby implemented to display games and points per game averages for the hall-of-famers
+hofer_list_and_player_per_game_df_version_2 = hofer_list_and_player_per_game_df_version_2.groupby(
+        ['player_id',
+         'player_x',
+         'birth_year_x',
+         'hof']
+         ).agg({
+        'num_seasons': "max",
+        'first_season': "min", 
+        'last_season': "max",
+        'trb_per_game': "sum"} # trb only
+    ).reset_index()
+# save changes
+hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_game_version_2.xlsx', index=False)
+# update num_seasons values for players who played prior to the 1950-51 nba season
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 57, 'num_seasons'] = 3
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 205, 'num_seasons'] = 8
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 278, 'num_seasons'] = 8
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 479, 'num_seasons'] = 5
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 568, 'num_seasons'] = 7
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 749, 'num_seasons'] = 10
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 1401, 'num_seasons'] = 10
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 1434, 'num_seasons'] = 14
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 1599, 'num_seasons'] = 9
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 1909, 'num_seasons'] = 5
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 2074, 'num_seasons'] = 8
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 2617, 'num_seasons'] = 5
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 2679, 'num_seasons'] = 4
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 4620, 'num_seasons'] = 10
+hofer_list_and_player_per_game_df_version_2.loc[hofer_list_and_player_per_game_df_version_2['player_id'] == 5051, 'num_seasons'] = 9
+# save changes
+hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_game_version_2.xlsx', index=False)
+# calculations 
+hofer_list_and_player_per_game_df_version_2['trb_per_game'] = hofer_list_and_player_per_game_df_version_2.apply(lambda row: row['trb_per_game'] / row['num_seasons'], axis=1)
+# save changes
+hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_game_version_2.xlsx', index=False)
+# round values 2 decimal spaces
+hofer_list_and_player_per_game_df_version_2['trb_per_game'] = hofer_list_and_player_per_game_df_version_2['trb_per_game'].apply(lambda row: round(row, 2))
+# save changes
+hofer_list_and_player_per_game_df_version_2.to_excel('hofer_list_and_player_per_game_version_2.xlsx', index=False)
+# copy trb_per_game column from version_2 to main hofer_list_and_player_per_game_df (averages list is the main dataframe/sheet for all hofers)
+trb_per_game = hofer_list_and_player_per_game_df_version_2.iloc[:,7]
+hofers_list_and_player_per_game_df['trb_per_game'] = trb_per_game.copy()
+# save changes to main hofer_list_and_player_per_game_df
+hofers_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
+
+
+print('adding trb_per_game column to hofers_list_and_player_per_game_df = success - ', (time.time() - start_time))
 
 
 # ================== #
@@ -2200,15 +2348,6 @@ bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.to_excel(
     'bill_russell_and_wilt_chamberlain_per_game_avgs_merged.xlsx',
     index=False)
 
-# get column names with corresponding index
-col = list(bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df.columns)
-index = 0
-print('bill_russell_and_wilt_chamberlain_per_game_avgs_merged_df:')
-
-for x in col:
-    print(index, x)
-    index += 1
-
 # michael jordan dataframe - per game averages
 def michael_jordan(df):
     try:
@@ -2486,7 +2625,7 @@ bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df.\
 
 def player_per_game_highlighted(x):
     try:
-        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or x == 'N/A - Stat tracked as of the 1973-74 ABA Season':
+        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or x == 'N/A - Stat tracked as of the 1973-74 ABA Season' or x == 'N/A - Stat tracked as of the 1950-51 NBA Season':
             return 'background-color: red'
     except Exception as e:
         print(f'caught {type(e)}: e \n'
