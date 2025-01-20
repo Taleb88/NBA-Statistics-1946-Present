@@ -131,8 +131,6 @@ team_stats_per_game_df = season_ending_year(team_stats_per_game_df)
 team_summaries_df = season_ending_year(team_summaries_df)
 team_totals_df = season_ending_year(team_totals_df)
 
-
-
 # saving changes to all files
 advanced_df.to_excel('advanced.xlsx', index=False)
 all_star_selections_df.to_excel('All-Star Selections.xlsx', index=False)
@@ -155,6 +153,7 @@ team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
+
 # adding season column to all dataframes, will be the last column
 advanced_df['season'] = advanced_df['season_ending_year']
 all_star_selections_df['season'] = all_star_selections_df['season_ending_year']
@@ -176,7 +175,6 @@ team_stats_per_100_poss_df['season'] = team_stats_per_100_poss_df['season_ending
 team_stats_per_game_df['season'] = team_stats_per_game_df['season_ending_year']
 team_summaries_df['season'] = team_summaries_df['season_ending_year']
 team_totals_df['season'] = team_totals_df['season_ending_year']
-
 
 # saving changes to all files
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -1656,8 +1654,6 @@ print('recreation of player_career_info_df = success - ', (time.time() - start_t
 url = \
     pd.read_html('https://www.basketball-reference.com/awards/hof.html')
 
-data = url
-
 hofer_list_df = url[0]
 # save changes
 hofer_list_df.to_excel('hofer.xlsx')
@@ -2431,6 +2427,198 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
 
 print('creation of multiple dataframes for individual players = success - ', (time.time() - start_time))
 
+# player_career_info_df
+# first_season column in player_career_info_df
+# last_season column in player_career_info_df
+
+player_career_info_df['first_season']  = player_career_info_df['first_season'].astype(str) # convert values to string in order for updates to work
+# save changes
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+def first_season_values_final(df):
+    try:
+        return df.replace(to_replace={'first_season': {'1947': '1946-47', 
+                                                '1948': '1947-48',
+                                                '1949': '1948-49',
+                                                '1950': '1949-50',
+                                                '1951': '1950-51',
+                                                '1952': '1951-52',
+                                                '1953': '1952-53',
+                                                '1954': '1953-54',
+                                                '1955': '1954-55',
+                                                '1956': '1955-56',
+                                                '1957': '1956-57',
+                                                '1958': '1957-58',
+                                                '1959': '1958-59',
+                                                '1960': '1959-60',
+                                                '1961': '1960-61',
+                                                '1962': '1960-62',
+                                                '1963': '1962-63',
+                                                '1964': '1963-64',
+                                                '1965': '1964-65',
+                                                '1966': '1965-66',
+                                                '1967': '1966-67',
+                                                '1968': '1967-68',
+                                                '1969': '1968-69',
+                                                '1970': '1969-70',
+                                                '1971': '1970-71',
+                                                '1972': '1971-72',
+                                                '1973': '1972-73',
+                                                '1974': '1973-74',
+                                                '1975': '1974-75',
+                                                '1976': '1975-76',
+                                                '1977': '1976-77',
+                                                '1978': '1977-78',
+                                                '1979': '1978-79',
+                                                '1980': '1979-80',
+                                                '1981': '1980-81',
+                                                '1982': '1981-82',
+                                                '1983': '1982-83',
+                                                '1984': '1983-84',
+                                                '1985': '1984-85',
+                                                '1986': '1985-86',
+                                                '1987': '1986-87',
+                                                '1988': '1987-88',
+                                                '1989': '1988-89',
+                                                '1990': '1989-90',
+                                                '1991': '1990-91',
+                                                '1992': '1991-92',
+                                                '1993': '1992-93',
+                                                '1994': '1993-94',
+                                                '1995': '1994-95',
+                                                '1996': '1995-06',
+                                                '1997': '1996-97',
+                                                '1998': '1997-98',
+                                                '1999': '1998-99',
+                                                '2000': '1999-00',
+                                                '2001': '2000-01',
+                                                '2002': '2001-02',
+                                                '2003': '2002-03',
+                                                '2004': '2003-04',
+                                                '2005': '2004-05',
+                                                '2006': '2005-06',
+                                                '2007': '2006-07',
+                                                '2008': '2007-08',
+                                                '2009': '2008-09',
+                                                '2010': '2009-10',
+                                                '2011': '2010-11',
+                                                '2012': '2011-12',
+                                                '2013': '2012-13',
+                                                '2014': '2013-14',
+                                                '2015': '2014-15',
+                                                '2016': '2015-16',
+                                                '2017': '2016-17',
+                                                '2018': '2017-18',
+                                                '2019': '2018-19',
+                                                '2020': '2019-20',
+                                                '2021': '2020-21',
+                                                '2022': '2021-22',
+                                                '2023': '2022-23',
+                                                '2024': '2023-24',
+                                                '2025': '2024-25'
+                                                }}) 
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+            f'cannot update values')
+
+player_career_info_df = first_season_values_final(player_career_info_df)
+# save changes
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+player_career_info_df['last_season']  = player_career_info_df['last_season'].astype(str) # convert values to string in order for updates to work
+# save changes
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
+def last_season_values_final(df):
+    try:
+        return df.replace(to_replace={'last_season': {'1947': '1946-47', 
+                                                '1948': '1947-48',
+                                                '1949': '1948-49',
+                                                '1950': '1949-50',
+                                                '1951': '1950-51',
+                                                '1952': '1951-52',
+                                                '1953': '1952-53',
+                                                '1954': '1953-54',
+                                                '1955': '1954-55',
+                                                '1956': '1955-56',
+                                                '1957': '1956-57',
+                                                '1958': '1957-58',
+                                                '1959': '1958-59',
+                                                '1960': '1959-60',
+                                                '1961': '1960-61',
+                                                '1962': '1960-62',
+                                                '1963': '1962-63',
+                                                '1964': '1963-64',
+                                                '1965': '1964-65',
+                                                '1966': '1965-66',
+                                                '1967': '1966-67',
+                                                '1968': '1967-68',
+                                                '1969': '1968-69',
+                                                '1970': '1969-70',
+                                                '1971': '1970-71',
+                                                '1972': '1971-72',
+                                                '1973': '1972-73',
+                                                '1974': '1973-74',
+                                                '1975': '1974-75',
+                                                '1976': '1975-76',
+                                                '1977': '1976-77',
+                                                '1978': '1977-78',
+                                                '1979': '1978-79',
+                                                '1980': '1979-80',
+                                                '1981': '1980-81',
+                                                '1982': '1981-82',
+                                                '1983': '1982-83',
+                                                '1984': '1983-84',
+                                                '1985': '1984-85',
+                                                '1986': '1985-86',
+                                                '1987': '1986-87',
+                                                '1988': '1987-88',
+                                                '1989': '1988-89',
+                                                '1990': '1989-90',
+                                                '1991': '1990-91',
+                                                '1992': '1991-92',
+                                                '1993': '1992-93',
+                                                '1994': '1993-94',
+                                                '1995': '1994-95',
+                                                '1996': '1995-06',
+                                                '1997': '1996-97',
+                                                '1998': '1997-98',
+                                                '1999': '1998-99',
+                                                '2000': '1999-00',
+                                                '2001': '2000-01',
+                                                '2002': '2001-02',
+                                                '2003': '2002-03',
+                                                '2004': '2003-04',
+                                                '2005': '2004-05',
+                                                '2006': '2005-06',
+                                                '2007': '2006-07',
+                                                '2008': '2007-08',
+                                                '2009': '2008-09',
+                                                '2010': '2009-10',
+                                                '2011': '2010-11',
+                                                '2012': '2011-12',
+                                                '2013': '2012-13',
+                                                '2014': '2013-14',
+                                                '2015': '2014-15',
+                                                '2016': '2015-16',
+                                                '2017': '2016-17',
+                                                '2018': '2017-18',
+                                                '2019': '2018-19',
+                                                '2020': '2019-20',
+                                                '2021': '2020-21',
+                                                '2022': '2021-22',
+                                                '2023': '2022-23',
+                                                '2024': '2023-24',
+                                                '2025': '2024-25'
+                                                }}) 
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+            f'cannot update values')
+
+player_career_info_df = last_season_values_final(player_career_info_df)
+# save changes
+player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
+
 
 # ================== #
 # creating graphs via matplotlib
@@ -2654,7 +2842,6 @@ def player_per_game_highlighted(x):
 player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlighted)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
 
 print('conditional formatting = success - ', (time.time() - start_time))
 
