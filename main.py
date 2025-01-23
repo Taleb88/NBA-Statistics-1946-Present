@@ -2845,4 +2845,11 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 print('conditional formatting = success - ', (time.time() - start_time))
 
+#
+# THREE-POINT ATTEMPTS TO TWO-POINT ATTEMPTS
+#   FROM THE 2000-01 NBA SEASON TO THE 2023-24 NBA SEASON
+#
+
+
+
 # ======================================================================== #
