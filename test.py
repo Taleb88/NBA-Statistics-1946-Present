@@ -189,18 +189,27 @@ print(team_totals_df) # COMPLETE
 # filter out rows that do not have season_ending year 
 #   values != 2001 through 2024 via loc method
 #   create new dataframe based off the results
-team_totals_field_goals_2001_to_2004_df = \
+team_totals_field_goals_2001_to_2024_df = \
     team_totals_df.loc[(team_totals_df['season_ending_year'] >= 2001) 
                        & (team_totals_df['season_ending_year'] <= 2024)]
+# filtering out rows with team = 'League Average'
+team_totals_field_goals_2001_to_2024_df = \
+    team_totals_field_goals_2001_to_2024_df.loc[\
+        team_totals_field_goals_2001_to_2024_df['team'] != 'League Average']
 
-team_totals_field_goals_2001_to_2004_df = \
-    team_totals_field_goals_2001_to_2004_df.loc[\
-        team_totals_field_goals_2001_to_2004_df['team'] != 'League Average']
+print(team_totals_field_goals_2001_to_2024_df.head(30)) # COMPLETE
+print(team_totals_field_goals_2001_to_2024_df.tail(29)) # COMPLETE
 
-print(team_totals_field_goals_2001_to_2004_df.head(30)) # COMPLETE
-print(team_totals_field_goals_2001_to_2004_df.tail(29)) # COMPLETE
+team_totals_field_goals_2001_to_2024_df.to_excel('team_totals_field_goals_2001_to_2024.xlsx', index=False)
 
-print(team_totals_field_goals_2001_to_2004_df)
+team_totals_field_goals_2001_to_2024_pivot_table_df = pd.pivot_table(team_totals_field_goals_2001_to_2024_df,
+                                                                     columns='season_ending_year',
+                                                                     index='team',
+                                                                     values=['x3p', 'x3pa'])
+
+print(team_totals_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
+
+team_totals_field_goals_2001_to_2024_pivot_table_df.to_excel('team_totals_field_goals_2001_to_2024_pivot_table.xlsx')
 
 
 '''
