@@ -197,19 +197,46 @@ team_totals_field_goals_2001_to_2024_df = \
     team_totals_field_goals_2001_to_2024_df.loc[\
         team_totals_field_goals_2001_to_2024_df['team'] != 'League Average']
 
-print(team_totals_field_goals_2001_to_2024_df.head(30)) # COMPLETE
-print(team_totals_field_goals_2001_to_2024_df.tail(29)) # COMPLETE
+print('\n',team_totals_field_goals_2001_to_2024_df.head(30)) # COMPLETE
+print('\n',team_totals_field_goals_2001_to_2024_df.tail(29)) # COMPLETE
 
 team_totals_field_goals_2001_to_2024_df.to_excel('team_totals_field_goals_2001_to_2024.xlsx', index=False)
 
-team_totals_field_goals_2001_to_2024_pivot_table_df = pd.pivot_table(team_totals_field_goals_2001_to_2024_df,
-                                                                     columns='season_ending_year',
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df = pd.pivot_table(team_totals_field_goals_2001_to_2024_df,
                                                                      index='team',
-                                                                     values=['x3p', 'x3pa'])
+                                                                     columns='season_ending_year',
+                                                                     values=['x3p'])
 
-print(team_totals_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
+print('\n',team_totals_three_point_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
 
-team_totals_field_goals_2001_to_2024_pivot_table_df.to_excel('team_totals_field_goals_2001_to_2024_pivot_table.xlsx')
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.\
+    to_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx')
+#remove top row from pivot table
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df = \
+    pd.read_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx', header=1)
+
+print('\n',team_totals_three_point_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
+
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.\
+    to_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx', index=False) # COMPLETE
+#remove top row from pivot table
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df = \
+    team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.iloc[1:]
+
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.\
+    to_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx', index=False)
+
+print('\n',team_totals_three_point_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
+
+# creating charts 
+import matplotlib.pyplot as plt
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2001]
+color = 'orange'
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2000-01)')
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
 
 
 '''
