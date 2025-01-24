@@ -228,15 +228,201 @@ team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.\
 
 print('\n',team_totals_three_point_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
 
-# creating charts 
+# creating charts (2001-2024)
 import matplotlib.pyplot as plt
 x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
 y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2001]
 color = 'orange'
 plt.barh(x, y, color=color)
 plt.title('Total Three-Point Field Goals Made Per Team (2000-01)')
+plt.yticks(fontsize=8)
 plt.xlabel('Three-Point Field Goals Made')
 plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2002]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2001-02)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2003]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2002-03)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2004]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2003-04)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2005]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2004-05)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2006]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2005-06)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2007]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2006-07)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2008]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2007-08)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2009]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2008-09)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2010]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2009-10)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2011]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2010-11)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2012]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2011-12)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2013]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2012-13)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2014]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2013-14)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2015]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2014-15)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2016]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2015-16)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2017]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2016-17)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2018]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2017-18)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2019]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2018-19)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2020]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2019-20)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2021]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2020-21)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2022]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2021-22)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2023]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2022-23)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
+x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str).sort_values(ascending=True)
+y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2024]
+plt.barh(x, y, color=color)
+plt.title('Total Three-Point Field Goals Made Per Team (2023-24)')
+plt.yticks(fontsize=8)
+plt.xlabel('Three-Point Field Goals Made')
+plt.show()
+
 
 
 '''
