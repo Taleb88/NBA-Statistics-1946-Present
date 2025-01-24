@@ -177,7 +177,22 @@ print(player_instance.info())
 #############################
 
 # TEST ONLY 1-23-2025 - IN PROGRESS
+col = list(team_totals_df.columns)
+index = 0
 
+for col_name in col:
+    print(index, col_name) # season_ending_year, x2p, x2pa, x3p, x3pa
+    index += 1
+
+print(team_totals_df) # COMPLETE
+
+# filter out rows that do not have season_ending year 
+#   values != 2001 through 2024 via loc method
+#   create new dataframe based off the results
+two_point_and_three_point_team_totals_df = \
+    team_totals_df.loc[(team_totals_df['season_ending_year'] >= 2001) & (team_totals_df['season_ending_year'] >= 2024)]
+
+print(two_point_and_three_point_team_totals_df) # COMPLETE
 
 
 '''
