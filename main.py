@@ -1081,6 +1081,8 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 player_per_game_df['triple_double_avg'] = [''] * len(player_per_game_df)
 # determine if a player have averged a triple-double in a season via list comprehension, placing 'Yes' or 'No' values in triple_double_avg column
+# result -> [28 29 30 31 34]  (ADD 1 TO EACH ELEMENT INDEX) -> [29 30 31 32 35]
+#print(player_per_game_df.columns.get_indexer(['trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game', 'pts_per_game']))
 player_per_game_df['triple_double_avg'] = ['Yes' 
                                            if x[29] >= 10.0 and x[30] >= 10.0 and x[31] >= 10.0 or 
                                            x[29] >= 10.0 and x[30] >= 10.0 and x[32] >= 10.0 or 
@@ -1125,6 +1127,7 @@ player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1
                        'stl_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
 
 print('updating stl_per_game and blk_per_game columns accordingly = success - ', (time.time() - start_time))
 
@@ -3091,5 +3094,8 @@ plt.show()
 
 print('\nteam three point field goal made from 2001-2024 seasons chart creations = success - ', (time.time() - start_time))
 
+# ========================================================================================#
+# MANIPULATE TEAM DATA AND ADD TEAM_ID TO ALL 5 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
+# ========================================================================================#
 
 # ======================================================================== #

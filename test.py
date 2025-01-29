@@ -178,6 +178,70 @@ print(player_instance.info())
 
 
 
+'''# TEST ONLY 1-25-2025 - COMPLETE - WILL NOT USE DUE TO COMPLEXITY OF LOGIC/VALUE TYPES IN DATAFRAME
+col = list(team_totals_df.columns)
+index = 0
+
+for col_name in col:
+    print(index, col_name) # season_ending_year, x2p, x2pa, x3p, x3pa
+    index += 1
+
+print('\n',team_totals_df) # COMPLETE
+
+# filter out rows that do not have season_ending year 
+#   values != 2001 through 2024 via loc method
+#   create new dataframe based off the results
+team_totals_field_goals_2001_to_2024_df = \
+    team_totals_df.loc[(team_totals_df['season_ending_year'] >= 2001) 
+                       & (team_totals_df['season_ending_year'] <= 2024)]
+# filtering out rows with team = 'League Average'
+team_totals_field_goals_2001_to_2024_df = \
+    team_totals_field_goals_2001_to_2024_df.loc[\
+        team_totals_field_goals_2001_to_2024_df['team'] != 'League Average']
+
+print('\n',team_totals_field_goals_2001_to_2024_df.head(30)) # COMPLETE
+print('\n',team_totals_field_goals_2001_to_2024_df.tail(29)) # COMPLETE
+
+team_totals_field_goals_2001_to_2024_df.to_excel('team_totals_field_goals_2001_to_2024.xlsx', index=False)
+
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df = pd.pivot_table(team_totals_field_goals_2001_to_2024_df,
+                                                                     index='team',
+                                                                     columns='season_ending_year',
+                                                                     values=['x3p'])
+
+print('\n',team_totals_three_point_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
+
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.\
+    to_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx')
+#remove top row from pivot table
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df = \
+    pd.read_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx', header=1)
+
+print('\n',team_totals_three_point_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
+
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.\
+    to_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx', index=False) # COMPLETE
+#remove top row from pivot table
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df = \
+    team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.iloc[1:]
+
+team_totals_three_point_field_goals_2001_to_2024_pivot_table_df.\
+    to_excel('team_totals_three_point_field_goals_2001_to_2024_pivot_table.xlsx', index=False)
+
+print('\n',team_totals_three_point_field_goals_2001_to_2024_pivot_table_df) # COMPLETE
+
+
+# creating charts (2001-2024)
+import matplotlib.pyplot as plt
+
+for i in range(2000,2024):
+    x = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df['season_ending_year'].astype(str)
+    y = team_totals_three_point_field_goals_2001_to_2024_pivot_table_df[2001]
+    color='orange'
+    plt.barh(x, y, color=color)
+    plt.title(f'total Three-Point Field Goals Made Per Team {i + 1}')
+    plt.show()'''
+
 '''# TEST ONLY 1-23-2025 - COMPLETE
 col = list(team_totals_df.columns)
 index = 0
