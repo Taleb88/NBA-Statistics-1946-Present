@@ -3094,8 +3094,18 @@ plt.show()
 
 print('\nteam three point field goal made from 2001-2024 seasons chart creations = success - ', (time.time() - start_time))
 
+
 # ========================================================================================#
-# MANIPULATE TEAM DATA AND ADD TEAM_ID TO ALL 5 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
+# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO ALL 5 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
+#   a. create a new column in all 5 team datasets called 'team_id'
+#   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here))
+#   c. change order of columns to have the team_id as the first column of each team dataframe
+#   d. sort the team values by ascending (alphabetical) order in each team dataframe
+#   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks')
+# 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING"
+# 3. CREATE SEPARATE DATAFRAMES FOR PLAYOFF TEAMS ONLY
 # ========================================================================================#
+
+
 
 # ======================================================================== #
