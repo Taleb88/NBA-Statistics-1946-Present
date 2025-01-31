@@ -183,9 +183,12 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
-# IN PROGRESS AS OF 1/29/2025 AND 1/30/2025
+
+
+'''
+# IN PROGRESS AS OF 1/29/2025 AND 1/30/2025 - COMPLETE AS OF 1/31/2025
 # ========================================================================================#
-# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET - IN PROGRESS
+# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET - COMPLETE
 #   a. filter out team = 'League Average' (df[df['team'] != 'League Average']) from the datasets via a user defined function - COMPLETE
 #   b. create a new column in 4 team datasets (team_summaries_df, team_totals_df, team_abbrev_df, team_stats_per_game_df) 
 #           called 'team_id' - COMPLETE
@@ -324,7 +327,7 @@ team_summaries_playoff_teams_only_df.to_excel('team_summaries_playoff_teams_only
 team_totals_playoff_teams_only_df.to_excel('team_totals_playoff_teams_only.xlsx', index=False)
 
 print('\ncreate separate dataframes for playoff teams only - in progress', ' - ', (time.time() - start_time))
-
+'''
 
 '''# TEST ONLY 1-25-2025 - COMPLETE - WILL NOT USE DUE TO COMPLEXITY OF LOGIC/VALUE TYPES IN DATAFRAME
 col = list(team_totals_df.columns)
