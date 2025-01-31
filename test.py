@@ -191,7 +191,7 @@ print(player_instance.info())
 #   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here)) - COMPLETE
 #   c. change order of columns to have the team_id as the first column of each team dataframe - COMPLETE
 #   d. sort the team values by ascending (alphabetical) order in each team dataframe - COMPLETE
-#   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks')
+#   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks') - IN PROGRESS
 # 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING"
 # 3. CREATE SEPARATE DATAFRAMES FOR PLAYOFF TEAMS ONLY
 # ========================================================================================#
@@ -281,8 +281,16 @@ team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
-
-
+# 1e
+team_abbrev_df['team_id'] = team_abbrev_df['team'].factorize()[0] + 1
+team_stats_per_game_df['team_id'] = team_stats_per_game_df['team'].factorize()[0] + 1
+team_summaries_df['team_id'] = team_summaries_df['team'].factorize()[0] + 1
+team_totals_df['team_id'] = team_totals_df['team'].factorize()[0] + 1
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 
 print('\nmanipulate team data and add team_id to 4 team datasets and factorize per team; change order of columns per set = in progress', ' - ', (time.time() - start_time))
