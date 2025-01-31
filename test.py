@@ -74,6 +74,9 @@ grouped = player_award_shares_df.groupby('player')['pts_won'].mean()
 print(grouped)
 
 print('')
+
+
+'''
 # team_summaries_df
 team_summaries_df = pd.read_csv('csv/Team Summaries.csv')
 grouped = team_summaries_df.groupby('team').agg(
@@ -95,7 +98,7 @@ team_summaries_df.loc[(team_summaries_df['team'] == 'New York Knicks') &
                           (team_summaries_df['w'] > 50)]
 print(team_summaries_df)
 print('')
-
+'''
 
 
 '''
@@ -186,7 +189,7 @@ print(player_instance.info())
 #   b. create a new column in 4 team datasets (team_summaries_df, team_totals_df, team_abbrev_df, team_stats_per_game_df) 
 #           called 'team_id' - COMPLETE
 #   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here)) - COMPLETE
-#   c. change order of columns to have the team_id as the first column of each team dataframe - IN PROGRESS
+#   c. change order of columns to have the team_id as the first column of each team dataframe - COMPLETE
 #   d. sort the team values by ascending (alphabetical) order in each team dataframe
 #   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks')
 # 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING"
@@ -261,13 +264,15 @@ for col_name in team_totals_df_col:
 # reordering columns in dataframes via iloc
 team_abbrev_df = team_abbrev_df.iloc[:,[6,2,1,3,4,5,0]]
 team_stats_per_game_df = team_stats_per_game_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,0]]
-# team_summaries_df = team_summaries_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]] - SEASON COLUMN TO BE RENAMED + 2 NEW COLUMNS TO BE ADDED
+team_summaries_df = team_summaries_df.iloc[:,[32,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0]]
 team_totals_df = team_totals_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,0]]
 # save changes
 team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
-#team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+
 
 
 print('\nmanipulate team data and add team_id to 4 team datasets and factorize per team; change order of columns per set = in progress', ' - ', (time.time() - start_time))
