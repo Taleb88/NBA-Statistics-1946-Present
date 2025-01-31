@@ -3208,10 +3208,10 @@ team_totals_df.to_excel('Team Totals.xlsx', index=False)
 print('\nmanipulate team data and add team_id to 4 team datasets and factorize per team; change order of columns per set = success', ' - ', (time.time() - start_time))
 
 # 2
-team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
-team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
-team_summaries_df.loc[team_summaries_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
-team_totals_df.loc[team_totals_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
+team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
+team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
+team_summaries_df.loc[team_summaries_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
+team_totals_df.loc[team_totals_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
 # save changes
 team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
