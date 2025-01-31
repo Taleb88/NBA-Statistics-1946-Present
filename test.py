@@ -2,6 +2,9 @@
 import pandas as pd
 import time
 
+start_time = time.time()
+
+
 #player_per_game_df = pd.read_csv('csv/Player Per Game.csv')
 #player_career_info_df = pd.read_csv('csv/Player Career Info.csv')
 #player_season_info_df = pd.read_csv('csv/Player Season Info.csv')
@@ -178,33 +181,96 @@ print(player_instance.info())
 
 # IN PROGRESS AS OF 1/29/2025 AND 1/30/2025
 # ========================================================================================#
-# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
-#   a. filter out team = 'League Average' (df[df['team'] != 'League Average']) from the datasets via a user defined function
+# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET - IN PROGRESS
+#   a. filter out team = 'League Average' (df[df['team'] != 'League Average']) from the datasets via a user defined function - COMPLETE
 #   b. create a new column in 4 team datasets (team_summaries_df, team_totals_df, team_abbrev_df, team_stats_per_game_df) 
-#           called 'team_id'
-#   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here))
-#   c. change order of columns to have the team_id as the first column of each team dataframe
+#           called 'team_id' - COMPLETE
+#   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here)) - COMPLETE
+#   c. change order of columns to have the team_id as the first column of each team dataframe - IN PROGRESS
 #   d. sort the team values by ascending (alphabetical) order in each team dataframe
 #   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks')
 # 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING"
 # 3. CREATE SEPARATE DATAFRAMES FOR PLAYOFF TEAMS ONLY
 # ========================================================================================#
+
+# 1a
 def filter_out_league_average(df):
     try:
         return df[df['team'] != 'League Average']
     except Exception as e:
         return(f'cannot filter out "League Average" values {type(e)}')
-
+# implement filtering to respective dataframes
 team_abbrev_df = filter_out_league_average(team_abbrev_df)
 team_stats_per_game_df = filter_out_league_average(team_stats_per_game_df)
 team_summaries_df = filter_out_league_average(team_summaries_df)
 team_totals_df = filter_out_league_average(team_totals_df)
-
+# save changes
 team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# 1b
+team_abbrev_df['team_id'] = 0 * len(team_abbrev_df)
+team_stats_per_game_df['team_id'] = 0 * len(team_stats_per_game_df)
+team_summaries_df['team_id'] = 0 * len(team_summaries_df)
+team_totals_df['team_id'] = 0 * len(team_totals_df)
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# remove unnamed columns via loc and ~
+team_abbrev_df = team_abbrev_df.loc[:, ~team_abbrev_df.columns.str.contains('^Unnamed')]
+team_stats_per_game_df = team_stats_per_game_df.loc[:, ~team_stats_per_game_df.columns.str.contains('^Unnamed')]
+team_summaries_df = team_summaries_df.loc[:, ~team_summaries_df.columns.str.contains('^Unnamed')]
+team_totals_df = team_totals_df.loc[:, ~team_totals_df.columns.str.contains('^Unnamed')]
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# 1c
+team_abbrev_df_col = list(team_abbrev_df.columns)
+team_stats_per_game_df_col = list(team_stats_per_game_df.columns)
+team_summaries_df_col = list(team_summaries_df.columns)
+team_totals_df_col = list(team_totals_df.columns)
 
+print('')
+index = 0
+for col_name in team_abbrev_df_col:
+    print(index,col_name)
+    index += 1
+print('')
+
+index = 0
+for col_name in team_stats_per_game_df_col:
+    print(index,col_name)
+    index += 1
+print('')
+
+index = 0
+for col_name in team_summaries_df_col:
+    print(index,col_name)
+    index += 1
+print('')
+
+index = 0
+for col_name in team_totals_df_col:
+    print(index,col_name)
+    index += 1
+# reordering columns in dataframes via iloc
+team_abbrev_df = team_abbrev_df.iloc[:,[6,2,1,3,4,5,0]]
+team_stats_per_game_df = team_stats_per_game_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,0]]
+# team_summaries_df = team_summaries_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]] - SEASON COLUMN TO BE RENAMED + 2 NEW COLUMNS TO BE ADDED
+team_totals_df = team_totals_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,0]]
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+#team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+
+print('\nmanipulate team data and add team_id to 4 team datasets and factorize per team; change order of columns per set = in progress', ' - ', (time.time() - start_time))
 
 
 '''# TEST ONLY 1-25-2025 - COMPLETE - WILL NOT USE DUE TO COMPLEXITY OF LOGIC/VALUE TYPES IN DATAFRAME
