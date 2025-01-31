@@ -3095,18 +3095,149 @@ plt.show()
 print('\nteam three point field goal made from 2001-2024 seasons chart creations = success - ', (time.time() - start_time))
 
 
+# IN PROGRESS AS OF 1/29/2025 AND 1/30/2025
 # ========================================================================================#
-# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
-#   a. create a new column in 4 team datasets (team_summaries_df, team_totals_df, team_abbrev_df, team_stats_per_game_df) 
-#       called 'team_id'
-#   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here))
-#   c. change order of columns to have the team_id as the first column of each team dataframe
-#   d. sort the team values by ascending (alphabetical) order in each team dataframe
-#   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks')
-# 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING"
-# 3. CREATE SEPARATE DATAFRAMES FOR PLAYOFF TEAMS ONLY
+# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET - COMPLETE
+#   a. filter out team = 'League Average' (df[df['team'] != 'League Average']) from the datasets via a user defined function - COMPLETE
+#   b. create a new column in 4 team datasets (team_summaries_df, team_totals_df, team_abbrev_df, team_stats_per_game_df) 
+#           called 'team_id' - COMPLETE
+#   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here)) - COMPLETE
+#   c. change order of columns to have the team_id as the first column of each team dataframe - COMPLETE
+#   d. sort the team values by ascending (alphabetical) order in each team dataframe - COMPLETE
+#   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks') - COMPLETE
+# 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING" - COMPLETE
+# 3. CREATE SEPARATE DATAFRAMES FOR PLAYOFF TEAMS ONLY - IN PROGRESS
 # ========================================================================================#
 
+# 1a
+def filter_out_league_average(df):
+    try:
+        return df[df['team'] != 'League Average']
+    except Exception as e:
+        return(f'cannot filter out "League Average" values {type(e)}')
+# implement filtering to respective dataframes
+team_abbrev_df = filter_out_league_average(team_abbrev_df)
+team_stats_per_game_df = filter_out_league_average(team_stats_per_game_df)
+team_summaries_df = filter_out_league_average(team_summaries_df)
+team_totals_df = filter_out_league_average(team_totals_df)
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# 1b
+team_abbrev_df['team_id'] = 0 * len(team_abbrev_df)
+team_stats_per_game_df['team_id'] = 0 * len(team_stats_per_game_df)
+team_summaries_df['team_id'] = 0 * len(team_summaries_df)
+team_totals_df['team_id'] = 0 * len(team_totals_df)
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# remove unnamed columns via loc and ~
+team_abbrev_df = team_abbrev_df.loc[:, ~team_abbrev_df.columns.str.contains('^Unnamed')]
+team_stats_per_game_df = team_stats_per_game_df.loc[:, ~team_stats_per_game_df.columns.str.contains('^Unnamed')]
+team_summaries_df = team_summaries_df.loc[:, ~team_summaries_df.columns.str.contains('^Unnamed')]
+team_totals_df = team_totals_df.loc[:, ~team_totals_df.columns.str.contains('^Unnamed')]
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# 1c
+team_abbrev_df_col = list(team_abbrev_df.columns)
+team_stats_per_game_df_col = list(team_stats_per_game_df.columns)
+team_summaries_df_col = list(team_summaries_df.columns)
+team_totals_df_col = list(team_totals_df.columns)
+# getting index values of columns per selected dataframes
+print('')
+index = 0
+for col_name in team_abbrev_df_col:
+    print(index,col_name)
+    index += 1
+print('')
+
+index = 0
+for col_name in team_stats_per_game_df_col:
+    print(index,col_name)
+    index += 1
+print('')
+
+index = 0
+for col_name in team_summaries_df_col:
+    print(index,col_name)
+    index += 1
+print('')
+
+index = 0
+for col_name in team_totals_df_col:
+    print(index,col_name)
+    index += 1
+# reordering columns in dataframes via iloc
+team_abbrev_df = team_abbrev_df.iloc[:,[6,2,1,3,4,5,0]]
+team_stats_per_game_df = team_stats_per_game_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,0]]
+team_summaries_df = team_summaries_df.iloc[:,[32,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0]]
+team_totals_df = team_totals_df.iloc[:,[29,2,1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,0]]
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# 1d
+team_abbrev_df = team_abbrev_df.sort_values(['team'], ascending=True)
+team_stats_per_game_df = team_stats_per_game_df.sort_values(['team'], ascending=True)
+team_summaries_df = team_summaries_df.sort_values(['team'], ascending=True)
+team_totals_df = team_totals_df.sort_values(['team'], ascending=True)
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+# 1e
+team_abbrev_df['team_id'] = team_abbrev_df['team'].factorize()[0] + 1
+team_stats_per_game_df['team_id'] = team_stats_per_game_df['team'].factorize()[0] + 1
+team_summaries_df['team_id'] = team_summaries_df['team'].factorize()[0] + 1
+team_totals_df['team_id'] = team_totals_df['team'].factorize()[0] + 1
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+print('\nmanipulate team data and add team_id to 4 team datasets and factorize per team; change order of columns per set = success', ' - ', (time.time() - start_time))
+
+# 2
+team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
+team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
+team_summaries_df.loc[team_summaries_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
+team_totals_df.loc[team_totals_df['season_ending_year'] == '2024', 'playoffs'] = 'Pending'
+# save changes
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
+
+print('\nupdate teams in 2024-25 playoffs values from false to "pending" - in progress', ' - ', (time.time() - start_time))
+
+# 3
+def playoff_teams(df):
+    try:
+        return df[df['playoffs'] == True]
+    except Exception as e:
+        return(f'cannot filter out non-playoff values {type(e)}')
+# implement filtering to respective dataframes
+team_abbrev_playoff_teams_only_df = playoff_teams(team_abbrev_df)
+team_stats_per_game_playoff_teams_only_df = playoff_teams(team_stats_per_game_df)
+team_summaries_playoff_teams_only_df = playoff_teams(team_summaries_df)
+team_totals_playoff_teams_only_df = playoff_teams(team_totals_df)    
+# save changes
+team_abbrev_playoff_teams_only_df.to_excel('team_abbrev_playoff_teams_only.xlsx', index=False)
+team_stats_per_game_playoff_teams_only_df.to_excel('team_stats_per_game_playoff_teams_only.xlsx', index=False)
+team_summaries_playoff_teams_only_df.to_excel('team_summaries_playoff_teams_only.xlsx', index=False)
+team_totals_playoff_teams_only_df.to_excel('team_totals_playoff_teams_only.xlsx', index=False)
+
+print('\ncreate separate dataframes for playoff teams only - in progress', ' - ', (time.time() - start_time))
 
 
 # ======================================================================== #
