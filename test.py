@@ -194,7 +194,16 @@ def filter_out_league_average(df):
         return df[df['team'] != 'League Average']
     except Exception as e:
         return(f'cannot filter out "League Average" values {type(e)}')
-    
+
+team_abbrev_df = filter_out_league_average(team_abbrev_df)
+team_stats_per_game_df = filter_out_league_average(team_stats_per_game_df)
+team_summaries_df = filter_out_league_average(team_summaries_df)
+team_totals_df = filter_out_league_average(team_totals_df)
+
+team_abbrev_df.to_excel('Team Abbrev.xlsx')
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx')
+team_summaries_df.to_excel('Team Summaries.xlsx')
+team_totals_df.to_excel('Team Totals.xlsx')
 
 
 
