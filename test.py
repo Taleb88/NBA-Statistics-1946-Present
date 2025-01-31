@@ -200,10 +200,10 @@ team_stats_per_game_df = filter_out_league_average(team_stats_per_game_df)
 team_summaries_df = filter_out_league_average(team_summaries_df)
 team_totals_df = filter_out_league_average(team_totals_df)
 
-team_abbrev_df.to_excel('Team Abbrev.xlsx')
-team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx')
-team_summaries_df.to_excel('Team Summaries.xlsx')
-team_totals_df.to_excel('Team Totals.xlsx')
+team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
+team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
+team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
+team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 
 
