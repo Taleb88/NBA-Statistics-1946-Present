@@ -3096,8 +3096,9 @@ print('\nteam three point field goal made from 2001-2024 seasons chart creations
 
 
 # ========================================================================================#
-# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO ALL 5 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
-#   a. create a new column in all 5 team datasets called 'team_id'
+# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
+#   a. create a new column in 4 team datasets (team_summaries_df, team_totals_df, team_abbrev_df, team_stats_per_game_df) 
+#       called 'team_id'
 #   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here))
 #   c. change order of columns to have the team_id as the first column of each team dataframe
 #   d. sort the team values by ascending (alphabetical) order in each team dataframe

@@ -176,6 +176,26 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
+# IN PROGRESS AS OF 1/29/2025 AND 1/30/2025
+# ========================================================================================#
+# 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET
+#   a. filter out team = 'League Average' (df[df['team'] != 'League Average']) from the datasets via a user defined function
+#   b. create a new column in 4 team datasets (team_summaries_df, team_totals_df, team_abbrev_df, team_stats_per_game_df) 
+#           called 'team_id'
+#   b. for the 'team_id' column, 'multiply' zero -> '0' by the length of the dataframe (len(data frame name goes here))
+#   c. change order of columns to have the team_id as the first column of each team dataframe
+#   d. sort the team values by ascending (alphabetical) order in each team dataframe
+#   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks')
+# 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING"
+# 3. CREATE SEPARATE DATAFRAMES FOR PLAYOFF TEAMS ONLY
+# ========================================================================================#
+def filter_out_league_average(df):
+    try:
+        return df[df['team'] != 'League Average']
+    except Exception as e:
+        return(f'cannot filter out "League Average" values {type(e)}')
+    
+
 
 
 '''# TEST ONLY 1-25-2025 - COMPLETE - WILL NOT USE DUE TO COMPLEXITY OF LOGIC/VALUE TYPES IN DATAFRAME
