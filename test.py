@@ -1,7 +1,7 @@
 # TESTING VARIOUS QUERIES
 import pandas as pd
-import time
 import numpy as np
+import time
 
 start_time = time.time()
 
