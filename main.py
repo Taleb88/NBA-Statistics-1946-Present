@@ -3208,11 +3208,26 @@ print('\nmanipulate team data and add team_id to 4 team datasets and factorize p
 
 # 2
 today = datetime.date.today()
-year = today.strftime("%Y")
-team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
-team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
-team_summaries_df.loc[team_summaries_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
-team_totals_df.loc[team_totals_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
+current_year = today.strftime("%Y")
+'''team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
+team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
+team_summaries_df.loc[team_summaries_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
+team_totals_df.loc[team_totals_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
+'''
+
+def year(x):
+    try:
+        if x == current_year:
+            return 'Pending'
+        else:
+            return f'{x}'
+    except Exception as e:
+        print(f'cannot make appropriate updates - {type(e)}')
+
+team_abbrev_df['playoffs'] = team_abbrev_df.apply(lambda x: year(x['season_ending_year']), axis='columns')
+team_stats_per_game_df['playoffs'] = team_stats_per_game_df.apply(lambda x: year(x['season_ending_year']), axis='columns')
+team_summaries_df['playoffs'] = team_summaries_df.apply(lambda x: year(x['season_ending_year']), axis='columns')
+team_totals_df['playoffs'] = team_totals_df.apply(lambda x: year(x['season_ending_year']), axis='columns')
 # save changes
 team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
