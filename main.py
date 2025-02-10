@@ -1104,47 +1104,6 @@ player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 print('creation of double-double and triple-double columns = success - ', (time.time() - start_time))
 
 
-# populating certain cells/values the stl_per_game and blk_per_game columns with the following ->
-#   N/A - Stat tracked as of the 1973-74 NBA Season
-#   N/A - Stat tracked as of the 1973-74 ABA Season
-player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & \
-    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'stl_per_game'] = \
-    'N/A - Stat tracked as of the 1973-74 NBA Season'
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & \
-    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'blk_per_game'] = \
-    'N/A - Stat tracked as of the 1973-74 NBA Season'
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
-                       'blk_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1974) & (player_per_game_df['lg'] == 'ABA'), 
-                       'stl_per_game'] = 'N/A - Stat tracked as of the 1973-74 ABA Season'
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-
-print('updating stl_per_game and blk_per_game columns accordingly = success - ', (time.time() - start_time))
-
-
-# populating certain cells/values the trb_per_game column with the following ->
-#   N/A - Stat tracked as of the 1950-51 NBA Season (NBA AND BAA merged on August 3,1949)
-player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1951) & \
-    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'trb_per_game'] = \
-    'N/A - Stat tracked as of the 1950-51 NBA Season'
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-
-print('updating trb_per_game columns accordingly = success - ', (time.time() - start_time))
-
-
 # =================================== #
 #                       COMPLETE
 # 1. create a column called calendar year -> datatype = int

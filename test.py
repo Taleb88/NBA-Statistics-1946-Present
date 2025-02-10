@@ -184,19 +184,6 @@ print(player_instance.info())
 #############################
 
 
-# IN PROGRESS AS OF 2/10/2025
-# populating certain cells/values the trb_per_game column with the following ->
-#   N/A - Stat tracked as of the 1950-51 NBA Season (NBA AND BAA merged on August 3,1949)
-player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1951) & \
-    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'trb_per_game'] = \
-    'N/A - Stat tracked as of the 1950-51 NBA Season'
-
-player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
-
-
-print('updating trb_per_game columns accordingly = success - ', (time.time() - start_time))
-
-
 '''
 # IN PROGRESS AS OF 2/10/2025 - COMPLETE AS OF 2/10/2025
 def award_winners_highlighted(x):
