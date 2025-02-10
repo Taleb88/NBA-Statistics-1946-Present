@@ -186,6 +186,42 @@ print(player_instance.info())
 
 
 '''
+# IN PROGRESS AS OF 2/10/2025 - COMPLETE AS OF 2/10/2025
+def award_winners_highlighted(x):
+    try:
+        if x == True:
+            return 'background-color: green'     
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
+
+player_award_shares_and_player_per_game_merged_styled_df = (
+    player_award_shares_and_player_per_game_merged_df.
+    style.
+    map(award_winners_highlighted, subset=['winner'])
+)
+
+player_award_shares_and_player_per_game_merged_styled_df.to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
+'''
+
+'''
+# IN PROGRESS AS OF 2/10/2025 - COMPLETE AS OF 2/10/2025
+def player_per_game_highlighted(x):
+    try:
+        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or \
+            x == 'N/A - Stat tracked as of the 1973-74 ABA Season' or \
+                x == 'N/A - Stat tracked as of the 1950-51 NBA Season':
+            return 'background-color: orange'
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot list results')
+        
+player_per_game_df = player_per_game_df.style.map(player_per_game_highlighted)
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+'''
+
+'''
 # IN PROGRESS AS OF 1/29/2025 AND 1/30/2025 - COMPLETE AS OF 1/31/2025
 # ========================================================================================#
 # 1. MANIPULATE TEAM DATA AND ADD TEAM_ID TO 4 TEAM DATASETS AND FACTORIZE PER TEAM; CHANGE ORDER OF COLUMNS PER SET - COMPLETE

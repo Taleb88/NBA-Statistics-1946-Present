@@ -2805,7 +2805,7 @@ print('development of charts = success - ', (time.time() - start_time))
 
 def award_winners_highlighted(x):
     try:
-        if x == 'True':
+        if x == True:
             return 'background-color: green'     
     except Exception as e:
         print(f'caught {type(e)}: e \n'
@@ -2814,7 +2814,7 @@ def award_winners_highlighted(x):
 player_award_shares_and_player_per_game_merged_styled_df = (
     player_award_shares_and_player_per_game_merged_df.
     style.
-    applymap(award_winners_highlighted)
+    map(award_winners_highlighted, subset=['winner'])
 )
 
 player_award_shares_and_player_per_game_merged_styled_df.to_excel('player_award_shares_and_player_per_game_merged.xlsx', index=False)
@@ -2837,15 +2837,18 @@ bill_russell_and_wilt_chamberlain_per_game_avgs_merged_styled_df.\
 
 def player_per_game_highlighted(x):
     try:
-        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or x == 'N/A - Stat tracked as of the 1973-74 ABA Season' or x == 'N/A - Stat tracked as of the 1950-51 NBA Season':
-            return 'background-color: red'
+        if x == 'N/A - Stat tracked as of the 1973-74 NBA Season' or \
+            x == 'N/A - Stat tracked as of the 1973-74 ABA Season' or \
+                x == 'N/A - Stat tracked as of the 1950-51 NBA Season':
+            return 'background-color: orange'
     except Exception as e:
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
         
-player_per_game_df = player_per_game_df.style.applymap(player_per_game_highlighted)
+player_per_game_df = player_per_game_df.style.apply(player_per_game_highlighted)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
 
 print('conditional formatting = success - ', (time.time() - start_time))
 
@@ -3209,12 +3212,6 @@ print('\nmanipulate team data and add team_id to 4 team datasets and factorize p
 # 2
 today = datetime.date.today()
 current_year = today.strftime("%Y")
-'''team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
-team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
-team_summaries_df.loc[team_summaries_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
-team_totals_df.loc[team_totals_df['season_ending_year'] == current_year, 'playoffs'] = 'Pending'
-'''
-
 def year(x):
     try:
         if x == current_year:
