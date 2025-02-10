@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import time
+import datetime
 
 # read csv
 advanced_df = pd.read_csv('csv/advanced.csv')
@@ -3103,7 +3104,7 @@ print('\nteam three point field goal made from 2001-2024 seasons chart creations
 #   c. change order of columns to have the team_id as the first column of each team dataframe - COMPLETE
 #   d. sort the team values by ascending (alphabetical) order in each team dataframe - COMPLETE
 #   e. implement a factorize method to increment the id values based on the team values (ex: team_id=1, team='atlanta hawks') - COMPLETE
-# 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING" - COMPLETE
+# 2. UPDATE TEAMS IN 2024-25 playoffs values from FALSE to "PENDING" - COMPLETE (TO BE UPDATED AFTER SEASON)
 # 3. CREATE SEPARATE DATAFRAMES FOR PLAYOFF TEAMS ONLY - COMPLETE
 # ========================================================================================#
 
@@ -3206,10 +3207,12 @@ team_totals_df.to_excel('Team Totals.xlsx', index=False)
 print('\nmanipulate team data and add team_id to 4 team datasets and factorize per team; change order of columns per set = success', ' - ', (time.time() - start_time))
 
 # 2
-team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
-team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
-team_summaries_df.loc[team_summaries_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
-team_totals_df.loc[team_totals_df['season_ending_year'] == '2025', 'playoffs'] = 'Pending'
+today = datetime.date.today()
+year = today.strftime("%Y")
+team_abbrev_df.loc[team_abbrev_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
+team_stats_per_game_df.loc[team_stats_per_game_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
+team_summaries_df.loc[team_summaries_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
+team_totals_df.loc[team_totals_df['season_ending_year'] == year, 'playoffs'] = 'Pending'
 # save changes
 team_abbrev_df.to_excel('Team Abbrev.xlsx', index=False)
 team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
