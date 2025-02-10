@@ -27,7 +27,7 @@ player_per_game_df = pd.read_excel('Player Per Game.xlsx')
 player_play_by_play_df = pd.read_excel('Player Play By Play.xlsx')
 player_season_info_df = pd.read_excel('Player Season Info.xlsx')
 player_shooting_df = pd.read_excel('Player Shooting.xlsx')
-player_totals_df = pd.read_excel('Player Totals.xlsx')
+#player_totals_df = pd.read_excel('Player Totals.xlsx')
 team_abbrev_df = pd.read_excel('Team Abbrev.xlsx')
 team_stats_per_100_poss_df = pd.read_excel('Team Stats Per 100 Poss.xlsx')
 team_stats_per_game_df = pd.read_excel('Team Stats Per Game.xlsx')
@@ -183,6 +183,18 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
+
+# IN PROGRESS AS OF 2/10/2025
+# populating certain cells/values the trb_per_game column with the following ->
+#   N/A - Stat tracked as of the 1950-51 NBA Season (NBA AND BAA merged on August 3,1949)
+player_per_game_df.loc[(player_per_game_df['season_ending_year'].astype(int) < 1951) & \
+    ((player_per_game_df['lg'] == 'NBA') | (player_per_game_df['lg'] == 'BAA')), 'trb_per_game'] = \
+    'N/A - Stat tracked as of the 1950-51 NBA Season'
+
+player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
+
+
+print('updating trb_per_game columns accordingly = success - ', (time.time() - start_time))
 
 
 '''
