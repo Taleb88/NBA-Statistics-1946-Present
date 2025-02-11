@@ -2804,7 +2804,7 @@ def player_per_game_highlighted(x):
         print(f'caught {type(e)}: e \n'
               f'cannot list results')
         
-player_per_game_df = player_per_game_df.style.apply(player_per_game_highlighted)
+player_per_game_df = player_per_game_df.style.map(player_per_game_highlighted)
 
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
@@ -3190,7 +3190,7 @@ team_stats_per_game_df.to_excel('Team Stats Per Game.xlsx', index=False)
 team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
-print('\nupdate teams in 2024-25 playoffs values from false to "pending" - in progress', ' - ', (time.time() - start_time))
+print('\nupdate teams in 2024-25 playoffs values from false to "pending" = success', ' - ', (time.time() - start_time))
 
 # 3
 def playoff_teams(df):
@@ -3209,7 +3209,24 @@ team_stats_per_game_playoff_teams_only_df.to_excel('team_stats_per_game_playoff_
 team_summaries_playoff_teams_only_df.to_excel('team_summaries_playoff_teams_only.xlsx', index=False)
 team_totals_playoff_teams_only_df.to_excel('team_totals_playoff_teams_only.xlsx', index=False)
 
-print('\ncreate separate dataframes for playoff teams only - in progress', ' - ', (time.time() - start_time))
+print('\ncreate separate dataframes for playoff teams only = success', ' - ', (time.time() - start_time))
+
+
+# ==============================================#
+#   CREATION OF STATS REFERENCE GUIDE           #
+# ==============================================#
+
+stats_reference_guide_df = pd.DataFrame({
+                                         'pts_per_game': ['Tracked since league debuted'],
+                                         'trb_per_game': ['Tracked since the 1950-51 NBA Season'],
+                                         'ast_per_game': ['Tracked since league debuted'],
+                                         'blk_per_game': ['Tracked since the 1973-74 NBA Season'],
+                                         'stl_per_game': ['Tracked since the 1973-74 NBA Season']
+                                         })
+
+stats_reference_guide_df.to_excel('stats_reference_guide.xlsx', index=False)
+
+print('\ncreate stats reference guide = success', ' - ', (time.time() - start_time))
 
 
 # ======================================================================== #

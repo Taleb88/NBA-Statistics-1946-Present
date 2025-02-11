@@ -183,6 +183,18 @@ print(player_instance.info())
 #     TESTING AREA ONLY     #
 #############################
 
+'''
+# IN PROGRESS AS OF 2/10/2025 - COMPLETE AS OF 2/10/2025
+stats_reference_guide_df = pd.DataFrame({
+                                         'pts_per_game': ['Tracked since league debuted'],
+                                         'trb_per_game': ['Tracked since the 1950-51 NBA Season'],
+                                         'ast_per_game': ['Tracked since league debuted'],
+                                         'blk_per_game': ['Tracked since the 1973-74 NBA Season'],
+                                         'stl_per_game': ['Tracked since the 1973-74 NBA Season']
+                                         })
+
+stats_reference_guide_df.to_excel('stats_reference_guide.xlsx', index=False)
+'''
 
 '''
 # IN PROGRESS AS OF 2/10/2025 - COMPLETE AS OF 2/10/2025
