@@ -50,7 +50,7 @@ team_summaries_df.to_excel('Team Summaries.xlsx', index=False)
 team_totals_df.to_excel('Team Totals.xlsx', index=False)
 
 start_time = time.time()
-print('read_csv and to_excel = success', ' - ', (time.time() - start_time))
+print('\nread_csv and to_excel = success', ' - ', (time.time() - start_time))
 
 #print(player_award_shares_df)
 #print(player_per_game_df)
@@ -79,7 +79,7 @@ team_stats_per_game_df['season'] = team_stats_per_game_df['season'].astype(str)
 team_summaries_df['season'] = team_summaries_df['season'].astype(str)
 team_totals_df['season'] = team_totals_df['season'].astype(str)
 
-print('conversion of season columns in all dataframes = success - ', (time.time() - start_time))
+print('\nconversion of season columns in all dataframes = success - ', (time.time() - start_time))
 
 # saving updated season value conversions to all files
 advanced_df.to_excel('advanced.xlsx', index=False)
@@ -382,7 +382,7 @@ player_career_info_df = last_season_values(player_career_info_df)
 
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
-print('first_season and last_season value modifications = success - ', (time.time() - start_time))
+print('\nfirst_season and last_season value modifications = success - ', (time.time() - start_time))
 
 # define function that corrects season value 
 #   ex: 1956 -> 1955-56
@@ -528,7 +528,7 @@ player_career_info_df = season_column_names(player_career_info_df)
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
-print('changing of column names to first_season and last_season = success - ', (time.time() - start_time))
+print('\nchanging of column names to first_season and last_season = success - ', (time.time() - start_time))
 
 
 # ==================== #
@@ -1043,7 +1043,7 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 
-print('player value modifications = success - ', (time.time() - start_time))
+print('\nplayer value modifications = success - ', (time.time() - start_time))
 
 
 # CREATING DOUBLE-DOUBLE AND TRIPLE-DOUBLE COLUMNS (VALUES = YES/NO) in player_per_game_df
@@ -1101,7 +1101,7 @@ player_per_game_df['triple_double_avg'] = ['Yes'
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
-print('creation of double-double and triple-double columns = success - ', (time.time() - start_time))
+print('\ncreation of double-double and triple-double columns = success - ', (time.time() - start_time))
 
 
 # =================================== #
@@ -1550,7 +1550,7 @@ player_season_info_df.to_excel('Player Season Info.xlsx', index=False)
 player_totals_df.to_excel('Player Totals.xlsx', index=False)
 
 
-print('massive data cleanup in player_per_game_df, player_season_info_df, and player_totals_df = success - ', (time.time() - start_time))
+print('\nmassive data cleanup in player_per_game_df, player_season_info_df, and player_totals_df = success - ', (time.time() - start_time))
 
 
 #                                       COMPLETE AS OF 1-17-2025
@@ -1565,14 +1565,14 @@ file_path = 'Player Career Info.xlsx'
 
 if os.path.isfile(file_path):
     os.remove(file_path)
-    print('removal of initial Player Career Info.xlsx file = success')
+    print('\nremoval of initial Player Career Info.xlsx file = success')
 else:
     print('Player Career Info.xlsx does not exist')
 
 start_time = time.time()
 
 
-print('removal of Player Career Info.xlsx accordingly = success - ', (time.time() - start_time))
+print('\nremoval of Player Career Info.xlsx accordingly = success - ', (time.time() - start_time))
 
 
 # creating new version of player_career_info_df dataframe
@@ -1605,7 +1605,7 @@ player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 # first_season_values updated in string format to display full values per column
 
 
-print('recreation of player_career_info_df = success - ', (time.time() - start_time))
+print('\nrecreation of player_career_info_df = success - ', (time.time() - start_time))
 
 
 # ===================================== #
@@ -1670,7 +1670,7 @@ player_career_info_df['hof'] = player_career_info_df['hof'].replace(False, 'No')
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
-print('updating hof values accordingly in player_career_info_df = success - ', (time.time() - start_time))
+print('\nupdating hof values accordingly in player_career_info_df = success - ', (time.time() - start_time))
 
 
 # removing extra columns in player_career_info_df
@@ -1696,7 +1696,7 @@ player_career_info_df.loc[(player_career_info_df['player'] == 'Roger Brown') &
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
 
-print('update hof values further accordingly in player_career_info_df = success - ', (time.time() - start_time))
+print('\nupdate hof values further accordingly in player_career_info_df = success - ', (time.time() - start_time))
 
 
 # ============= #
@@ -1735,7 +1735,7 @@ player_career_info_and_player_per_game_merged_df = pd.merge(player_career_info_d
 player_career_info_and_player_per_game_merged_df.to_excel('player_career_and_player_per_game_merged.xlsx', index=False)
 
 
-print('merging of multiple dataframes = success - ', (time.time() - start_time))
+print('\nmerging of multiple dataframes = success - ', (time.time() - start_time))
 
 
 # filter out non-hofer here
@@ -1744,7 +1744,7 @@ hofer_list_and_player_per_game_df = player_career_info_and_player_per_game_merge
 hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game.xlsx', index=False)
 
 
-print('filter out non-hofer here = success - ', (time.time() - start_time))
+print('\nfilter out non-hofer here = success - ', (time.time() - start_time))
 
 
 # 1-16-2025 - COMPLETE
@@ -1797,7 +1797,7 @@ hofer_list_and_player_per_game_df['ast_per_game'] = hofer_list_and_player_per_ga
 hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 
 
-print('updates made to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
+print('\nupdates made to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
 
 
 # COMPLETE
@@ -1877,7 +1877,7 @@ hofer_list_and_player_per_game_df['trb_per_game'] = trb_per_game.copy()
 hofer_list_and_player_per_game_df.to_excel('hofer_list_and_player_per_game_averages.xlsx', index=False)
 
 
-print('adding trb_per_game column to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
+print('\nadding trb_per_game column to hofer_list_and_player_per_game_df = success - ', (time.time() - start_time))
 
 
 # ================== #
@@ -1927,7 +1927,7 @@ player_shooting_and_player_totals_merged_df['true_shooting_percentage'] = \
 player_shooting_and_player_totals_merged_df.to_excel('player_shooting_and_player_totals_merged.xlsx', index=False)
 
 
-print('creation of true shooting percentage columns = success - ', (time.time() - start_time))
+print('\ncreation of true shooting percentage columns = success - ', (time.time() - start_time))
 
 
 # ================== #
@@ -2061,7 +2061,7 @@ clutch_poy_pivot_table_df = \
 
 clutch_poy_pivot_table_df.to_excel('clutch_poy_pivot_table.xlsx', index=False)
 
-print(clutch_poy_pivot_table_df)
+print('\nclutch_poy_pivot_table:',clutch_poy_pivot_table_df)
 # dpoy
 dpoy_pivot_table_df = \
     pd.pivot_table(dpoy_winners_df, index=['player_x'],
@@ -2083,7 +2083,7 @@ dpoy_pivot_table_df['award'] = \
                 4
     )
 
-print(dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
+print('\ndpoy_pivot_table_df sorted by award descending:',dpoy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 dpoy_pivot_table_df.to_excel('dpoy_pivot_table.xlsx', index=False)
 # mip
@@ -2161,7 +2161,7 @@ aba_roy_pivot_table_df['award'] = \
                 1
     )
 
-print(aba_roy_pivot_table_df.sort_values(by=['award'], ascending=False))
+print('\naba_roy_pivot_table_df sorted by award descending:',aba_roy_pivot_table_df.sort_values(by=['award'], ascending=False))
 
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
@@ -2287,7 +2287,7 @@ aba_roy_pivot_table_df = aba_roy_pivot_table_df.\
 aba_roy_pivot_table_df.to_excel('aba_roy_pivot_table.xlsx', index=False)
 
 
-print('creation and modification of pivot tables = success - ', (time.time() - start_time))
+print('\ncreation and modification of pivot tables = success - ', (time.time() - start_time))
 
 
 # ================= #
@@ -2368,7 +2368,7 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df = pd.pivot_table(
     'blk_per_game'], 
     aggfunc='mean')
 
-print(michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df)
+print('\nmichael_jordan_and_lebron_james_per_game_avgs_pivot_table_df:',michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df)
 
 michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
     to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx')
@@ -2388,7 +2388,7 @@ michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df.\
     to_excel('michael_jordan_and_lebron_james_per_game_avgs_pivot_table.xlsx', index=False)
 
 
-print('creation of multiple dataframes for individual players = success - ', (time.time() - start_time))
+print('\ncreation of multiple dataframes for individual players = success - ', (time.time() - start_time))
 
 # player_career_info_df
 # first_season column in player_career_info_df
@@ -2755,7 +2755,7 @@ plt.ylabel('Career BPG Averages')
 plt.show()
 
 
-print('development of charts = success - ', (time.time() - start_time))
+print('\ndevelopment of charts = success - ', (time.time() - start_time))
 
 
 # =============== #
@@ -2809,7 +2809,7 @@ player_per_game_df = player_per_game_df.style.map(player_per_game_highlighted)
 player_per_game_df.to_excel('Player Per Game.xlsx', index=False)
 
 
-print('conditional formatting = success - ', (time.time() - start_time))
+print('\nconditional formatting = success - ', (time.time() - start_time))
 
 
 # =============================================================
