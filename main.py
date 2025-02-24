@@ -2744,7 +2744,106 @@ plt.title('Wilt Chamberlain PPG By Year')
 plt.xlabel('PLAYERS')
 plt.ylabel('PPG')
 plt.show()
-
+# patrick ewing chart - rebounds per game
+x = patrick_ewing_per_game_avgs_df['player'].astype(str) + '\n' + \
+    patrick_ewing_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    patrick_ewing_per_game_avgs_df['trb_per_game'].astype(str) + ' RPG'
+y = patrick_ewing_per_game_avgs_df['trb_per_game']
+plt.bar(x, y, color=color)
+plt.title('Patrick Ewing RPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('RPG')
+plt.show()
+# patrick ewing chart - ast per game
+x = patrick_ewing_per_game_avgs_df['player'].astype(str) + '\n' + \
+    patrick_ewing_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    patrick_ewing_per_game_avgs_df['ast_per_game'].astype(str) + ' AST'
+y = patrick_ewing_per_game_avgs_df['ast_per_game']
+plt.bar(x, y, color=color)
+plt.title('Patrick Ewing APG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('APG')
+plt.show()
+# patrick ewing chart - points per game
+x = patrick_ewing_per_game_avgs_df['player'].astype(str) + '\n' + \
+    patrick_ewing_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    patrick_ewing_per_game_avgs_df['pts_per_game'].astype(str) + ' PPG'
+y = patrick_ewing_per_game_avgs_df['pts_per_game']
+plt.bar(x, y, color=color)
+plt.title('Patrick Ewing PPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('PPG')
+plt.show()
+# patrick ewing chart - steals per game
+x = patrick_ewing_per_game_avgs_df['player'].astype(str) + '\n' + \
+    patrick_ewing_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    patrick_ewing_per_game_avgs_df['stl_per_game'].astype(str) + ' SPG'
+y = patrick_ewing_per_game_avgs_df['stl_per_game']
+plt.bar(x, y, color=color)
+plt.title('Patrick Ewing SPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('SPG')
+plt.show()
+# patrick ewing chart - blocks per game
+x = patrick_ewing_per_game_avgs_df['player'].astype(str) + '\n' + \
+    patrick_ewing_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    patrick_ewing_per_game_avgs_df['blk_per_game'].astype(str) + ' BPG'
+y = patrick_ewing_per_game_avgs_df['blk_per_game']
+plt.bar(x, y, color=color)
+plt.title('Patrick Ewing BPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('SPG')
+plt.show()
+# hakeem olajuwon chart - rebounds per game
+x = hakeem_olajuwon_per_game_avgs_df['player'].astype(str) + '\n' + \
+    hakeem_olajuwon_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    hakeem_olajuwon_per_game_avgs_df['trb_per_game'].astype(str) + ' RPG'
+y = hakeem_olajuwon_per_game_avgs_df['trb_per_game']
+plt.bar(x, y, color=color)
+plt.title('Hakeem Olajuwon RPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('RPG')
+plt.show()
+# hakeem olajuwon chart - ast per game
+x = hakeem_olajuwon_per_game_avgs_df['player'].astype(str) + '\n' + \
+    hakeem_olajuwon_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    hakeem_olajuwon_per_game_avgs_df['ast_per_game'].astype(str) + ' AST'
+y = hakeem_olajuwon_per_game_avgs_df['ast_per_game']
+plt.bar(x, y, color=color)
+plt.title('Hakeem Olajuwon APG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('APG')
+plt.show()
+# hakeem olajuwon chart - points per game
+x = hakeem_olajuwon_per_game_avgs_df['player'].astype(str) + '\n' + \
+    hakeem_olajuwon_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    hakeem_olajuwon_per_game_avgs_df['pts_per_game'].astype(str) + ' PPG'
+y = hakeem_olajuwon_per_game_avgs_df['pts_per_game']
+plt.bar(x, y, color=color)
+plt.title('Hakeem Olajuwon PPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('PPG')
+plt.show()
+# hakeem olajuwon chart - steals per game
+x = hakeem_olajuwon_per_game_avgs_df['player'].astype(str) + '\n' + \
+    hakeem_olajuwon_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    hakeem_olajuwon_per_game_avgs_df['stl_per_game'].astype(str) + ' SPG'
+y = hakeem_olajuwon_per_game_avgs_df['stl_per_game']
+plt.bar(x, y, color=color)
+plt.title('Hakeem Olajuwon SPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('SPG')
+plt.show()
+# hakeem olajuwon chart - blocks per game
+x = hakeem_olajuwon_per_game_avgs_df['player'].astype(str) + '\n' + \
+    hakeem_olajuwon_per_game_avgs_df['season'].astype(str) + ' Season\n' + \
+    hakeem_olajuwon_per_game_avgs_df['blk_per_game'].astype(str) + ' BPG'
+y = hakeem_olajuwon_per_game_avgs_df['blk_per_game']
+plt.bar(x, y, color=color)
+plt.title('Hakeem Olajuwon BPG By Year')
+plt.xlabel('PLAYERS')
+plt.ylabel('SPG')
+plt.show()
 # michael jordan and lebron james
 x = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['player'].astype(str)
 y = michael_jordan_and_lebron_james_per_game_avgs_pivot_table_df['pts_per_game']
