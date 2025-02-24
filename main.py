@@ -2409,6 +2409,16 @@ hakeem_olajuwon_per_game_avgs_df = hakeem_olajuwon(player_per_game_df)
 
 hakeem_olajuwon_per_game_avgs_df.to_excel('hakeem_olajuwon_per_game_averages.xlsx', index=False)
 
+# merging patrick ewing and hakeem olajuwon per game avgs dataframes 
+#   (when they played in the same years only)
+patrick_ewing_and_hakeem_olajuwon_per_game_avgs_merged_df = pd.merge(patrick_ewing_per_game_avgs_df, 
+                                                       hakeem_olajuwon_per_game_avgs_df,
+                                                       on=['season_ending_year'])
+
+patrick_ewing_and_hakeem_olajuwon_per_game_avgs_merged_df.to_excel(
+    'patrick_ewing_and_hakeem_olajuwon_per_game_avgs_merged.xlsx',
+    index=False)
+
 
 print('\ncreation of multiple dataframes for individual players = success - ', (time.time() - start_time))
 
@@ -2416,7 +2426,7 @@ print('\ncreation of multiple dataframes for individual players = success - ', (
 # first_season column in player_career_info_df
 # last_season column in player_career_info_df
 
-player_career_info_df['first_season']  = player_career_info_df['first_season'].astype(str) # convert values to string in order for updates to work
+player_career_info_df['first_season'] = player_career_info_df['first_season'].astype(str) # convert values to string in order for updates to work
 # save changes
 player_career_info_df.to_excel('Player Career Info.xlsx', index=False)
 
